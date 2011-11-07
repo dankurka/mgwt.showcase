@@ -19,12 +19,6 @@ import com.google.gwt.user.client.ui.Label;
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
 import com.googlecode.mgwt.ui.client.widget.tabbar.BookmarkTabBarButton;
 import com.googlecode.mgwt.ui.client.widget.tabbar.ContactsTabBarButton;
-import com.googlecode.mgwt.ui.client.widget.tabbar.DownloadsTabBarButton;
-import com.googlecode.mgwt.ui.client.widget.tabbar.FavoritesTabBarButton;
-import com.googlecode.mgwt.ui.client.widget.tabbar.FeaturedTabBarButton;
-import com.googlecode.mgwt.ui.client.widget.tabbar.HistoryTabBarButton;
-import com.googlecode.mgwt.ui.client.widget.tabbar.MoreTabBarButton;
-import com.googlecode.mgwt.ui.client.widget.tabbar.MostRecentTabBarButton;
 import com.googlecode.mgwt.ui.client.widget.tabbar.MostViewedTabBarButton;
 import com.googlecode.mgwt.ui.client.widget.tabbar.SearchTabBarButton;
 import com.googlecode.mgwt.ui.client.widget.tabbar.TabPanel;
@@ -42,12 +36,12 @@ public class TabBarViewGwtImpl extends DetailViewGwtImpl implements TabBarView {
 
 		tabPanel.add(new BookmarkTabBarButton(), new Label("Bookmark"));
 		tabPanel.add(new ContactsTabBarButton(), new Label("Contacts"));
-		tabPanel.add(new DownloadsTabBarButton(), new Label("Downloads"));
-		tabPanel.add(new FavoritesTabBarButton(), new Label("Favorites"));
-		tabPanel.add(new FeaturedTabBarButton(), new Label("Featured"));
-		tabPanel.add(new HistoryTabBarButton(), new Label("History"));
-		tabPanel.add(new MoreTabBarButton(), new Label("More"));
-		tabPanel.add(new MostRecentTabBarButton(), new Label("Most Recent"));
+		//		tabPanel.add(new DownloadsTabBarButton(), new Label("Downloads"));
+		//		tabPanel.add(new FavoritesTabBarButton(), new Label("Favorites"));
+		//		tabPanel.add(new FeaturedTabBarButton(), new Label("Featured"));
+		//		tabPanel.add(new HistoryTabBarButton(), new Label("History"));
+		//		tabPanel.add(new MoreTabBarButton(), new Label("More"));
+		//		tabPanel.add(new MostRecentTabBarButton(), new Label("Most Recent"));
 		tabPanel.add(new MostViewedTabBarButton(), new Label("Most Viewed"));
 		tabPanel.add(new SearchTabBarButton(), new Label("Search"));
 

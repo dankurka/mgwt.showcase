@@ -16,7 +16,6 @@
 package com.googlecode.mgwt.examples.showcase.client.activities.buttonbar;
 
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
-import com.googlecode.mgwt.ui.client.widget.RoundPanel;
 import com.googlecode.mgwt.ui.client.widget.buttonbar.ActionButton;
 import com.googlecode.mgwt.ui.client.widget.buttonbar.AddContactButton;
 import com.googlecode.mgwt.ui.client.widget.buttonbar.ArrowDownButton;
@@ -57,11 +56,6 @@ public class ButtonBarViewGwtImpl extends DetailViewGwtImpl implements ButtonBar
 	 * 
 	 */
 	public ButtonBarViewGwtImpl() {
-
-		RoundPanel roundPanel = new RoundPanel();
-		roundPanel.setSize("200px", "200px");
-
-		main.add(roundPanel);
 
 		footerPanel = new ButtonBar();
 

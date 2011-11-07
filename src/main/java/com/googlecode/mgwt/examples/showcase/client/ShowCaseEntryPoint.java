@@ -53,7 +53,7 @@ public class ShowCaseEntryPoint implements EntryPoint {
 		// MGWTStyle.getDefaultClientBundle().getMainCss().ensureInjected();
 
 		ViewPort viewPort = new MGWTSettings.ViewPort();
-		viewPort.setHeightToDeviceHeight().setTargetDensity(DENSITY.MEDIUM);
+		viewPort.setTargetDensity(DENSITY.MEDIUM);
 		viewPort.setUserScaleAble(false).setMinimumScale(1.0).setMinimumScale(1.0).setMaximumScale(1.0);
 
 		MGWTSettings settings = new MGWTSettings();

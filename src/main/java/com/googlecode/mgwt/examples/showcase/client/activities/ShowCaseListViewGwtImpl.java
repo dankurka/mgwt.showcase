@@ -22,6 +22,7 @@ import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
 import com.googlecode.mgwt.examples.showcase.client.BasicCell;
 import com.googlecode.mgwt.examples.showcase.client.activities.home.Topic;
+import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.widget.HeaderButton;
 import com.googlecode.mgwt.ui.client.widget.HeaderPanel;
 import com.googlecode.mgwt.ui.client.widget.LayoutPanel;
@@ -47,7 +48,9 @@ public class ShowCaseListViewGwtImpl implements ShowCaseListView {
 
 		forwardButton = new HeaderButton();
 		forwardButton.setForwardButton(true);
-		headerPanel.setRightWidget(forwardButton);
+		if (MGWT.getOsDetection().isPhone()) {
+			headerPanel.setRightWidget(forwardButton);
+		}
 		main.add(headerPanel);
 
 		cellList = new CellListWithHeader<Topic>(new BasicCell<Topic>() {

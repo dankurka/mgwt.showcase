@@ -15,6 +15,7 @@
  */
 package com.googlecode.mgwt.examples.showcase.client.activities.button;
 
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
 import com.googlecode.mgwt.ui.client.widget.Button;
@@ -28,7 +29,7 @@ public class ButtonViewGwtImpl extends DetailViewGwtImpl implements ButtonView {
 	public ButtonViewGwtImpl() {
 
 		FlowPanel content = new FlowPanel();
-		content.setWidth("150px");
+		content.getElement().getStyle().setMargin(20, Unit.PX);
 
 		scrollPanel.setScrollingEnabledX(false);
 

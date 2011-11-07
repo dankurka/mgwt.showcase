@@ -16,8 +16,10 @@
 package com.googlecode.mgwt.examples.showcase.client.activities.elements;
 
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.HTML;
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
 import com.googlecode.mgwt.ui.client.MGWT;
+import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.widget.MCheckBox;
 import com.googlecode.mgwt.ui.client.widget.MEmailTextBox;
 import com.googlecode.mgwt.ui.client.widget.MListBox;
@@ -43,6 +45,9 @@ public class ElementsViewImpl extends DetailViewGwtImpl implements ElementsView 
 
 		WidgetList widgetList = new WidgetList();
 		widgetList.setRound(true);
+		HTML header = new HTML("Simple input");
+		header.addStyleName(MGWTStyle.getDefaultClientBundle().getListCss().listHeader());
+		container.add(header);
 		container.add(widgetList);
 
 		scrollPanel.setWidget(container);
@@ -64,6 +69,9 @@ public class ElementsViewImpl extends DetailViewGwtImpl implements ElementsView 
 
 		WidgetList widgetList1 = new WidgetList();
 		widgetList1.setRound(true);
+		HTML header1 = new HTML("More input");
+		header1.addStyleName(MGWTStyle.getDefaultClientBundle().getListCss().listHeader());
+		container.add(header1);
 
 		MPhoneNumberTextBox phoneBox = new MPhoneNumberTextBox();
 		phoneBox.setPlaceHolder("phonebox");
@@ -85,6 +93,10 @@ public class ElementsViewImpl extends DetailViewGwtImpl implements ElementsView 
 
 		WidgetList widgetList2 = new WidgetList();
 		widgetList2.setRound(true);
+
+		HTML header2 = new HTML("Select inputs");
+		header2.addStyleName(MGWTStyle.getDefaultClientBundle().getListCss().listHeader());
+		container.add(header2);
 
 		MListBox mListBox = new MListBox();
 		mListBox.addItem("iPhone");

@@ -4,6 +4,7 @@ import com.google.gwt.activity.shared.Activity;
 import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.place.shared.Place;
 import com.googlecode.mgwt.examples.showcase.client.activities.AboutActivity;
+import com.googlecode.mgwt.examples.showcase.client.activities.AboutPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.UIPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.animation.AnimationPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.AnimationCubePlace;
@@ -68,6 +69,10 @@ public class TabletMainActivityMapper implements ActivityMapper {
 
 	private Activity getActivity(Place lastPlace, Place newPlace) {
 		if (newPlace instanceof HomePlace) {
+			return getAboutActivity();
+		}
+
+		if (newPlace instanceof AboutPlace) {
 			return getAboutActivity();
 		}
 
