@@ -16,6 +16,7 @@
 package com.googlecode.mgwt.examples.showcase.client.activities.progressbar;
 
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.HTML;
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
 import com.googlecode.mgwt.ui.client.widget.ProgressBar;
 
@@ -30,6 +31,10 @@ public class ProgressBarViewImpl extends DetailViewGwtImpl implements ProgressBa
 		FlowPanel content = new FlowPanel();
 
 		content.add(new ProgressBar());
+
+		HTML html = new HTML("animation is purely done with css");
+		html.getElement().setAttribute("style", "text-align: center; padding: 20px;");
+		content.add(html);
 
 		scrollPanel.setWidget(content);
 
