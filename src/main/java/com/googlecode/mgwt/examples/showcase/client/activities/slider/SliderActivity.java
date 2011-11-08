@@ -61,7 +61,6 @@ public class SliderActivity extends DetailActivity {
 
 			@Override
 			public void onValueChange(ValueChangeEvent<Integer> event) {
-				System.out.println("value changed: " + event.getValue());
 				view.getTextField().setText("" + event.getValue());
 			}
 		}));
