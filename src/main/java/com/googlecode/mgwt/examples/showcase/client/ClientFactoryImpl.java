@@ -38,6 +38,8 @@ import com.googlecode.mgwt.examples.showcase.client.activities.popup.PopupView;
 import com.googlecode.mgwt.examples.showcase.client.activities.popup.PopupViewGwtImpl;
 import com.googlecode.mgwt.examples.showcase.client.activities.progressbar.ProgressBarView;
 import com.googlecode.mgwt.examples.showcase.client.activities.progressbar.ProgressBarViewImpl;
+import com.googlecode.mgwt.examples.showcase.client.activities.progressindicator.ProgressIndicatorView;
+import com.googlecode.mgwt.examples.showcase.client.activities.progressindicator.ProgressIndicatorViewImpl;
 import com.googlecode.mgwt.examples.showcase.client.activities.pulltorefresh.PullToRefreshDisplay;
 import com.googlecode.mgwt.examples.showcase.client.activities.pulltorefresh.PullToRefreshDisplayGwtImpl;
 import com.googlecode.mgwt.examples.showcase.client.activities.scrollwidget.ScrollWidgetView;
@@ -73,6 +75,7 @@ public class ClientFactoryImpl implements ClientFactory {
 
 	private SliderView sliderView;
 	private PullToRefreshDisplayGwtImpl pullToRefreshView;
+	private ProgressIndicatorViewImpl progressIndicatorView;
 
 	public ClientFactoryImpl() {
 		eventBus = new SimpleEventBus();
@@ -211,6 +214,14 @@ public class ClientFactoryImpl implements ClientFactory {
 			pullToRefreshView = new PullToRefreshDisplayGwtImpl();
 		}
 		return pullToRefreshView;
+	}
+
+	@Override
+	public ProgressIndicatorView getProgressIndicatorView() {
+		if (progressIndicatorView == null) {
+			progressIndicatorView = new ProgressIndicatorViewImpl();
+		}
+		return progressIndicatorView;
 	}
 
 }

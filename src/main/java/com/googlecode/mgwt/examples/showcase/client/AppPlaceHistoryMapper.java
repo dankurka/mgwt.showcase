@@ -33,6 +33,7 @@ import com.googlecode.mgwt.examples.showcase.client.activities.buttonbar.ButtonB
 import com.googlecode.mgwt.examples.showcase.client.activities.elements.ElementsPlace.ElementsPlaceTokenizer;
 import com.googlecode.mgwt.examples.showcase.client.activities.popup.PopupPlace.PopupPlaceTokenizer;
 import com.googlecode.mgwt.examples.showcase.client.activities.progressbar.ProgressBarPlace.ProgressBarPlaceTokenizer;
+import com.googlecode.mgwt.examples.showcase.client.activities.progressindicator.ProgressIndicatorPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.pulltorefresh.PullToRefreshPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.scrollwidget.ScrollWidgetPlace.ScrollWidgetPlaceTokenizer;
 import com.googlecode.mgwt.examples.showcase.client.activities.searchbox.SearchBoxPlace.SearchBoxPlaceTokenizer;
@@ -47,6 +48,7 @@ import com.googlecode.mgwt.examples.showcase.client.places.HomePlace.HomePlaceTo
 @WithTokenizers({ HomePlaceTokenizer.class, UIPlaceTokenizer.class, ScrollWidgetPlaceTokenizer.class, AboutPlaceTokenizer.class, ButtonPlaceTokenizer.class, AnimationDissolvePlaceTokenizer.class,
 		AnimationFadePlaceTokenizer.class, AnimationFlipPlaceTokenizer.class, AnimationPlaceTokenizer.class, AnimationPopPlaceTokenizer.class, AnimationSlidePlaceTokenizer.class,
 		AnimationSlideUpPlaceTokenizer.class, AnimationSwapPlaceTokenizer.class, ButtonBarPlaceTokenizer.class, ElementsPlaceTokenizer.class, PopupPlaceTokenizer.class,
-		ProgressBarPlaceTokenizer.class, SearchBoxPlaceTokenizer.class, SliderPlaceTokenizer.class, TabBarPlaceTokenizer.class, PullToRefreshPlace.Tokenizer.class, AnimationCubePlace.Tokenizer.class })
+		ProgressBarPlaceTokenizer.class, SearchBoxPlaceTokenizer.class, SliderPlaceTokenizer.class, TabBarPlaceTokenizer.class, PullToRefreshPlace.Tokenizer.class, AnimationCubePlace.Tokenizer.class,
+		ProgressIndicatorPlace.Tokenizer.class })
 public interface AppPlaceHistoryMapper extends PlaceHistoryMapper {
 }

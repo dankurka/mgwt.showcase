@@ -13,26 +13,27 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.mgwt.examples.showcase.client.activities.progressbar;
+package com.googlecode.mgwt.examples.showcase.client.activities.progressindicator;
 
-import com.google.gwt.user.client.ui.FlowPanel;
-import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
-import com.googlecode.mgwt.ui.client.widget.ProgressBar;
+import com.google.gwt.place.shared.Place;
+import com.google.gwt.place.shared.PlaceTokenizer;
 
 /**
  * @author Daniel Kurka
  * 
  */
-public class ProgressBarViewImpl extends DetailViewGwtImpl implements ProgressBarView {
+public class ProgressIndicatorPlace extends Place {
+	public static class Tokenizer implements PlaceTokenizer<ProgressIndicatorPlace> {
 
-	public ProgressBarViewImpl() {
+		@Override
+		public ProgressIndicatorPlace getPlace(String token) {
+			return new ProgressIndicatorPlace();
+		}
 
-		FlowPanel content = new FlowPanel();
-
-		content.add(new ProgressBar());
-
-		scrollPanel.setWidget(content);
+		@Override
+		public String getToken(ProgressIndicatorPlace place) {
+			return null;
+		}
 
 	}
-
 }

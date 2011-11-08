@@ -28,6 +28,7 @@ import com.googlecode.mgwt.examples.showcase.client.activities.buttonbar.ButtonB
 import com.googlecode.mgwt.examples.showcase.client.activities.elements.ElementsPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.popup.PopupPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.progressbar.ProgressBarPlace;
+import com.googlecode.mgwt.examples.showcase.client.activities.progressindicator.ProgressIndicatorPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.pulltorefresh.PullToRefreshPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.scrollwidget.ScrollWidgetPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.searchbox.SearchBoxPlace;
@@ -119,10 +120,15 @@ public class UIActivity extends MGWTAbstractActivity {
 
 				case 8:
 
-					clientFactory.getPlaceController().goTo(new SliderPlace());
+					clientFactory.getPlaceController().goTo(new ProgressIndicatorPlace());
 					break;
 
 				case 9:
+
+					clientFactory.getPlaceController().goTo(new SliderPlace());
+					break;
+
+				case 10:
 
 					clientFactory.getPlaceController().goTo(new PullToRefreshPlace());
 					break;
@@ -155,6 +161,7 @@ public class UIActivity extends MGWTAbstractActivity {
 		list.add(new Item("Buttons"));
 		list.add(new Item("Popups"));
 		list.add(new Item("ProgressBar"));
+		list.add(new Item("ProgressIndicator"));
 		list.add(new Item("Slider"));
 		list.add(new Item("PullToRefresh"));
 

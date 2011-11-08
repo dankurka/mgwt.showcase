@@ -13,10 +13,8 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.mgwt.examples.showcase.client.activities.slider;
+package com.googlecode.mgwt.examples.showcase.client.activities.progressindicator;
 
-import com.google.gwt.event.logical.shared.ValueChangeEvent;
-import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
@@ -29,12 +27,12 @@ import com.googlecode.mgwt.examples.showcase.client.activities.UIPlace;
  * @author Daniel Kurka
  * 
  */
-public class SliderActivity extends DetailActivity {
+public class ProgressIndicatorActivity extends DetailActivity {
 
 	private final ClientFactory clientFactory;
 
-	public SliderActivity(ClientFactory clientFactory) {
-		super(clientFactory.getSliderView(), "nav");
+	public ProgressIndicatorActivity(ClientFactory clientFactory) {
+		super(clientFactory.getProgressBarView(), "nav");
 		this.clientFactory = clientFactory;
 
 	}
@@ -42,11 +40,11 @@ public class SliderActivity extends DetailActivity {
 	@Override
 	public void start(AcceptsOneWidget panel, EventBus eventBus) {
 		super.start(panel, eventBus);
-		final SliderView view = clientFactory.getSliderView();
+		ProgressIndicatorView view = clientFactory.getProgressIndicatorView();
 
 		view.getBackbuttonText().setText("UI");
 		view.getMainButtonText().setText("Nav");
-		view.getHeader().setText("Slider");
+		view.getHeader().setText("Progress Indicator");
 
 		addHandlerRegistration(view.getBackbutton().addTapHandler(new TapHandler() {
 
@@ -57,16 +55,6 @@ public class SliderActivity extends DetailActivity {
 			}
 		}));
 
-		addHandlerRegistration(view.getSliderValue().addValueChangeHandler(new ValueChangeHandler<Integer>() {
-
-			@Override
-			public void onValueChange(ValueChangeEvent<Integer> event) {
-				System.out.println("value changed: " + event.getValue());
-				view.getTextField().setText("" + event.getValue());
-			}
-		}));
-
 		panel.setWidget(view);
 	}
-
 }

@@ -22,6 +22,7 @@ import com.googlecode.mgwt.examples.showcase.client.activities.buttonbar.ButtonB
 import com.googlecode.mgwt.examples.showcase.client.activities.elements.ElementsPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.popup.PopupPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.progressbar.ProgressBarPlace;
+import com.googlecode.mgwt.examples.showcase.client.activities.progressindicator.ProgressIndicatorPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.pulltorefresh.PullToRefreshPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.scrollwidget.ScrollWidgetPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.searchbox.SearchBoxPlace;
@@ -70,7 +71,7 @@ public class TabletNavActivityMapper implements ActivityMapper {
 
 		if (place instanceof PullToRefreshPlace || place instanceof UIPlace || place instanceof ScrollWidgetPlace || place instanceof ElementsPlace || place instanceof ButtonBarPlace
 				|| place instanceof SearchBoxPlace || place instanceof TabBarPlace || place instanceof ButtonPlace || place instanceof PopupPlace || place instanceof ProgressBarPlace
-				|| place instanceof SliderPlace) {
+				|| place instanceof SliderPlace || place instanceof ProgressIndicatorPlace) {
 			return getUIActivity();
 		}
 

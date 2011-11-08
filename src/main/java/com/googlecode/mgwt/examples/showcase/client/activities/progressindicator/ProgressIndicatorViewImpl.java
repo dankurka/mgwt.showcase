@@ -13,23 +13,27 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.mgwt.examples.showcase.client.activities.progressbar;
+package com.googlecode.mgwt.examples.showcase.client.activities.progressindicator;
 
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
-import com.googlecode.mgwt.ui.client.widget.ProgressBar;
+import com.googlecode.mgwt.ui.client.widget.ProgressIndicator;
 
 /**
  * @author Daniel Kurka
  * 
  */
-public class ProgressBarViewImpl extends DetailViewGwtImpl implements ProgressBarView {
+public class ProgressIndicatorViewImpl extends DetailViewGwtImpl implements ProgressIndicatorView {
 
-	public ProgressBarViewImpl() {
+	public ProgressIndicatorViewImpl() {
 
 		FlowPanel content = new FlowPanel();
 
-		content.add(new ProgressBar());
+		ProgressIndicator progressIndicator = new ProgressIndicator();
+		progressIndicator.getElement().getStyle().setMarginTop(100, Unit.PX);
+		progressIndicator.getElement().getStyle().setMarginLeft(100, Unit.PX);
+		content.add(progressIndicator);
 
 		scrollPanel.setWidget(content);
 

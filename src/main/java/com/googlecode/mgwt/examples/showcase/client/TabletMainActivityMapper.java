@@ -26,6 +26,8 @@ import com.googlecode.mgwt.examples.showcase.client.activities.popup.PopupActivi
 import com.googlecode.mgwt.examples.showcase.client.activities.popup.PopupPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.progressbar.ProgressBarActivity;
 import com.googlecode.mgwt.examples.showcase.client.activities.progressbar.ProgressBarPlace;
+import com.googlecode.mgwt.examples.showcase.client.activities.progressindicator.ProgressIndicatorActivity;
+import com.googlecode.mgwt.examples.showcase.client.activities.progressindicator.ProgressIndicatorPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.pulltorefresh.PullToRefreshActivity;
 import com.googlecode.mgwt.examples.showcase.client.activities.pulltorefresh.PullToRefreshPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.scrollwidget.ScrollWidgetActivity;
@@ -110,6 +112,10 @@ public class TabletMainActivityMapper implements ActivityMapper {
 
 		if (newPlace instanceof ProgressBarPlace) {
 			return new ProgressBarActivity(clientFactory);
+		}
+
+		if (newPlace instanceof ProgressIndicatorPlace) {
+			return new ProgressIndicatorActivity(clientFactory);
 		}
 
 		if (newPlace instanceof SliderPlace) {

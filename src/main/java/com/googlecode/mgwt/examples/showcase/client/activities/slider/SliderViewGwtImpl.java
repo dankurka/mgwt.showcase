@@ -38,11 +38,12 @@ public class SliderViewGwtImpl extends DetailViewGwtImpl implements SliderView {
 
 		mSlider = new MSlider();
 		content.add(mSlider);
-		mSlider.setMax(250);
+		mSlider.setMax(10);
 
 		mSlider.getElement().getStyle().setMargin(20, Unit.PX);
 
 		valueField = new HTML("0");
+		valueField.getElement().setAttribute("style", "text-align: center; width: 280px;");
 		content.add(valueField);
 
 		scrollPanel.setWidget(content);
