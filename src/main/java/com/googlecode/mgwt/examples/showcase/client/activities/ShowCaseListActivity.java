@@ -29,7 +29,6 @@ import com.googlecode.mgwt.mvp.client.MGWTAbstractActivity;
 import com.googlecode.mgwt.ui.client.widget.celllist.CellSelectedEvent;
 import com.googlecode.mgwt.ui.client.widget.celllist.CellSelectedHandler;
 
-
 /**
  * @author Daniel Kurka
  * 
@@ -60,12 +59,12 @@ public class ShowCaseListActivity extends MGWTAbstractActivity {
 			public void onCellSelected(CellSelectedEvent event) {
 				int index = event.getIndex();
 				if (index == 0) {
-
-					clientFactory.getPlaceController().goTo(new UIPlace());
+					clientFactory.getPlaceController().goTo(new AnimationPlace());
 					return;
 				}
 				if (index == 1) {
-					clientFactory.getPlaceController().goTo(new AnimationPlace());
+					clientFactory.getPlaceController().goTo(new UIPlace());
+
 					return;
 				}
 
@@ -86,9 +85,8 @@ public class ShowCaseListActivity extends MGWTAbstractActivity {
 
 	private List<Topic> createTopicsList() {
 		ArrayList<Topic> list = new ArrayList<Topic>();
-
-		list.add(new Topic("UI", 5));
 		list.add(new Topic("Animations", 5));
+		list.add(new Topic("UI", 5));
 
 		return list;
 	}

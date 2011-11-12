@@ -80,57 +80,37 @@ public class UIActivity extends MGWTAbstractActivity {
 
 				switch (index) {
 				case 0:
-					clientFactory.getPlaceController().goTo(new ScrollWidgetPlace());
-
-					break;
-				case 1:
-					clientFactory.getPlaceController().goTo(new ElementsPlace());
-
-					break;
-
-				case 2:
-
 					clientFactory.getPlaceController().goTo(new ButtonBarPlace());
 					break;
-
-				case 3:
-
-					clientFactory.getPlaceController().goTo(new SearchBoxPlace());
-					break;
-
-				case 4:
-
-					clientFactory.getPlaceController().goTo(new TabBarPlace());
-					break;
-
-				case 5:
-
+				case 1:
 					clientFactory.getPlaceController().goTo(new ButtonPlace());
 					break;
-
-				case 6:
-
+				case 2:
+					clientFactory.getPlaceController().goTo(new ElementsPlace());
+					break;
+				case 3:
 					clientFactory.getPlaceController().goTo(new PopupPlace());
 					break;
-
-				case 7:
-
+				case 4:
 					clientFactory.getPlaceController().goTo(new ProgressBarPlace());
 					break;
-
-				case 8:
-
+				case 5:
 					clientFactory.getPlaceController().goTo(new ProgressIndicatorPlace());
 					break;
-
+				case 6:
+					clientFactory.getPlaceController().goTo(new PullToRefreshPlace());
+					break;
+				case 7:
+					clientFactory.getPlaceController().goTo(new ScrollWidgetPlace());
+					break;
+				case 8:
+					clientFactory.getPlaceController().goTo(new SearchBoxPlace());
+					break;
 				case 9:
-
 					clientFactory.getPlaceController().goTo(new SliderPlace());
 					break;
-
 				case 10:
-
-					clientFactory.getPlaceController().goTo(new PullToRefreshPlace());
+					clientFactory.getPlaceController().goTo(new TabBarPlace());
 					break;
 
 				default:
@@ -152,19 +132,17 @@ public class UIActivity extends MGWTAbstractActivity {
 	 */
 	private List<Item> createItems() {
 		ArrayList<Item> list = new ArrayList<Item>();
-
-		list.add(new Item("Scroll Widget"));
-		list.add(new Item("Elements"));
 		list.add(new Item("ButtonBar"));
-		list.add(new Item("Searchbox"));
-		list.add(new Item("TabBar"));
 		list.add(new Item("Buttons"));
+		list.add(new Item("Elements"));
 		list.add(new Item("Popups"));
 		list.add(new Item("ProgressBar"));
 		list.add(new Item("ProgressIndicator"));
-		list.add(new Item("Slider"));
 		list.add(new Item("PullToRefresh"));
-
+		list.add(new Item("Scroll Widget"));
+		list.add(new Item("Searchbox"));
+		list.add(new Item("Slider"));
+		list.add(new Item("TabBar"));
 		return list;
 	}
 
