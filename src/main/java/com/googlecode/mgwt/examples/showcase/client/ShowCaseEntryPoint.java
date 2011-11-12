@@ -45,6 +45,7 @@ import com.googlecode.mgwt.ui.client.layout.OrientationRegionHandler;
 public class ShowCaseEntryPoint implements EntryPoint {
 
 	private void start() {
+
 		// MGWTColorScheme.setBaseColor("#56a60D");
 		// MGWTColorScheme.setFontColor("#eee");
 		//

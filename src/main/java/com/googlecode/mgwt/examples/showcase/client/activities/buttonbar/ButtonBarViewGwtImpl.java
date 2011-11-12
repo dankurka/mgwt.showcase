@@ -16,10 +16,29 @@
 package com.googlecode.mgwt.examples.showcase.client.activities.buttonbar;
 
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.ActionButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.ArrowDownButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.ArrowLeftButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.ArrowRightButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.ArrowUpButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.BookmarkButton;
 import com.googlecode.mgwt.ui.client.widget.buttonbar.ButtonBar;
-import com.googlecode.mgwt.ui.client.widget.buttonbar.ButtonBarSpacer;
-import com.googlecode.mgwt.ui.client.widget.buttonbar.ButtonBarText;
-import com.googlecode.mgwt.ui.client.widget.buttonbar.RefreshButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.CameraButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.ComposeButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.FastForwardButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.InfoButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.LocateButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.NewIconButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.NextSlideButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.OrganizeButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.PauseButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.PlayButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.PlusButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.PreviousSlideButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.ReplyButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.RewindButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.SearchButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.StopButton;
 import com.googlecode.mgwt.ui.client.widget.buttonbar.TrashButton;
 
 /**
@@ -37,34 +56,34 @@ public class ButtonBarViewGwtImpl extends DetailViewGwtImpl implements ButtonBar
 
 		footerPanel = new ButtonBar();
 
-		footerPanel.add(new RefreshButton());
-		footerPanel.add(new ButtonBarSpacer());
-		footerPanel.add(new ButtonBarText("there are much more buttons"));
-		footerPanel.add(new ButtonBarSpacer());
-		//		footerPanel.add(new ActionButton());
-		//		footerPanel.add(new ArrowDownButton());
-		//		footerPanel.add(new ArrowUpButton());
-		//		footerPanel.add(new ArrowLeftButton());
-		//		footerPanel.add(new ArrowRightButton());
-		//		footerPanel.add(new BookmarkButton());
-		//		footerPanel.add(new CameraButton());
-		//		footerPanel.add(new ComposeButton());
-		//		footerPanel.add(new AddContactButton());
-		//		footerPanel.add(new FastForwardButton());
-		//		footerPanel.add(new DeleteButton());
-		//		footerPanel.add(new InfoButton());
-		//		footerPanel.add(new LocateButton());
-		//		footerPanel.add(new NewIconButton());
-		//		footerPanel.add(new NextSlideButton());
-		//		footerPanel.add(new OrganizeButton());
-		//		footerPanel.add(new PauseButton());
-		//		footerPanel.add(new PlayButton());
-		//		footerPanel.add(new PlusButton());
-		//		footerPanel.add(new PreviousSlideButton());
-		//		footerPanel.add(new ReplyButton());
-		//		footerPanel.add(new RewindButton());
-		//		footerPanel.add(new SearchButton());
-		//		footerPanel.add(new StopButton());
+		// footerPanel.add(new ActionButton());
+		// footerPanel.add(new ButtonBarSpacer());
+		// footerPanel.add(new ButtonBarText("there are much more buttons"));
+		// footerPanel.add(new ButtonBarSpacer());
+		footerPanel.add(new ActionButton());
+		footerPanel.add(new ArrowDownButton());
+		footerPanel.add(new ArrowUpButton());
+		footerPanel.add(new ArrowLeftButton());
+		footerPanel.add(new ArrowRightButton());
+		footerPanel.add(new BookmarkButton());
+		footerPanel.add(new CameraButton());
+		footerPanel.add(new ComposeButton());
+
+		footerPanel.add(new FastForwardButton());
+
+		footerPanel.add(new InfoButton());
+		footerPanel.add(new LocateButton());
+		footerPanel.add(new NewIconButton());
+		footerPanel.add(new NextSlideButton());
+		footerPanel.add(new OrganizeButton());
+		footerPanel.add(new PauseButton());
+		footerPanel.add(new PlayButton());
+		footerPanel.add(new PlusButton());
+		footerPanel.add(new PreviousSlideButton());
+		footerPanel.add(new ReplyButton());
+		footerPanel.add(new RewindButton());
+		footerPanel.add(new SearchButton());
+		footerPanel.add(new StopButton());
 		footerPanel.add(new TrashButton());
 
 		main.add(footerPanel);

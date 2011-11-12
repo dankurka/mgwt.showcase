@@ -36,7 +36,7 @@ public abstract class DetailViewGwtImpl implements DetailView {
 
 		if (!MGWT.getOsDetection().isPhone()) {
 			headerPanel.setLeftWidget(headerMainButton);
-			headerMainButton.addStyleName(MGWTStyle.getDefaultClientBundle().getUtilCss().portraitonly());
+			headerMainButton.addStyleName(MGWTStyle.getTheme().getMGWTClientBundle().getUtilCss().portraitonly());
 		} else {
 			headerPanel.setLeftWidget(headerBackButton);
 		}

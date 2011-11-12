@@ -46,7 +46,7 @@ public class ElementsViewImpl extends DetailViewGwtImpl implements ElementsView 
 		WidgetList widgetList = new WidgetList();
 		widgetList.setRound(true);
 		HTML header = new HTML("Simple input");
-		header.addStyleName(MGWTStyle.getDefaultClientBundle().getListCss().listHeader());
+		header.addStyleName(MGWTStyle.getTheme().getMGWTClientBundle().getListCss().listHeader());
 		container.add(header);
 		container.add(widgetList);
 
@@ -70,7 +70,7 @@ public class ElementsViewImpl extends DetailViewGwtImpl implements ElementsView 
 		WidgetList widgetList1 = new WidgetList();
 		widgetList1.setRound(true);
 		HTML header1 = new HTML("More input");
-		header1.addStyleName(MGWTStyle.getDefaultClientBundle().getListCss().listHeader());
+		header1.addStyleName(MGWTStyle.getTheme().getMGWTClientBundle().getListCss().listHeader());
 		container.add(header1);
 
 		MPhoneNumberTextBox phoneBox = new MPhoneNumberTextBox();
@@ -95,7 +95,7 @@ public class ElementsViewImpl extends DetailViewGwtImpl implements ElementsView 
 		widgetList2.setRound(true);
 
 		HTML header2 = new HTML("Select inputs");
-		header2.addStyleName(MGWTStyle.getDefaultClientBundle().getListCss().listHeader());
+		header2.addStyleName(MGWTStyle.getTheme().getMGWTClientBundle().getListCss().listHeader());
 		container.add(header2);
 
 		MListBox mListBox = new MListBox();
