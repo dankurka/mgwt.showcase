@@ -26,22 +26,23 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>gwt-maven-plugin</artifactId>
+				<version>2.4.0</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>compile</goal>
+							<goal>test</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
 			
-			  <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>gwt-maven-plugin</artifactId>
-                <version>2.4.0</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>compile</goal>
-                            <goal>test</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-			
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-eclipse-plugin</artifactId>
@@ -50,7 +51,7 @@
 				<configuration>
 					<downloadSources>true</downloadSources>
 					<downloadJavadocs>false</downloadJavadocs>
-					<buildOutputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</buildOutputDirectory>
+					<buildOutputDirectory>war/WEB-INF/classes</buildOutputDirectory>
 					<projectnatures>
 						<projectnature>org.eclipse.jdt.core.javanature</projectnature>
 						<projectnature>com.google.gdt.eclipse.core.webAppNature</projectnature>
@@ -118,7 +119,7 @@
 		<dependency>
 			<groupId>com.googlecode.mgwt</groupId>
 			<artifactId>mgwt</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
+			<version>1.0.1-SNAPSHOT</version>
 
 		</dependency>
 
@@ -136,9 +137,8 @@
 		</dependency>
 		<dependency>
 			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-dev</artifactId>
+			<artifactId>gwt-servlet</artifactId>
 			<version>${gwtversion}</version>
-			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax.validation</groupId>
