@@ -80,7 +80,7 @@
 						<linkedResource>
 							<name>war</name>
 							<type>2</type>
-							<location>${basedir}/target/${project.artifactId}-${project.version}</location>
+							<location>PROJECT_LOC/target/${project.artifactId}-${project.version}</location>
 						</linkedResource>
 					</linkedResources>
 
