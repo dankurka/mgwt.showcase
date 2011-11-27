@@ -13,6 +13,7 @@
 
 	<properties>
 		<gwtversion>2.4.0</gwtversion>
+		<runTarget>index.html</runTarget>
 	</properties>
 
 	<build>
@@ -33,6 +34,9 @@
 				<version>2.4.0</version>
 				<executions>
 					<execution>
+						<configuration>
+							<module>com.googlecode.mgwt.examples.showcase.ShowCase</module>
+						</configuration>
 						<goals>
 							<goal>compile</goal>
 							<goal>test</goal>
@@ -41,7 +45,7 @@
 				</executions>
 			</plugin>
 
-			
+
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -51,7 +55,7 @@
 				<configuration>
 					<downloadSources>true</downloadSources>
 					<downloadJavadocs>false</downloadJavadocs>
-					<buildOutputDirectory>war/WEB-INF/classes</buildOutputDirectory>
+					<buildOutputDirectory>target/${project.artifactId}-${project.version}/WEB-INF/classes</buildOutputDirectory>
 					<projectnatures>
 						<projectnature>org.eclipse.jdt.core.javanature</projectnature>
 						<projectnature>com.google.gdt.eclipse.core.webAppNature</projectnature>
@@ -76,13 +80,7 @@
 						<exclude>com.google.gwt:gwt-dev</exclude>
 						<exclude>javax.validation:validation-api</exclude>
 					</excludes>
-					<linkedResources>
-						<linkedResource>
-							<name>war</name>
-							<type>2</type>
-							<location>PROJECT_LOC/target/${project.artifactId}-${project.version}</location>
-						</linkedResource>
-					</linkedResources>
+					
 
 				</configuration>
 			</plugin>
