@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gwt.event.shared.EventBus;
+import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
 import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
@@ -34,7 +35,6 @@ import com.googlecode.mgwt.examples.showcase.client.activities.scrollwidget.Scro
 import com.googlecode.mgwt.examples.showcase.client.activities.searchbox.SearchBoxPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.slider.SliderPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.tabbar.TabBarPlace;
-import com.googlecode.mgwt.examples.showcase.client.places.HomePlace;
 import com.googlecode.mgwt.mvp.client.MGWTAbstractActivity;
 import com.googlecode.mgwt.ui.client.widget.celllist.CellSelectedEvent;
 import com.googlecode.mgwt.ui.client.widget.celllist.CellSelectedHandler;
@@ -65,7 +65,7 @@ public class UIActivity extends MGWTAbstractActivity {
 
 			@Override
 			public void onTap(TapEvent event) {
-				clientFactory.getPlaceController().goTo(new HomePlace());
+				History.back();
 
 			}
 		}));

@@ -17,11 +17,8 @@ package com.googlecode.mgwt.examples.showcase.client.activities.progressbar;
 
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
-import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
-import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
 import com.googlecode.mgwt.examples.showcase.client.ClientFactory;
 import com.googlecode.mgwt.examples.showcase.client.DetailActivity;
-import com.googlecode.mgwt.examples.showcase.client.activities.UIPlace;
 
 /**
  * @author Daniel Kurka
@@ -45,15 +42,6 @@ public class ProgressBarActivity extends DetailActivity {
 		view.getBackbuttonText().setText("UI");
 		view.getMainButtonText().setText("Nav");
 		view.getHeader().setText("ProgressBar");
-
-		addHandlerRegistration(view.getBackbutton().addTapHandler(new TapHandler() {
-
-			@Override
-			public void onTap(TapEvent event) {
-				clientFactory.getPlaceController().goTo(new UIPlace());
-
-			}
-		}));
 
 		panel.setWidget(view);
 	}

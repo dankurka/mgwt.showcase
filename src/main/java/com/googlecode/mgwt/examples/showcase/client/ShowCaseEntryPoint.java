@@ -20,7 +20,6 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.GWT.UncaughtExceptionHandler;
 import com.google.gwt.dom.client.StyleInjector;
-import com.google.gwt.place.shared.PlaceHistoryHandler;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -70,7 +69,7 @@ public class ShowCaseEntryPoint implements EntryPoint {
 
 		// Start PlaceHistoryHandler with our PlaceHistoryMapper
 		AppPlaceHistoryMapper historyMapper = GWT.create(AppPlaceHistoryMapper.class);
-		final PlaceHistoryHandler historyHandler = new PlaceHistoryHandler(historyMapper);
+		final MGWTPlaceHistoryHandler historyHandler = new MGWTPlaceHistoryHandler(historyMapper);
 
 		historyHandler.register(clientFactory.getPlaceController(), clientFactory.getEventBus(), new HomePlace());
 

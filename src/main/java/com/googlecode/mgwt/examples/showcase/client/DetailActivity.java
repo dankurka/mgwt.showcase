@@ -1,6 +1,7 @@
 package com.googlecode.mgwt.examples.showcase.client;
 
 import com.google.gwt.event.shared.EventBus;
+import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
 import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
@@ -25,6 +26,15 @@ public class DetailActivity extends MGWTAbstractActivity {
 			@Override
 			public void onTap(TapEvent event) {
 				eventBus.fireEvent(new ShowMasterEvent(eventId));
+
+			}
+		}));
+
+		addHandlerRegistration(detailView.getBackbutton().addTapHandler(new TapHandler() {
+
+			@Override
+			public void onTap(TapEvent event) {
+				History.back();
 
 			}
 		}));

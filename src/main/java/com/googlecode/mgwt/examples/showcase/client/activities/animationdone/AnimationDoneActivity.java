@@ -16,13 +16,12 @@
 package com.googlecode.mgwt.examples.showcase.client.activities.animationdone;
 
 import com.google.gwt.event.shared.EventBus;
+import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
 import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
 import com.googlecode.mgwt.examples.showcase.client.ClientFactory;
-import com.googlecode.mgwt.examples.showcase.client.activities.animation.AnimationPlace;
 import com.googlecode.mgwt.mvp.client.MGWTAbstractActivity;
-
 
 /**
  * @author Daniel Kurka
@@ -48,7 +47,7 @@ public class AnimationDoneActivity extends MGWTAbstractActivity {
 
 			@Override
 			public void onTap(TapEvent event) {
-				clientFactory.getPlaceController().goTo(new AnimationPlace());
+				History.back();
 
 			}
 		}));

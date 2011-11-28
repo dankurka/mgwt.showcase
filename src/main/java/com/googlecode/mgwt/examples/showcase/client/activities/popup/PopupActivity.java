@@ -24,7 +24,6 @@ import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
 import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
 import com.googlecode.mgwt.examples.showcase.client.ClientFactory;
 import com.googlecode.mgwt.examples.showcase.client.DetailActivity;
-import com.googlecode.mgwt.examples.showcase.client.activities.UIPlace;
 import com.googlecode.mgwt.ui.client.dialog.ConfirmDialog.ConfirmCallback;
 import com.googlecode.mgwt.ui.client.dialog.Dialogs.ButtonType;
 import com.googlecode.mgwt.ui.client.dialog.Dialogs.OptionCallback;
@@ -52,15 +51,6 @@ public class PopupActivity extends DetailActivity {
 		view.getBackbuttonText().setText("UI");
 		view.getHeader().setText("Popups");
 		view.getMainButtonText().setText("Nav");
-
-		addHandlerRegistration(view.getBackbutton().addTapHandler(new TapHandler() {
-
-			@Override
-			public void onTap(TapEvent event) {
-				clientFactory.getPlaceController().goTo(new UIPlace());
-
-			}
-		}));
 
 		addHandlerRegistration(view.getConfirmButton().addTapHandler(new TapHandler() {
 

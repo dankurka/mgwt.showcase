@@ -18,10 +18,9 @@ package com.googlecode.mgwt.examples.showcase.client.activities.animationdone;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
 
-
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public interface AnimationDoneView extends IsWidget {
 	public HasTapHandlers getBackButton();
