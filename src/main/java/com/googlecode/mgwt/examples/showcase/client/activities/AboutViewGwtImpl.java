@@ -45,6 +45,7 @@ public class AboutViewGwtImpl extends DetailViewGwtImpl implements AboutView {
 
 		if (MGWT.getOsDetection().isPhone()) {
 			button = new Button("back");
+			button.getElement().setAttribute("style", "margin:auto;width: 200px;display:block");
 			round.add(button);
 			headerBackButton.removeFromParent();
 		}

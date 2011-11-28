@@ -15,18 +15,15 @@
  */
 package com.googlecode.mgwt.examples.showcase.client.activities.animationdone;
 
-import com.google.gwt.dom.client.Style.Position;
-import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
 import com.googlecode.mgwt.ui.client.widget.Button;
 import com.googlecode.mgwt.ui.client.widget.RoundPanel;
 
-
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class AnimationDoneViewGwtImpl implements AnimationDoneView {
 
@@ -38,15 +35,17 @@ public class AnimationDoneViewGwtImpl implements AnimationDoneView {
 	 */
 	public AnimationDoneViewGwtImpl() {
 		panel = new RoundPanel();
+		panel.getElement().setAttribute("style", "text-align:center");
 		panel.setHeight("200px");
+
 		HTML html = new HTML("<p style='text-align: center; position: relative; top: 75px; font-size: 20px'>great, yeah!<p>");
 
 		panel.add(html);
 
 		button = new Button();
-		button.getElement().getStyle().setTop(125, Unit.PX);
-		button.getElement().getStyle().setPosition(Position.RELATIVE);
+		button.getElement().setAttribute("style", "margin:auto;width: 200px; top: 125px; position:relative;");
 		button.setText("Back");
+
 		panel.add(button);
 
 	}
