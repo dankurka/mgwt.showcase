@@ -30,6 +30,7 @@ public abstract class DetailViewGwtImpl implements DetailView {
 		headerPanel.setCenterWidget(title);
 		headerBackButton = new HeaderButton();
 		headerBackButton.setBackButton(true);
+		headerBackButton.setVisible(!MGWT.getOsDetection().isAndroid());
 
 		headerMainButton = new HeaderButton();
 		headerMainButton.setRoundButton(true);

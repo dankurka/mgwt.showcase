@@ -21,6 +21,7 @@ import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
 import com.googlecode.mgwt.examples.showcase.client.BasicCell;
+import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.widget.HeaderButton;
 import com.googlecode.mgwt.ui.client.widget.HeaderPanel;
 import com.googlecode.mgwt.ui.client.widget.LayoutPanel;
@@ -51,6 +52,7 @@ public class AnimationViewGwtImpl implements AnimationView {
 
 		headerPanel.setLeftWidget(headerBackButton);
 		headerBackButton.setBackButton(true);
+		headerBackButton.setVisible(!MGWT.getOsDetection().isAndroid());
 
 		main.add(headerPanel);
 

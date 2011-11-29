@@ -20,6 +20,7 @@ import java.util.List;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
 import com.googlecode.mgwt.examples.showcase.client.BasicCell;
+import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.widget.CellList;
 import com.googlecode.mgwt.ui.client.widget.HeaderButton;
 import com.googlecode.mgwt.ui.client.widget.HeaderPanel;
@@ -49,6 +50,7 @@ public class UIViewImpl implements UIView {
 		headerBackButton = new HeaderButton();
 		headerBackButton.setBackButton(true);
 		headerPanel.setLeftWidget(headerBackButton);
+		headerBackButton.setVisible(!MGWT.getOsDetection().isAndroid());
 
 		ScrollPanel scrollPanel = new ScrollPanel();
 
