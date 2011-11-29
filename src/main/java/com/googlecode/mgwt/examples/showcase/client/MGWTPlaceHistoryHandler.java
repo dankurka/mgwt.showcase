@@ -17,6 +17,8 @@ import com.google.web.bindery.event.shared.HandlerRegistration;
 
 public class MGWTPlaceHistoryHandler {
 
+	private static final String SPLITTER = "%73";
+
 	private Logger log = Logger.getLogger(getClass().getName());
 
 	public MGWTPlaceHistoryHandler(PlaceHistoryMapper mapper) {
@@ -39,6 +41,9 @@ public class MGWTPlaceHistoryHandler {
 	private Place defaultPlace = Place.NOWHERE;
 
 	private LinkedList<String> historyStack = new LinkedList<String>();
+	private LinkedList<Place> placeStack = new LinkedList<Place>();
+
+	private boolean ignoreChange;
 
 	/**
 	 * Handle the current history token. Typically called at application start,
@@ -48,28 +53,36 @@ public class MGWTPlaceHistoryHandler {
 
 		String token = historian.getToken();
 
-		System.out.println("handle current history: '" + token + "'");
-		handleTokenChange(token);
+		handleTokenChange(token, true);
 
 	}
 
-	protected void handleTokenChange(String token) {
-		System.out.println("handle token change: '" + token + "'");
+	protected void handleTokenChange(String token, boolean add) {
+
 		historyStack.clear();
 
-		String[] split = token.split("%73");
+		String[] split = token.split(SPLITTER);
 
 		for (int i = 0; i < split.length - 1; i++) {
-			historyStack.add(split[i]);
+			String placeToken = split[i];
+			Place place = mapper.getPlace(placeToken);
+			if (place == null) {
+				log.warning("no mapping for place: '" + placeToken + "'");
+			} else {
+
+				historyStack.add(split[i]);
+				placeStack.add(place);
+			}
 
 		}
+		if (add) {
+			StringBuffer buffer = new StringBuffer();
+			for (String hToken : historyStack) {
+				buffer.append(hToken);
 
-		StringBuffer buffer = new StringBuffer();
-		for (String hToken : historyStack) {
-			buffer.append(hToken);
-			historian.newItem(buffer.toString(), false);
-			System.out.println("historian item: '" + buffer.toString() + "'");
-			buffer.append("%73");
+				historian.newItem(buffer.toString(), false);
+				buffer.append(SPLITTER);
+			}
 		}
 
 		handleHistoryToken(split[split.length - 1]);
@@ -103,7 +116,7 @@ public class MGWTPlaceHistoryHandler {
 
 		final HandlerRegistration historyReg = historian.addValueChangeHandler(new ValueChangeHandler<String>() {
 			public void onValueChange(ValueChangeEvent<String> event) {
-				handleTokenChange(event.getValue());
+				handleTokenChange(event.getValue(), false);
 
 			}
 		});
@@ -121,22 +134,29 @@ public class MGWTPlaceHistoryHandler {
 	protected void onPlaceChangeEvent(PlaceChangeEvent event) {
 
 		Place newPlace = event.getNewPlace();
-		System.out.println("place: " + newPlace);
-
 		String tokenForPlace = tokenForPlace(newPlace);
 		if ("".equals(tokenForPlace)) {
 			return;
 		}
-		StringBuffer buffer = new StringBuffer();
-		for (String token : historyStack) {
-			buffer.append(token + "%73");
+
+		if (ignoreChange) {
+			ignoreChange = false;
+		} else {
+
+			// build new history token
+			StringBuffer buffer = new StringBuffer();
+			for (String token : historyStack) {
+				buffer.append(token + SPLITTER);
+			}
+
+			// add the current placetoken to the stack
+			historyStack.add(tokenForPlace);
+			// add it to the history
+			buffer.append(tokenForPlace);
+			// add everything to the browser history
+			historian.newItem(buffer.toString(), false);
 		}
 
-		historyStack.add(tokenForPlace);
-		buffer.append(tokenForPlace);
-
-		System.out.println("place change: '" + buffer.toString() + "'");
-		historian.newItem(buffer.toString(), false);
 	}
 
 	/**
@@ -162,7 +182,7 @@ public class MGWTPlaceHistoryHandler {
 			log().warning("Unrecognized history token: " + token);
 			newPlace = defaultPlace;
 		}
-
+		ignoreChange = true;
 		placeController.goTo(newPlace);
 	}
 

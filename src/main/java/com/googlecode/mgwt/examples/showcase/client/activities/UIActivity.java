@@ -35,7 +35,9 @@ import com.googlecode.mgwt.examples.showcase.client.activities.scrollwidget.Scro
 import com.googlecode.mgwt.examples.showcase.client.activities.searchbox.SearchBoxPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.slider.SliderPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.tabbar.TabBarPlace;
+import com.googlecode.mgwt.examples.showcase.client.places.HomePlace;
 import com.googlecode.mgwt.mvp.client.MGWTAbstractActivity;
+import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.widget.celllist.CellSelectedEvent;
 import com.googlecode.mgwt.ui.client.widget.celllist.CellSelectedHandler;
 
@@ -65,7 +67,12 @@ public class UIActivity extends MGWTAbstractActivity {
 
 			@Override
 			public void onTap(TapEvent event) {
-				History.back();
+				if (MGWT.getOsDetection().isPhone()) {
+					History.back();
+				} else {
+					// TODO fix!
+					clientFactory.getPlaceController().goTo(new HomePlace());
+				}
 
 			}
 		}));

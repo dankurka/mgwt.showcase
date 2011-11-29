@@ -32,7 +32,9 @@ import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.Ani
 import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.AnimationSlidePlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.AnimationSlideUpPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.AnimationSwapPlace;
+import com.googlecode.mgwt.examples.showcase.client.places.HomePlace;
 import com.googlecode.mgwt.mvp.client.MGWTAbstractActivity;
+import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.widget.celllist.CellSelectedEvent;
 import com.googlecode.mgwt.ui.client.widget.celllist.CellSelectedHandler;
 
@@ -65,7 +67,12 @@ public class AnimationActivity extends MGWTAbstractActivity {
 
 			@Override
 			public void onTap(TapEvent event) {
-				History.back();
+				if (MGWT.getOsDetection().isPhone()) {
+					History.back();
+				} else {
+					// TODO fix!
+					clientFactory.getPlaceController().goTo(new HomePlace());
+				}
 
 			}
 		}));
@@ -134,7 +141,7 @@ public class AnimationActivity extends MGWTAbstractActivity {
 		list.add(new Animation("Flip"));
 		list.add(new Animation("Pop"));
 		list.add(new Animation("Swap"));
-		//list.add(new Animation("Cube"));
+		// list.add(new Animation("Cube"));
 
 		return list;
 	}
