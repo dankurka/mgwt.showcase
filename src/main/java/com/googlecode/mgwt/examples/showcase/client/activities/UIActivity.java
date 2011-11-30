@@ -23,17 +23,7 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
 import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
 import com.googlecode.mgwt.examples.showcase.client.ClientFactory;
-import com.googlecode.mgwt.examples.showcase.client.activities.button.ButtonPlace;
-import com.googlecode.mgwt.examples.showcase.client.activities.buttonbar.ButtonBarPlace;
-import com.googlecode.mgwt.examples.showcase.client.activities.elements.ElementsPlace;
-import com.googlecode.mgwt.examples.showcase.client.activities.popup.PopupPlace;
-import com.googlecode.mgwt.examples.showcase.client.activities.progressbar.ProgressBarPlace;
-import com.googlecode.mgwt.examples.showcase.client.activities.progressindicator.ProgressIndicatorPlace;
-import com.googlecode.mgwt.examples.showcase.client.activities.pulltorefresh.PullToRefreshPlace;
-import com.googlecode.mgwt.examples.showcase.client.activities.scrollwidget.ScrollWidgetPlace;
-import com.googlecode.mgwt.examples.showcase.client.activities.searchbox.SearchBoxPlace;
-import com.googlecode.mgwt.examples.showcase.client.activities.slider.SliderPlace;
-import com.googlecode.mgwt.examples.showcase.client.activities.tabbar.TabBarPlace;
+import com.googlecode.mgwt.examples.showcase.client.activities.UIEntrySelectedEvent.UIEntry;
 import com.googlecode.mgwt.examples.showcase.client.event.ActionEvent;
 import com.googlecode.mgwt.examples.showcase.client.event.ActionNames;
 import com.googlecode.mgwt.mvp.client.MGWTAbstractActivity;
@@ -49,6 +39,8 @@ public class UIActivity extends MGWTAbstractActivity {
 	private final ClientFactory clientFactory;
 
 	private int oldIndex;
+
+	private List<Item> items;
 
 	public UIActivity(ClientFactory clientFactory) {
 		this.clientFactory = clientFactory;
@@ -70,8 +62,8 @@ public class UIActivity extends MGWTAbstractActivity {
 
 			}
 		}));
-
-		view.renderItems(createItems());
+		items = createItems();
+		view.renderItems(items);
 
 		addHandlerRegistration(view.getList().addCellSelectedHandler(new CellSelectedHandler() {
 
@@ -79,47 +71,11 @@ public class UIActivity extends MGWTAbstractActivity {
 			public void onCellSelected(CellSelectedEvent event) {
 				int index = event.getIndex();
 
-				switch (index) {
-				case 0:
-					clientFactory.getPlaceController().goTo(new ButtonBarPlace());
-					break;
-				case 1:
-					clientFactory.getPlaceController().goTo(new ButtonPlace());
-					break;
-				case 2:
-					clientFactory.getPlaceController().goTo(new ElementsPlace());
-					break;
-				case 3:
-					clientFactory.getPlaceController().goTo(new PopupPlace());
-					break;
-				case 4:
-					clientFactory.getPlaceController().goTo(new ProgressBarPlace());
-					break;
-				case 5:
-					clientFactory.getPlaceController().goTo(new ProgressIndicatorPlace());
-					break;
-				case 6:
-					clientFactory.getPlaceController().goTo(new PullToRefreshPlace());
-					break;
-				case 7:
-					clientFactory.getPlaceController().goTo(new ScrollWidgetPlace());
-					break;
-				case 8:
-					clientFactory.getPlaceController().goTo(new SearchBoxPlace());
-					break;
-				case 9:
-					clientFactory.getPlaceController().goTo(new SliderPlace());
-					break;
-				case 10:
-					clientFactory.getPlaceController().goTo(new TabBarPlace());
-					break;
-
-				default:
-					break;
-				}
 				view.setSelectedIndex(oldIndex, false);
 				view.setSelectedIndex(index, true);
 				oldIndex = index;
+
+				UIEntrySelectedEvent.fire(eventBus, items.get(index).getEntry());
 
 			}
 		}));
@@ -133,17 +89,17 @@ public class UIActivity extends MGWTAbstractActivity {
 	 */
 	private List<Item> createItems() {
 		ArrayList<Item> list = new ArrayList<Item>();
-		list.add(new Item("ButtonBar"));
-		list.add(new Item("Buttons"));
-		list.add(new Item("Elements"));
-		list.add(new Item("Popups"));
-		list.add(new Item("ProgressBar"));
-		list.add(new Item("ProgressIndicator"));
-		list.add(new Item("PullToRefresh"));
-		list.add(new Item("Scroll Widget"));
-		list.add(new Item("Searchbox"));
-		list.add(new Item("Slider"));
-		list.add(new Item("TabBar"));
+		list.add(new Item("ButtonBar", UIEntry.BUTTON_BAR));
+		list.add(new Item("Buttons", UIEntry.BUTTONS));
+		list.add(new Item("Elements", UIEntry.ELEMENTS));
+		list.add(new Item("Popups", UIEntry.POPUPS));
+		list.add(new Item("ProgressBar", UIEntry.PROGRESS_BAR));
+		list.add(new Item("ProgressIndicator", UIEntry.PROGRESS_INDICATOR));
+		list.add(new Item("PullToRefresh", UIEntry.PULL_TO_REFRESH));
+		list.add(new Item("Scroll Widget", UIEntry.SCROLL_WIDGET));
+		list.add(new Item("Searchbox", UIEntry.SEARCH_BOX));
+		list.add(new Item("Slider", UIEntry.SLIDER));
+		list.add(new Item("TabBar", UIEntry.TABBAR));
 		return list;
 	}
 

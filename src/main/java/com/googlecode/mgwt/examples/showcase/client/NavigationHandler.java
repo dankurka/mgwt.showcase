@@ -13,6 +13,8 @@ import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.Window;
 import com.google.web.bindery.event.shared.EventBus;
 import com.googlecode.mgwt.examples.showcase.client.activities.AboutPlace;
+import com.googlecode.mgwt.examples.showcase.client.activities.UIEntrySelectedEvent;
+import com.googlecode.mgwt.examples.showcase.client.activities.UIEntrySelectedEvent.UIEntry;
 import com.googlecode.mgwt.examples.showcase.client.activities.UIPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.animation.Animation;
 import com.googlecode.mgwt.examples.showcase.client.activities.animation.Animation.AnimationNames;
@@ -52,7 +54,6 @@ public class NavigationHandler {
 	private ClientFactory clientFactory;
 	private final PlaceHistoryMapper placeHistoryMapper;
 
-	
 	private static final Historian GWT_historian = (Historian) GWT.create(DefaultHistorian.class);
 
 	private static final Html5Historian historian = (Html5Historian) GWT.create(Html5Historian.class);
@@ -60,8 +61,6 @@ public class NavigationHandler {
 	private PlaceController placeController;
 
 	private boolean ignore;
-	
-
 
 	public NavigationHandler(PlaceHistoryMapper placeHistoryMapper) {
 
@@ -73,7 +72,7 @@ public class NavigationHandler {
 		this.placeController = placeController;
 		this.eventBus = eventBus;
 		this.defaultPlace = defaultPlace;
-		//TODO deregister
+		// TODO deregister
 		bind();
 	}
 
@@ -86,7 +85,7 @@ public class NavigationHandler {
 				Animation animation = event.getAnimation();
 
 				AnimationNames animationName = animation.getAnimationName();
-				
+
 				Place place = null;
 
 				switch (animationName) {
@@ -95,45 +94,100 @@ public class NavigationHandler {
 
 					break;
 				case SLIDE_UP:
-					place =new AnimationSlideUpPlace();
+					place = new AnimationSlideUpPlace();
 
 					break;
 				case DISSOLVE:
-					place =new AnimationDissolvePlace();
+					place = new AnimationDissolvePlace();
 
 					break;
 				case FADE:
-					place =new AnimationFadePlace();
+					place = new AnimationFadePlace();
 
 					break;
 				case FLIP:
-					place =new AnimationFlipPlace();
+					place = new AnimationFlipPlace();
 
 					break;
 				case POP:
-					place =new AnimationPopPlace();
+					place = new AnimationPopPlace();
 
 					break;
 				case SWAP:
-					place =new AnimationSwapPlace();
+					place = new AnimationSwapPlace();
 
 					break;
 
 				default:
-					//TODO log
+					// TODO log
 					place = new AnimationSlidePlace();
 					break;
 				}
-				
-				if(MGWT.getOsDetection().isTablet()){
+
+				if (MGWT.getOsDetection().isTablet()) {
 					ignore = true;
 					replaceToken(tokenForPlace(place));
 				}
-				
+
 				placeController.goTo(place);
-				
-				
-				
+
+			}
+		});
+		UIEntrySelectedEvent.register(eventBus, new UIEntrySelectedEvent.Handler() {
+
+			@Override
+			public void onAnimationSelected(UIEntrySelectedEvent event) {
+
+				UIEntry entry = event.getEntry();
+
+				Place place = null;
+
+				switch (entry) {
+				case BUTTON_BAR:
+					place = new ButtonBarPlace();
+					break;
+				case BUTTONS:
+					place = new ButtonPlace();
+					break;
+				case ELEMENTS:
+					place = new ElementsPlace();
+					break;
+				case POPUPS:
+					place = new PopupPlace();
+					break;
+				case PROGRESS_BAR:
+					place = new ProgressBarPlace();
+					break;
+				case PROGRESS_INDICATOR:
+					place = new ProgressIndicatorPlace();
+					break;
+				case PULL_TO_REFRESH:
+					place = new PullToRefreshPlace();
+					break;
+				case SCROLL_WIDGET:
+					place = new ScrollWidgetPlace();
+					break;
+				case SEARCH_BOX:
+					place = new SearchBoxPlace();
+					break;
+				case SLIDER:
+					place = new SliderPlace();
+					break;
+				case TABBAR:
+					place = new TabBarPlace();
+					break;
+
+				default:
+					break;
+				}
+
+				if (MGWT.getOsDetection().isTablet()) {
+					ignore = true;
+					replaceToken(tokenForPlace(place));
+				}
+
+				placeController.goTo(place);
+
 			}
 		});
 
@@ -141,25 +195,22 @@ public class NavigationHandler {
 
 			@Override
 			public void onAction(ActionEvent event) {
-				
+
 				History.back();
-				
 
 			}
 		});
-		
+
 		ActionEvent.register(eventBus, ActionNames.ANIMATION_END, new ActionEvent.Handler() {
 
 			@Override
 			public void onAction(ActionEvent event) {
-				if(MGWT.getOsDetection().isPhone()){
+				if (MGWT.getOsDetection().isPhone()) {
 					History.back();
-				}else{
+				} else {
 					ignore = true;
 					placeController.goTo(new AnimationPlace());
 				}
-				
-				
 
 			}
 		});
@@ -168,25 +219,21 @@ public class NavigationHandler {
 
 			@Override
 			public void onPopStateEvent(PopStateEvent event) {
-				Window.alert("pop: " + event.getData());
-						onPopStateEventOccured(event.getData());
-						
-				
+
+				onPopStateEventOccured(event.getData());
 
 			}
 		});
-
 
 		eventBus.addHandler(PlaceChangeEvent.TYPE, new PlaceChangeEvent.Handler() {
 
 			@Override
 			public void onPlaceChange(PlaceChangeEvent event) {
-				if(ignore){
+				if (ignore) {
 					ignore = false;
 					return;
 				}
-					
-				System.out.println("push");
+
 				Place newPlace = event.getNewPlace();
 				pushToken(tokenForPlace(newPlace));
 
@@ -210,7 +257,6 @@ public class NavigationHandler {
 
 			token = placeHistoryMapper.getToken(new AnimationPlace());
 			pushToken(token);
-
 
 		} else {
 			if (place instanceof AboutPlace) {
@@ -254,9 +300,6 @@ public class NavigationHandler {
 			String token = placeHistoryMapper.getToken(new HomePlace());
 			replaceToken(token);
 
-
-
-
 		} else {
 			if (place instanceof AboutPlace) {
 				String token = placeHistoryMapper.getToken(new HomePlace());
@@ -273,19 +316,19 @@ public class NavigationHandler {
 						if (place instanceof UIPlace) {
 							String token = placeHistoryMapper.getToken(new HomePlace());
 							replaceToken(token);
-						}else{
-							
-							if(place instanceof ButtonBarPlace || place instanceof ButtonPlace ||place instanceof ElementsPlace ||place instanceof PopupPlace ||place instanceof ProgressBarPlace ||place instanceof ProgressIndicatorPlace ||place instanceof PullToRefreshPlace ||place instanceof ScrollWidgetPlace ||place instanceof SearchBoxPlace ||place instanceof SliderPlace ||place instanceof TabBarPlace ){
+						} else {
+
+							if (place instanceof ButtonBarPlace || place instanceof ButtonPlace || place instanceof ElementsPlace || place instanceof PopupPlace || place instanceof ProgressBarPlace
+									|| place instanceof ProgressIndicatorPlace || place instanceof PullToRefreshPlace || place instanceof ScrollWidgetPlace || place instanceof SearchBoxPlace
+									|| place instanceof SliderPlace || place instanceof TabBarPlace) {
 								String token = placeHistoryMapper.getToken(new HomePlace());
 								replaceToken(token);
-								
+
 							}
-							
-				
-						
+
+						}
 					}
 				}
-			}
 			}
 		}
 	}
@@ -301,22 +344,21 @@ public class NavigationHandler {
 	public void handleCurrentHistory() {
 		Place place = getPlaceForToken(GWT_historian.getToken());
 
-		//TODO in extra interface!
+		// TODO in extra interface!
 		if (MGWT.getOsDetection().isPhone()) {
 			onPhoneNav(place);
 		} else {
-			//tablet
+			// tablet
 			onTabletNav(place);
 
 		}
-		
-		if(defaultPlace.equals(place)){
+
+		if (defaultPlace.equals(place)) {
 			ignore = true;
 		}
-		
+
 		placeController.goTo(place);
 	}
-
 
 	private Place defaultPlace = Place.NOWHERE;
 
@@ -341,7 +383,6 @@ public class NavigationHandler {
 	}
 
 	private String tokenForPlace(Place newPlace) {
-
 
 		if (defaultPlace.equals(newPlace)) {
 			return "";

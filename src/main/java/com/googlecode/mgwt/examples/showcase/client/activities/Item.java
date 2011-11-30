@@ -15,15 +15,19 @@
  */
 package com.googlecode.mgwt.examples.showcase.client.activities;
 
+import com.googlecode.mgwt.examples.showcase.client.activities.UIEntrySelectedEvent.UIEntry;
+
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class Item {
 	private String displayString;
+	private final UIEntry entry;
 
-	public Item(String displayString) {
+	public Item(String displayString, UIEntry entry) {
 		this.displayString = displayString;
+		this.entry = entry;
 
 	}
 
@@ -32,5 +36,9 @@ public class Item {
 	 */
 	public String getDisplayString() {
 		return displayString;
+	}
+
+	public UIEntry getEntry() {
+		return entry;
 	}
 }
