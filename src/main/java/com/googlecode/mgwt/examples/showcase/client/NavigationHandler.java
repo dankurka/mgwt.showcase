@@ -41,6 +41,7 @@ import com.googlecode.mgwt.examples.showcase.client.activities.tabbar.TabBarPlac
 import com.googlecode.mgwt.examples.showcase.client.event.ActionEvent;
 import com.googlecode.mgwt.examples.showcase.client.event.ActionNames;
 import com.googlecode.mgwt.examples.showcase.client.places.HomePlace;
+import com.googlecode.mgwt.mvp.client.history.HTML5HistorianFactory;
 import com.googlecode.mgwt.mvp.client.history.Html5Historian;
 import com.googlecode.mgwt.mvp.client.history.PopStateEvent;
 import com.googlecode.mgwt.mvp.client.history.PopStateHandler;
@@ -56,7 +57,7 @@ public class NavigationHandler {
 
 	private static final Historian GWT_historian = (Historian) GWT.create(DefaultHistorian.class);
 
-	private static final Html5Historian historian = (Html5Historian) GWT.create(Html5Historian.class);
+	private static final Html5Historian historian = HTML5HistorianFactory.getHistorian();
 
 	private PlaceController placeController;
 

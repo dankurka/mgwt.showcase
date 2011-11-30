@@ -17,14 +17,13 @@
 	<!-- <set-configuration-property name="mgwt.css" value="pretty" /> -->
 	<!-- -->
 
-	<!-- <set-property name="compiler.emulatedStack" value="true" /> -->
-	<!-- <set-configuration-property name="compiler.emulatedStack.recordLineNumbers" -->
-	<!-- value="true" /> -->
-	<!-- <set-configuration-property name="compiler.emulatedStack.recordFileNames" -->
-	<!-- value="true" /> -->
+<!-- 	<set-property name="compiler.emulatedStack" value="true" /> -->
+<!-- 	<set-configuration-property name="compiler.emulatedStack.recordLineNumbers" -->
+<!-- 	value="true" /> -->
+<!-- 	<set-configuration-property name="compiler.emulatedStack.recordFileNames" -->
+<!-- 	value="true" /> -->
 
-	<entry-point
-		class="com.googlecode.mgwt.examples.showcase.client.ShowCaseEntryPoint" />
+	<entry-point class="com.googlecode.mgwt.examples.showcase.client.ShowCaseEntryPoint" />
 
 	<source path="client" />
 </module>
