@@ -37,4 +37,21 @@ public class HomePlace extends Place {
 		}
 
 	}
+	
+	@Override
+	public int hashCode() {
+		return 3;
+	}
+	
+	@Override
+	public boolean equals(Object other) {
+		if(other == this)
+			return true;
+		if(other == null)
+			return false;
+		
+		if(other instanceof HomePlace)
+			return true;
+		return false;
+	}
 }

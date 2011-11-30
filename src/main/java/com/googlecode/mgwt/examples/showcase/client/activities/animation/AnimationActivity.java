@@ -19,22 +19,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gwt.event.shared.EventBus;
-import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
 import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
 import com.googlecode.mgwt.examples.showcase.client.ClientFactory;
-import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.AnimationCubePlace;
-import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.AnimationDissolvePlace;
-import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.AnimationFadePlace;
-import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.AnimationFlipPlace;
-import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.AnimationPopPlace;
-import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.AnimationSlidePlace;
-import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.AnimationSlideUpPlace;
-import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.AnimationSwapPlace;
-import com.googlecode.mgwt.examples.showcase.client.places.HomePlace;
+import com.googlecode.mgwt.examples.showcase.client.activities.animation.Animation.AnimationNames;
+import com.googlecode.mgwt.examples.showcase.client.event.ActionEvent;
+import com.googlecode.mgwt.examples.showcase.client.event.ActionNames;
 import com.googlecode.mgwt.mvp.client.MGWTAbstractActivity;
-import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.widget.celllist.CellSelectedEvent;
 import com.googlecode.mgwt.ui.client.widget.celllist.CellSelectedHandler;
 
@@ -45,6 +37,7 @@ import com.googlecode.mgwt.ui.client.widget.celllist.CellSelectedHandler;
 public class AnimationActivity extends MGWTAbstractActivity {
 
 	private final ClientFactory clientFactory;
+	private List<Animation> animations;
 
 	/**
 	 * 
@@ -55,24 +48,19 @@ public class AnimationActivity extends MGWTAbstractActivity {
 	}
 
 	@Override
-	public void start(AcceptsOneWidget panel, EventBus eventBus) {
+	public void start(AcceptsOneWidget panel, final EventBus eventBus) {
 		AnimationView view = clientFactory.getAnimationView();
 
 		view.setLeftButtonText("Home");
 		view.setTitle("Animation");
-
-		view.setAnimations(createAnimations());
+		animations = createAnimations();
+		view.setAnimations(animations);
 
 		addHandlerRegistration(view.getBackButton().addTapHandler(new TapHandler() {
 
 			@Override
 			public void onTap(TapEvent event) {
-				if (MGWT.getOsDetection().isPhone()) {
-					History.back();
-				} else {
-					// TODO fix!
-					clientFactory.getPlaceController().goTo(new HomePlace());
-				}
+				ActionEvent.fire(eventBus, ActionNames.BACK);
 
 			}
 		}));
@@ -83,43 +71,7 @@ public class AnimationActivity extends MGWTAbstractActivity {
 			public void onCellSelected(CellSelectedEvent event) {
 				int index = event.getIndex();
 
-				switch (index) {
-				case 0:
-					clientFactory.getPlaceController().goTo(new AnimationSlidePlace());
-
-					break;
-				case 1:
-					clientFactory.getPlaceController().goTo(new AnimationSlideUpPlace());
-
-					break;
-				case 2:
-					clientFactory.getPlaceController().goTo(new AnimationDissolvePlace());
-
-					break;
-				case 3:
-					clientFactory.getPlaceController().goTo(new AnimationFadePlace());
-
-					break;
-				case 4:
-					clientFactory.getPlaceController().goTo(new AnimationFlipPlace());
-
-					break;
-				case 5:
-					clientFactory.getPlaceController().goTo(new AnimationPopPlace());
-
-					break;
-				case 6:
-					clientFactory.getPlaceController().goTo(new AnimationSwapPlace());
-
-					break;
-				case 7:
-					clientFactory.getPlaceController().goTo(new AnimationCubePlace());
-
-					break;
-
-				default:
-					break;
-				}
+				AnimationSelectedEvent.fire(eventBus, animations.get(index));
 
 			}
 		}));
@@ -134,13 +86,13 @@ public class AnimationActivity extends MGWTAbstractActivity {
 	private List<Animation> createAnimations() {
 		ArrayList<Animation> list = new ArrayList<Animation>();
 
-		list.add(new Animation("Slide"));
-		list.add(new Animation("Slide up"));
-		list.add(new Animation("Dissolve"));
-		list.add(new Animation("Fade"));
-		list.add(new Animation("Flip"));
-		list.add(new Animation("Pop"));
-		list.add(new Animation("Swap"));
+		list.add(new Animation(AnimationNames.SLIDE, "Slide"));
+		list.add(new Animation(AnimationNames.SLIDE_UP, "Slide up"));
+		list.add(new Animation(AnimationNames.DISSOLVE, "Dissolve"));
+		list.add(new Animation(AnimationNames.FADE, "Fade"));
+		list.add(new Animation(AnimationNames.FLIP, "Flip"));
+		list.add(new Animation(AnimationNames.POP, "Pop"));
+		list.add(new Animation(AnimationNames.SWAP, "Swap"));
 		// list.add(new Animation("Cube"));
 
 		return list;

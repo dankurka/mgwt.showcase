@@ -16,11 +16,12 @@
 package com.googlecode.mgwt.examples.showcase.client.activities.animationdone;
 
 import com.google.gwt.event.shared.EventBus;
-import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
 import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
 import com.googlecode.mgwt.examples.showcase.client.ClientFactory;
+import com.googlecode.mgwt.examples.showcase.client.event.ActionEvent;
+import com.googlecode.mgwt.examples.showcase.client.event.ActionNames;
 import com.googlecode.mgwt.mvp.client.MGWTAbstractActivity;
 
 /**
@@ -40,14 +41,14 @@ public class AnimationDoneActivity extends MGWTAbstractActivity {
 	}
 
 	@Override
-	public void start(AcceptsOneWidget panel, EventBus eventBus) {
+	public void start(AcceptsOneWidget panel, final EventBus eventBus) {
 		AnimationDoneView view = clientFactory.getAnimationDoneView();
 
 		addHandlerRegistration(view.getBackButton().addTapHandler(new TapHandler() {
 
 			@Override
 			public void onTap(TapEvent event) {
-				History.back();
+				ActionEvent.fire(eventBus, ActionNames.ANIMATION_END);
 
 			}
 		}));

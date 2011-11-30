@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gwt.event.shared.EventBus;
-import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
 import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
@@ -35,9 +34,9 @@ import com.googlecode.mgwt.examples.showcase.client.activities.scrollwidget.Scro
 import com.googlecode.mgwt.examples.showcase.client.activities.searchbox.SearchBoxPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.slider.SliderPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.tabbar.TabBarPlace;
-import com.googlecode.mgwt.examples.showcase.client.places.HomePlace;
+import com.googlecode.mgwt.examples.showcase.client.event.ActionEvent;
+import com.googlecode.mgwt.examples.showcase.client.event.ActionNames;
 import com.googlecode.mgwt.mvp.client.MGWTAbstractActivity;
-import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.widget.celllist.CellSelectedEvent;
 import com.googlecode.mgwt.ui.client.widget.celllist.CellSelectedHandler;
 
@@ -57,7 +56,7 @@ public class UIActivity extends MGWTAbstractActivity {
 	}
 
 	@Override
-	public void start(AcceptsOneWidget panel, EventBus eventBus) {
+	public void start(AcceptsOneWidget panel, final EventBus eventBus) {
 		final UIView view = clientFactory.getUIView();
 
 		view.setBackButtonText("Home");
@@ -67,12 +66,7 @@ public class UIActivity extends MGWTAbstractActivity {
 
 			@Override
 			public void onTap(TapEvent event) {
-				if (MGWT.getOsDetection().isPhone()) {
-					History.back();
-				} else {
-					// TODO fix!
-					clientFactory.getPlaceController().goTo(new HomePlace());
-				}
+				ActionEvent.fire(eventBus, ActionNames.BACK);
 
 			}
 		}));

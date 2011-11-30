@@ -16,12 +16,13 @@
 package com.googlecode.mgwt.examples.showcase.client.activities;
 
 import com.google.gwt.event.shared.EventBus;
-import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
 import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
 import com.googlecode.mgwt.examples.showcase.client.ClientFactory;
 import com.googlecode.mgwt.examples.showcase.client.DetailActivity;
+import com.googlecode.mgwt.examples.showcase.client.event.ActionEvent;
+import com.googlecode.mgwt.examples.showcase.client.event.ActionNames;
 
 /**
  * @author Daniel Kurka
@@ -38,7 +39,7 @@ public class AboutActivity extends DetailActivity {
 	}
 
 	@Override
-	public void start(AcceptsOneWidget panel, EventBus eventBus) {
+	public void start(AcceptsOneWidget panel, final EventBus eventBus) {
 		super.start(panel, eventBus);
 		AboutView aboutView = clientFactory.getAboutView();
 
@@ -52,7 +53,7 @@ public class AboutActivity extends DetailActivity {
 
 			@Override
 			public void onTap(TapEvent event) {
-				History.back();
+				ActionEvent.fire(eventBus, ActionNames.BACK);
 
 			}
 		}));
