@@ -33,7 +33,7 @@ public class ScrollWidgetPlace extends Place {
 		@Override
 		public String getToken(ScrollWidgetPlace place) {
 
-			return null;
+			return "";
 		}
 
 	}

@@ -13,7 +13,7 @@ public class AnimationCubePlace extends Place {
 
 		@Override
 		public String getToken(AnimationCubePlace place) {
-			return null;
+			return "";
 		}
 
 	}

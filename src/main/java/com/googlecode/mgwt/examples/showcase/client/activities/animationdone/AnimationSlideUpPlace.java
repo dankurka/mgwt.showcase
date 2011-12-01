@@ -32,7 +32,7 @@ public class AnimationSlideUpPlace extends Place {
 
 		@Override
 		public String getToken(AnimationSlideUpPlace place) {
-			return null;
+			return "";
 		}
 
 	}

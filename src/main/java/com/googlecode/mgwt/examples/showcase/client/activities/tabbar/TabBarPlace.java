@@ -33,7 +33,7 @@ public class TabBarPlace extends Place {
 		@Override
 		public String getToken(TabBarPlace place) {
 
-			return null;
+			return "";
 		}
 
 	}

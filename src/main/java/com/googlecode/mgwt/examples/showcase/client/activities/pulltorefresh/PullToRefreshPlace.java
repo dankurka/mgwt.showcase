@@ -13,7 +13,7 @@ public class PullToRefreshPlace extends Place {
 
 		@Override
 		public String getToken(PullToRefreshPlace place) {
-			return null;
+			return "";
 		}
 
 	}

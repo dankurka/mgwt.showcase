@@ -33,7 +33,7 @@ public class SearchBoxPlace extends Place {
 		@Override
 		public String getToken(SearchBoxPlace place) {
 
-			return null;
+			return "";
 		}
 
 	}

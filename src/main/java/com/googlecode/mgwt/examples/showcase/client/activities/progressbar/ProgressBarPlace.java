@@ -32,7 +32,7 @@ public class ProgressBarPlace extends Place {
 
 		@Override
 		public String getToken(ProgressBarPlace place) {
-			return null;
+			return "";
 		}
 
 	}

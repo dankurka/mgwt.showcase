@@ -33,24 +33,24 @@ public class HomePlace extends Place {
 
 		@Override
 		public String getToken(HomePlace place) {
-			return null;
+			return "";
 		}
 
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return 3;
 	}
-	
+
 	@Override
 	public boolean equals(Object other) {
-		if(other == this)
+		if (other == this)
 			return true;
-		if(other == null)
+		if (other == null)
 			return false;
-		
-		if(other instanceof HomePlace)
+
+		if (other instanceof HomePlace)
 			return true;
 		return false;
 	}

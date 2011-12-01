@@ -32,7 +32,7 @@ public class AnimationPlace extends Place {
 
 		@Override
 		public String getToken(AnimationPlace place) {
-			return null;
+			return "";
 		}
 
 	}

@@ -32,7 +32,7 @@ public class PopupPlace extends Place {
 
 		@Override
 		public String getToken(PopupPlace place) {
-			return null;
+			return "";
 		}
 
 	}

@@ -33,7 +33,7 @@ public class SliderPlace extends Place {
 		@Override
 		public String getToken(SliderPlace place) {
 
-			return null;
+			return "";
 		}
 
 	}

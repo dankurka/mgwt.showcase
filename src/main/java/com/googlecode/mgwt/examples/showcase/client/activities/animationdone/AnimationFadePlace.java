@@ -32,7 +32,7 @@ public class AnimationFadePlace extends Place {
 
 		@Override
 		public String getToken(AnimationFadePlace place) {
-			return null;
+			return "";
 		}
 
 	}

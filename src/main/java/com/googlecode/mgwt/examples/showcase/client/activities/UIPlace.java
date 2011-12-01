@@ -32,7 +32,7 @@ public class UIPlace extends Place {
 
 		@Override
 		public String getToken(UIPlace place) {
-			return null;
+			return "";
 		}
 
 	}
