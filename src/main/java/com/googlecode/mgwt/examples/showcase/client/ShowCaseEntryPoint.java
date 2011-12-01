@@ -29,6 +29,7 @@ import com.googlecode.mgwt.examples.showcase.client.places.HomePlace;
 import com.googlecode.mgwt.mvp.client.AnimatableDisplay;
 import com.googlecode.mgwt.mvp.client.AnimatingActivityManager;
 import com.googlecode.mgwt.mvp.client.AnimationMapper;
+import com.googlecode.mgwt.mvp.client.history.MGWTPlaceHistoryHandler;
 import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.MGWTSettings;
 import com.googlecode.mgwt.ui.client.MGWTSettings.ViewPort;
@@ -83,12 +84,12 @@ public class ShowCaseEntryPoint implements EntryPoint {
 
 		}
 
-		NavigationHandler navigationHandler = new NavigationHandler(historyMapper);
+		AppHistoryObserver historyObserver = new AppHistoryObserver();
 
-		navigationHandler.register(clientFactory.getPlaceController(), clientFactory.getEventBus(), new HomePlace());
-		navigationHandler.handleCurrentHistory();
+		MGWTPlaceHistoryHandler historyHandler = new MGWTPlaceHistoryHandler(historyMapper, historyObserver);
 
-		
+		historyHandler.register(clientFactory.getPlaceController(), clientFactory.getEventBus(), new HomePlace());
+		historyHandler.handleCurrentHistory();
 
 	}
 

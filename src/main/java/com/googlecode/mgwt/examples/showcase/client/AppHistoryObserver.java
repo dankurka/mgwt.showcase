@@ -1,17 +1,10 @@
 package com.googlecode.mgwt.examples.showcase.client;
 
-import java.util.logging.Logger;
-
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.place.shared.Place;
-import com.google.gwt.place.shared.PlaceChangeEvent;
-import com.google.gwt.place.shared.PlaceController;
-import com.google.gwt.place.shared.PlaceHistoryHandler.DefaultHistorian;
-import com.google.gwt.place.shared.PlaceHistoryHandler.Historian;
-import com.google.gwt.place.shared.PlaceHistoryMapper;
 import com.google.gwt.user.client.History;
-import com.google.gwt.user.client.Window;
 import com.google.web.bindery.event.shared.EventBus;
+import com.google.web.bindery.event.shared.HandlerRegistration;
+import com.googlecode.mgwt.dom.client.event.mouse.HandlerRegistrationCollection;
 import com.googlecode.mgwt.examples.showcase.client.activities.AboutPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.UIEntrySelectedEvent;
 import com.googlecode.mgwt.examples.showcase.client.activities.UIEntrySelectedEvent.UIEntry;
@@ -41,44 +34,38 @@ import com.googlecode.mgwt.examples.showcase.client.activities.tabbar.TabBarPlac
 import com.googlecode.mgwt.examples.showcase.client.event.ActionEvent;
 import com.googlecode.mgwt.examples.showcase.client.event.ActionNames;
 import com.googlecode.mgwt.examples.showcase.client.places.HomePlace;
-import com.googlecode.mgwt.mvp.client.history.HTML5HistorianFactory;
-import com.googlecode.mgwt.mvp.client.history.Html5Historian;
-import com.googlecode.mgwt.mvp.client.history.PopStateEvent;
-import com.googlecode.mgwt.mvp.client.history.PopStateHandler;
+import com.googlecode.mgwt.mvp.client.history.HistoryHandler;
+import com.googlecode.mgwt.mvp.client.history.HistoryObserver;
 import com.googlecode.mgwt.ui.client.MGWT;
 
-public class NavigationHandler {
+public class AppHistoryObserver implements HistoryObserver {
 
-	protected static Logger log = Logger.getLogger(NavigationHandler.class.getName());
-
-	private EventBus eventBus;
-	private ClientFactory clientFactory;
-	private final PlaceHistoryMapper placeHistoryMapper;
-
-	private static final Historian GWT_historian = (Historian) GWT.create(DefaultHistorian.class);
-
-	private static final Html5Historian historian = HTML5HistorianFactory.getHistorian();
-
-	private PlaceController placeController;
-
-	private boolean ignore;
-
-	public NavigationHandler(PlaceHistoryMapper placeHistoryMapper) {
-
-		this.placeHistoryMapper = placeHistoryMapper;
+	@Override
+	public void onPlaceChange(Place place, HistoryHandler handler) {
 
 	}
 
-	public void register(PlaceController placeController, EventBus eventBus, Place defaultPlace) {
-		this.placeController = placeController;
-		this.eventBus = eventBus;
-		this.defaultPlace = defaultPlace;
-		// TODO deregister
-		bind();
+	@Override
+	public void onHistoryChanged(Place place, HistoryHandler handler) {
+
 	}
 
-	private void bind() {
-		eventBus.addHandler(AnimationSelectedEvent.getType(), new AnimationSelectedEvent.Handler() {
+	@Override
+	public void onAppStarted(Place place, HistoryHandler historyHandler) {
+		if (MGWT.getOsDetection().isPhone()) {
+			onPhoneNav(place, historyHandler);
+		} else {
+			// tablet
+			onTabletNav(place, historyHandler);
+
+		}
+
+	}
+
+	@Override
+	public HandlerRegistration bind(EventBus eventBus, final HistoryHandler historyHandler) {
+
+		HandlerRegistration addHandler = eventBus.addHandler(AnimationSelectedEvent.getType(), new AnimationSelectedEvent.Handler() {
 
 			@Override
 			public void onAnimationSelected(AnimationSelectedEvent event) {
@@ -126,15 +113,16 @@ public class NavigationHandler {
 				}
 
 				if (MGWT.getOsDetection().isTablet()) {
-					ignore = true;
-					replaceToken(tokenForPlace(place));
-				}
 
-				placeController.goTo(place);
+					historyHandler.replaceCurrentPlace(place);
+					historyHandler.goTo(place, true);
+				} else {
+					historyHandler.goTo(place);
+				}
 
 			}
 		});
-		UIEntrySelectedEvent.register(eventBus, new UIEntrySelectedEvent.Handler() {
+		HandlerRegistration register3 = UIEntrySelectedEvent.register(eventBus, new UIEntrySelectedEvent.Handler() {
 
 			@Override
 			public void onAnimationSelected(UIEntrySelectedEvent event) {
@@ -183,16 +171,17 @@ public class NavigationHandler {
 				}
 
 				if (MGWT.getOsDetection().isTablet()) {
-					ignore = true;
-					replaceToken(tokenForPlace(place));
-				}
 
-				placeController.goTo(place);
+					historyHandler.replaceCurrentPlace(place);
+					historyHandler.goTo(place, true);
+				} else {
+					historyHandler.goTo(place);
+				}
 
 			}
 		});
 
-		ActionEvent.register(eventBus, ActionNames.BACK, new ActionEvent.Handler() {
+		HandlerRegistration register2 = ActionEvent.register(eventBus, ActionNames.BACK, new ActionEvent.Handler() {
 
 			@Override
 			public void onAction(ActionEvent event) {
@@ -202,89 +191,56 @@ public class NavigationHandler {
 			}
 		});
 
-		ActionEvent.register(eventBus, ActionNames.ANIMATION_END, new ActionEvent.Handler() {
+		HandlerRegistration register = ActionEvent.register(eventBus, ActionNames.ANIMATION_END, new ActionEvent.Handler() {
 
 			@Override
 			public void onAction(ActionEvent event) {
 				if (MGWT.getOsDetection().isPhone()) {
 					History.back();
 				} else {
-					ignore = true;
-					placeController.goTo(new AnimationPlace());
+					historyHandler.goTo(new AnimationPlace(), true);
 				}
 
 			}
 		});
 
-		historian.addPopStateHandler(new PopStateHandler() {
-
-			@Override
-			public void onPopStateEvent(PopStateEvent event) {
-
-				onPopStateEventOccured(event.getData());
-
-			}
-		});
-
-		eventBus.addHandler(PlaceChangeEvent.TYPE, new PlaceChangeEvent.Handler() {
-
-			@Override
-			public void onPlaceChange(PlaceChangeEvent event) {
-				if (ignore) {
-					ignore = false;
-					return;
-				}
-
-				Place newPlace = event.getNewPlace();
-				pushToken(tokenForPlace(newPlace));
-
-			}
-		});
-
+		HandlerRegistrationCollection col = new HandlerRegistrationCollection();
+		col.addHandlerRegistration(register);
+		col.addHandlerRegistration(register2);
+		col.addHandlerRegistration(register3);
+		col.addHandlerRegistration(addHandler);
+		return col;
 	}
 
-	protected void onPopStateEventOccured(String token) {
-		Place place = getPlaceForToken(token);
-		ignore = true;
-		placeController.goTo(place);
-	}
-
-	private void onPhoneNav(Place place) {
+	private void onPhoneNav(Place place, HistoryHandler historyHandler) {
 		if (place instanceof AnimationDissolvePlace || place instanceof AnimationFadePlace || place instanceof AnimationFlipPlace || place instanceof AnimationPopPlace
 				|| place instanceof AnimationSlidePlace || place instanceof AnimationSlideUpPlace || place instanceof AnimationSwapPlace) {
 
-			String token = placeHistoryMapper.getToken(new HomePlace());
-			replaceToken(token);
+			historyHandler.replaceCurrentPlace(new HomePlace());
 
-			token = placeHistoryMapper.getToken(new AnimationPlace());
-			pushToken(token);
+			historyHandler.pushPlace(new AnimationPlace());
 
 		} else {
 			if (place instanceof AboutPlace) {
-				String token = placeHistoryMapper.getToken(new HomePlace());
-				replaceToken(token);
+				historyHandler.replaceCurrentPlace(new HomePlace());
+
 			} else {
 				if (place instanceof AnimationPlace) {
-					String token = placeHistoryMapper.getToken(new HomePlace());
-					replaceToken(token);
+					historyHandler.replaceCurrentPlace(new HomePlace());
 				} else {
 					if (place instanceof UIPlace) {
-						String token = placeHistoryMapper.getToken(new HomePlace());
-						replaceToken(token);
+						historyHandler.replaceCurrentPlace(new HomePlace());
 					} else {
 						if (place instanceof UIPlace) {
-							String token = placeHistoryMapper.getToken(new HomePlace());
-							replaceToken(token);
+							historyHandler.replaceCurrentPlace(new HomePlace());
 						} else {
 
 							if (place instanceof ButtonBarPlace || place instanceof ButtonPlace || place instanceof ElementsPlace || place instanceof PopupPlace || place instanceof ProgressBarPlace
 									|| place instanceof ProgressIndicatorPlace || place instanceof PullToRefreshPlace || place instanceof ScrollWidgetPlace || place instanceof SearchBoxPlace
 									|| place instanceof SliderPlace || place instanceof TabBarPlace) {
-								String token = placeHistoryMapper.getToken(new HomePlace());
-								replaceToken(token);
+								historyHandler.replaceCurrentPlace(new HomePlace());
 
-								token = placeHistoryMapper.getToken(new UIPlace());
-								pushToken(token);
+								historyHandler.pushPlace(new AnimationPlace());
 							}
 
 						}
@@ -294,36 +250,30 @@ public class NavigationHandler {
 		}
 	}
 
-	private void onTabletNav(Place place) {
+	private void onTabletNav(Place place, HistoryHandler historyHandler) {
 		if (place instanceof AnimationDissolvePlace || place instanceof AnimationFadePlace || place instanceof AnimationFlipPlace || place instanceof AnimationPopPlace
 				|| place instanceof AnimationSlidePlace || place instanceof AnimationSlideUpPlace || place instanceof AnimationSwapPlace) {
 
-			String token = placeHistoryMapper.getToken(new HomePlace());
-			replaceToken(token);
+			historyHandler.replaceCurrentPlace(new HomePlace());
 
 		} else {
 			if (place instanceof AboutPlace) {
-				String token = placeHistoryMapper.getToken(new HomePlace());
-				replaceToken(token);
+				historyHandler.replaceCurrentPlace(new HomePlace());
 			} else {
 				if (place instanceof AnimationPlace) {
-					String token = placeHistoryMapper.getToken(new HomePlace());
-					replaceToken(token);
+					historyHandler.replaceCurrentPlace(new HomePlace());
 				} else {
 					if (place instanceof UIPlace) {
-						String token = placeHistoryMapper.getToken(new HomePlace());
-						replaceToken(token);
+						historyHandler.replaceCurrentPlace(new HomePlace());
 					} else {
 						if (place instanceof UIPlace) {
-							String token = placeHistoryMapper.getToken(new HomePlace());
-							replaceToken(token);
+							historyHandler.replaceCurrentPlace(new HomePlace());
 						} else {
 
 							if (place instanceof ButtonBarPlace || place instanceof ButtonPlace || place instanceof ElementsPlace || place instanceof PopupPlace || place instanceof ProgressBarPlace
 									|| place instanceof ProgressIndicatorPlace || place instanceof PullToRefreshPlace || place instanceof ScrollWidgetPlace || place instanceof SearchBoxPlace
 									|| place instanceof SliderPlace || place instanceof TabBarPlace) {
-								String token = placeHistoryMapper.getToken(new HomePlace());
-								replaceToken(token);
+								historyHandler.replaceCurrentPlace(new HomePlace());
 
 							}
 
@@ -334,67 +284,4 @@ public class NavigationHandler {
 		}
 	}
 
-	protected void replaceToken(String token) {
-		historian.replaceState(token, Window.getTitle(), "#" + token);
-	}
-
-	protected void pushToken(String token) {
-		historian.pushState(token, Window.getTitle(), "#" + token);
-	}
-
-	public void handleCurrentHistory() {
-		Place place = getPlaceForToken(GWT_historian.getToken());
-
-		// TODO in extra interface!
-		if (MGWT.getOsDetection().isPhone()) {
-			onPhoneNav(place);
-		} else {
-			// tablet
-			onTabletNav(place);
-
-		}
-
-		if (defaultPlace.equals(place)) {
-			ignore = true;
-		}
-
-		placeController.goTo(place);
-	}
-
-	private Place defaultPlace = Place.NOWHERE;
-
-	protected Place getPlaceForToken(String token) {
-
-		Place newPlace = null;
-
-		if ("".equals(token)) {
-			newPlace = defaultPlace;
-		}
-
-		if (newPlace == null) {
-			newPlace = placeHistoryMapper.getPlace(token);
-		}
-
-		if (newPlace == null) {
-			log.warning("Unrecognized history token: " + token);
-			newPlace = defaultPlace;
-		}
-		return newPlace;
-
-	}
-
-	private String tokenForPlace(Place newPlace) {
-
-		if (defaultPlace.equals(newPlace)) {
-			return "";
-		}
-
-		String token = placeHistoryMapper.getToken(newPlace);
-		if (token != null) {
-			return token;
-		}
-
-		log.warning("Place not mapped to a token: " + newPlace);
-		return "";
-	}
 }
