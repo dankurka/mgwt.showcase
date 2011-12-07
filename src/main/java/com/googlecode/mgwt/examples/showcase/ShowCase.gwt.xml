@@ -8,13 +8,13 @@
 	<inherits name="com.googlecode.mgwt.MGWT" />
 
 
-	<set-property name="user.agent" value="safari" />
+	<set-property name="user.agent" value="safari,gecko1_8" />
 
 <!-- 	<set-property name="mgwt.os" value="iphone" /> -->
 <!-- 	<set-property name="mgwt.os" value="android" /> -->
 
 	<!-- -->
-	<!-- <set-configuration-property name="mgwt.css" value="pretty" /> -->
+<!-- 	<set-configuration-property name="mgwt.css" value="pretty" /> -->
 	<!-- -->
 
 <!-- 	<set-property name="compiler.emulatedStack" value="true" /> -->

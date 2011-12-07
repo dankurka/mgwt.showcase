@@ -29,7 +29,7 @@ public class ProgressIndicatorActivity extends DetailActivity {
 	private final ClientFactory clientFactory;
 
 	public ProgressIndicatorActivity(ClientFactory clientFactory) {
-		super(clientFactory.getProgressBarView(), "nav");
+		super(clientFactory.getProgressIndicatorView(), "nav");
 		this.clientFactory = clientFactory;
 
 	}
