@@ -52,6 +52,7 @@ public class TabBarViewGwtImpl extends DetailViewGwtImpl implements TabBarView {
 		tabPanel.add(new SearchTabBarButton(), new Label("Search"));
 
 		main.add(tabPanel);
+		main.remove(scrollPanel);
 	}
 
 }
