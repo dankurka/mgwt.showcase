@@ -36,7 +36,7 @@ public class AboutViewGwtImpl extends DetailViewGwtImpl implements AboutView {
 		round = new RoundPanel();
 
 		round.add(new HTML("mgwt"));
-		round.add(new HTML("Version 1.0.0"));
+		round.add(new HTML("Version 1.0.1-SNAPSHOT"));
 		round.add(new HTML("Built by Daniel Kurka, <a target='_blank' href='http://www.twitter.com/dankurka'>@dankurka</a> on Twitter"));
 
 		round.add(new HTML("Using GWT to build mobile apps"));
