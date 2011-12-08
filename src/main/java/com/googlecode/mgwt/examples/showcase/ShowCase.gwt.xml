@@ -8,7 +8,7 @@
 	<inherits name="com.googlecode.mgwt.MGWT" />
 
 
-	<set-property name="user.agent" value="safari,gecko1_8" />
+<!-- 	<set-property name="user.agent" value="safari,gecko1_8" /> -->
 
 <!-- 	<set-property name="mgwt.os" value="iphone" /> -->
 <!-- 	<set-property name="mgwt.os" value="android" /> -->
@@ -22,6 +22,9 @@
 <!-- 	value="true" /> -->
 <!-- 	<set-configuration-property name="compiler.emulatedStack.recordFileNames" -->
 <!-- 	value="true" /> -->
+
+<!-- <inherits name="com.google.gwt.core.CrossSiteIframeLinker" /> -->
+<!-- 	<add-linker name="xsiframe" /> -->
 
 	<entry-point class="com.googlecode.mgwt.examples.showcase.client.ShowCaseEntryPoint" />
 
