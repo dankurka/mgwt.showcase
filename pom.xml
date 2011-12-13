@@ -157,6 +157,13 @@
 		</dependency>
 	</dependencies>
 
+	<distributionManagement>
+		<repository>
+			<id>m-gwt.com</id>
+			<url>ftp://www56.your-server.de/public_html/m2/repo</url>
+		</repository>
+	</distributionManagement>
+
 
 
 </project>
