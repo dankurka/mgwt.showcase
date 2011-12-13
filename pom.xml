@@ -15,6 +15,12 @@
 		<gwtversion>2.4.0</gwtversion>
 		<runTarget>index.html</runTarget>
 	</properties>
+	
+	<scm>
+		<url>https://code.google.com/p/mgwt.showcase/</url>
+		<connection>scm:git:https://code.google.com/p/mgwt.showcase/</connection>
+		<developerConnection>scm:git:https://code.google.com/p/mgwt.showcase/</developerConnection>
+	</scm>
 
 	<build>
 		<plugins>
