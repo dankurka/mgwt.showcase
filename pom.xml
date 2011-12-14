@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.googlecode.mgwt</groupId>
 	<artifactId>mgwt-showcase</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.2-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>Mobile GWT Showcase</name>
 
@@ -15,8 +14,22 @@
 		<gwtversion>2.4.0</gwtversion>
 		<runTarget>index.html</runTarget>
 	</properties>
+	
+	<scm>
+		<url>https://code.google.com/p/mgwt.showcase/</url>
+		<connection>scm:git:https://code.google.com/p/mgwt.showcase/</connection>
+		<developerConnection>scm:git:https://code.google.com/p/mgwt.showcase/</developerConnection>
+	</scm>
 
 	<build>
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-ftp</artifactId>
+				<version>2.1</version>
+			</extension>
+		</extensions>
+	
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -117,7 +130,7 @@
 		<dependency>
 			<groupId>com.googlecode.mgwt</groupId>
 			<artifactId>mgwt</artifactId>
-			<version>1.0.1-SNAPSHOT</version>
+			<version>1.0.1</version>
 
 		</dependency>
 
@@ -150,6 +163,13 @@
 			<classifier>sources</classifier>
 		</dependency>
 	</dependencies>
+
+	<distributionManagement>
+		<repository>
+			<id>m-gwt.com</id>
+			<url>ftp://www56.your-server.de/public_html/m2/repo</url>
+		</repository>
+	</distributionManagement>
 
 
 
