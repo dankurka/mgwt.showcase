@@ -6,11 +6,12 @@
 
 	<inherits name="com.google.gwt.user.User" />
 	<inherits name="com.googlecode.mgwt.MGWT" />
+	<inherits name="com.googlecode.mgwt.linker.Linker" />
 
 
-<!-- 	<set-property name="user.agent" value="safari,gecko1_8" /> -->
+	
 
-<!-- 	<set-property name="mgwt.os" value="iphone" /> -->
+<!-- 	<set-property name="mgwt.os" value="android_tablet, android" /> -->
 <!-- 	<set-property name="mgwt.os" value="android" /> -->
 
 	<!-- -->
@@ -27,6 +28,12 @@
 <!-- 	<add-linker name="xsiframe" /> -->
 
 	<entry-point class="com.googlecode.mgwt.examples.showcase.client.ShowCaseEntryPoint" />
+	
+	<add-linker name="permutationmaplinker" />
+	
+	
+	<extend-configuration-property name="html5manifestlinker_files" value="index.html" />
+	<extend-configuration-property name="html5manifestlinker_files" value="logo.png" />
 
 	<source path="client" />
 </module>

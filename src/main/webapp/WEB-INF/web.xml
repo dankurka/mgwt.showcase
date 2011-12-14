@@ -11,5 +11,16 @@
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
+  
+  
+  <servlet>
+    <servlet-name>ManifestServlet</servlet-name>
+    <servlet-class>com.googlecode.mgwt.linker.server.Html5ManifestServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>ManifestServlet</servlet-name>
+    <url-pattern>/showcase.manifest</url-pattern>
+  </servlet-mapping>
 
 </web-app>
