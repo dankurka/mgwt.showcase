@@ -31,7 +31,7 @@
 	
 	<add-linker name="permutationmaplinker" />
 	
-	
+	<extend-configuration-property name="html5manifestlinker_files" value="./" />
 	<extend-configuration-property name="html5manifestlinker_files" value="index.html" />
 	<extend-configuration-property name="html5manifestlinker_files" value="logo.png" />
 
