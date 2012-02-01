@@ -15,6 +15,7 @@
  */
 package com.googlecode.mgwt.examples.showcase.client.activities.progressbar;
 
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
@@ -29,6 +30,7 @@ public class ProgressBarViewImpl extends DetailViewGwtImpl implements ProgressBa
 	public ProgressBarViewImpl() {
 
 		FlowPanel content = new FlowPanel();
+		content.getElement().getStyle().setMarginTop(20, Unit.PX);
 
 		content.add(new ProgressBar());
 

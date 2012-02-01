@@ -15,6 +15,7 @@
  */
 package com.googlecode.mgwt.examples.showcase.client.activities.progressindicator;
 
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
@@ -29,6 +30,7 @@ public class ProgressIndicatorViewImpl extends DetailViewGwtImpl implements Prog
 	public ProgressIndicatorViewImpl() {
 
 		FlowPanel content = new FlowPanel();
+		content.getElement().getStyle().setMarginTop(20, Unit.PX);
 
 		ProgressIndicator progressIndicator = new ProgressIndicator();
 		progressIndicator.getElement().setAttribute("style", "margin:auto; margin-top: 50px");
@@ -36,7 +38,7 @@ public class ProgressIndicatorViewImpl extends DetailViewGwtImpl implements Prog
 		content.add(progressIndicator);
 
 		HTML html = new HTML("animation is purely done with css");
-		html.getElement().setAttribute("style", "text-align: center; padding: 20px;");
+		html.getElement().setAttribute("style", "text-align: center; margin-top: 20px;");
 		content.add(html);
 
 		scrollPanel.setWidget(content);
