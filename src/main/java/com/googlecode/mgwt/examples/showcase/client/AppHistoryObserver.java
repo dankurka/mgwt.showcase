@@ -240,7 +240,7 @@ public class AppHistoryObserver implements HistoryObserver {
 									|| place instanceof SliderPlace || place instanceof TabBarPlace) {
 								historyHandler.replaceCurrentPlace(new HomePlace());
 
-								historyHandler.pushPlace(new AnimationPlace());
+								historyHandler.pushPlace(new UIPlace());
 							}
 
 						}

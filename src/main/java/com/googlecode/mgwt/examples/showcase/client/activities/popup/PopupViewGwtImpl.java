@@ -17,6 +17,7 @@ package com.googlecode.mgwt.examples.showcase.client.activities.popup;
 
 import java.util.List;
 
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
@@ -44,6 +45,7 @@ public class PopupViewGwtImpl extends DetailViewGwtImpl implements PopupView {
 		scrollPanel.setScrollingEnabledX(false);
 
 		FlowPanel container = new FlowPanel();
+		container.getElement().getStyle().setMarginTop(20, Unit.PX);
 		scrollPanel.setWidget(container);
 
 		slideUpButton = new Button("Popup");
