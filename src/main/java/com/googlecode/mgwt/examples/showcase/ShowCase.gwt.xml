@@ -7,12 +7,13 @@
 	<inherits name="com.google.gwt.user.User" />
 	<inherits name="com.googlecode.mgwt.MGWT" />
 	<inherits name="com.googlecode.mgwt.linker.Linker" />
+<!-- 	<inherits name="com.googlecode.mgwt.theme.ExampleTheme" /> -->
 
 
 	
 
 <!-- 	<set-property name="mgwt.os" value="android_tablet, android" /> -->
-<!-- 	<set-property name="mgwt.os" value="android" /> -->
+<!-- 	<set-property name="mgwt.os" value="blackberry" /> -->
 
 	<!-- -->
 <!-- 	<set-configuration-property name="mgwt.css" value="pretty" /> -->

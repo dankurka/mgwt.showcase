@@ -49,9 +49,13 @@ public class ShowCaseEntryPoint implements EntryPoint {
 		// MGWTColorScheme.setBaseColor("#56a60D");
 		// MGWTColorScheme.setFontColor("#eee");
 		//
+		// MGWTStyle.setTheme(new MGWTColorTheme());
+		//
 		// MGWTStyle.setDefaultBundle((MGWTClientBundle)
 		// GWT.create(MGWTStandardBundle.class));
 		// MGWTStyle.getDefaultClientBundle().getMainCss().ensureInjected();
+
+		// MGWTStyle.setTheme(new CustomTheme());
 
 		ViewPort viewPort = new MGWTSettings.ViewPort();
 		viewPort.setTargetDensity(DENSITY.MEDIUM);
