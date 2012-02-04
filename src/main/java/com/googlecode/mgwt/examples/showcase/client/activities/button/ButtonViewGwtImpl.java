@@ -17,6 +17,7 @@ package com.googlecode.mgwt.examples.showcase.client.activities.button;
 
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.HTML;
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
 import com.googlecode.mgwt.ui.client.widget.Button;
 
@@ -44,6 +45,10 @@ public class ButtonViewGwtImpl extends DetailViewGwtImpl implements ButtonView {
 		smallButton.setSmall(true);
 		content.add(smallButton);
 
+		HTML spacer = new HTML();
+		spacer.setHeight("100px");
+		content.add(spacer);
+
 		Button importantButton = new Button("Important");
 		importantButton.setImportant(true);
 		content.add(importantButton);
@@ -56,8 +61,11 @@ public class ButtonViewGwtImpl extends DetailViewGwtImpl implements ButtonView {
 		Button importantSmallButton = new Button("Small");
 		importantSmallButton.setImportant(true);
 		importantSmallButton.setSmall(true);
-
 		content.add(importantSmallButton);
+
+		spacer = new HTML();
+		spacer.setHeight("100px");
+		content.add(spacer);
 
 		Button conmfirmButton = new Button("Confirm");
 		conmfirmButton.setConfirm(true);
@@ -71,8 +79,6 @@ public class ButtonViewGwtImpl extends DetailViewGwtImpl implements ButtonView {
 		Button confirmSmallButton = new Button("Small");
 		confirmSmallButton.setConfirm(true);
 		confirmSmallButton.setSmall(true);
-
-		content.add(confirmSmallButton);
 
 		scrollPanel.setWidget(content);
 
