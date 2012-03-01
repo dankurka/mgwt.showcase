@@ -14,9 +14,9 @@
   
   
   <servlet>
-    <servlet-name>ManifestServlet</servlet-name>
-    <servlet-class>com.googlecode.mgwt.linker.server.Html5ManifestServlet</servlet-class>
-  </servlet>
+   <servlet-name>ManifestServlet</servlet-name>
+   <servlet-class>com.googlecode.mgwt.linker.server.MGWTHtml5ManifestServlet</servlet-class>
+ </servlet>
 
   <servlet-mapping>
     <servlet-name>ManifestServlet</servlet-name>
