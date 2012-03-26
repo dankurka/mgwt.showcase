@@ -92,6 +92,7 @@ public class UIActivity extends MGWTAbstractActivity {
 		list.add(new Item("ButtonBar", UIEntry.BUTTON_BAR));
 		list.add(new Item("Buttons", UIEntry.BUTTONS));
 		list.add(new Item("Elements", UIEntry.ELEMENTS));
+		list.add(new Item("Forms", UIEntry.FORMS));
 		list.add(new Item("Popups", UIEntry.POPUPS));
 		list.add(new Item("ProgressBar", UIEntry.PROGRESS_BAR));
 		list.add(new Item("ProgressIndicator", UIEntry.PROGRESS_INDICATOR));

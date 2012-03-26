@@ -29,6 +29,7 @@ import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.Ani
 import com.googlecode.mgwt.examples.showcase.client.activities.button.ButtonPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.buttonbar.ButtonBarPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.elements.ElementsPlace;
+import com.googlecode.mgwt.examples.showcase.client.activities.forms.FormsPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.popup.PopupPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.progressbar.ProgressBarPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.progressindicator.ProgressIndicatorPlace;
@@ -87,6 +88,14 @@ public class PhoneAnimationMapper implements AnimationMapper {
 		}
 
 		if (oldPlace instanceof ElementsPlace && newPlace instanceof UIPlace) {
+			return Animation.SLIDE_REVERSE;
+		}
+
+		if (oldPlace instanceof UIPlace && newPlace instanceof FormsPlace) {
+			return Animation.SLIDE;
+		}
+
+		if (oldPlace instanceof FormsPlace && newPlace instanceof UIPlace) {
 			return Animation.SLIDE_REVERSE;
 		}
 
@@ -162,19 +171,21 @@ public class PhoneAnimationMapper implements AnimationMapper {
 			return Animation.SLIDE_REVERSE;
 		}
 
-		//animation
+		// animation
 
 		if (oldPlace instanceof AnimationSlidePlace && newPlace instanceof AnimationPlace) {
 			return Animation.SLIDE_REVERSE;
 		}
 
-		//		if (oldPlace instanceof AnimationCubePlace && newPlace instanceof AnimationPlace) {
-		//			return Animation.CUBE_REVERSE;
-		//		}
+		// if (oldPlace instanceof AnimationCubePlace && newPlace instanceof
+		// AnimationPlace) {
+		// return Animation.CUBE_REVERSE;
+		// }
 		//
-		//		if (oldPlace instanceof AnimationPlace && newPlace instanceof AnimationCubePlace) {
-		//			return Animation.CUBE;
-		//		}
+		// if (oldPlace instanceof AnimationPlace && newPlace instanceof
+		// AnimationCubePlace) {
+		// return Animation.CUBE;
+		// }
 
 		if (oldPlace instanceof AnimationPlace && newPlace instanceof AnimationSlideUpPlace) {
 			return Animation.SLIDE_UP;

@@ -34,6 +34,8 @@ import com.googlecode.mgwt.examples.showcase.client.activities.buttonbar.ButtonB
 import com.googlecode.mgwt.examples.showcase.client.activities.buttonbar.ButtonBarViewGwtImpl;
 import com.googlecode.mgwt.examples.showcase.client.activities.elements.ElementsView;
 import com.googlecode.mgwt.examples.showcase.client.activities.elements.ElementsViewImpl;
+import com.googlecode.mgwt.examples.showcase.client.activities.forms.FormsView;
+import com.googlecode.mgwt.examples.showcase.client.activities.forms.FormsViewGwtImpl;
 import com.googlecode.mgwt.examples.showcase.client.activities.popup.PopupView;
 import com.googlecode.mgwt.examples.showcase.client.activities.popup.PopupViewGwtImpl;
 import com.googlecode.mgwt.examples.showcase.client.activities.progressbar.ProgressBarView;
@@ -76,6 +78,7 @@ public class ClientFactoryImpl implements ClientFactory {
 	private SliderView sliderView;
 	private PullToRefreshDisplayGwtImpl pullToRefreshView;
 	private ProgressIndicatorViewImpl progressIndicatorView;
+	private FormsViewGwtImpl formsView;
 
 	public ClientFactoryImpl() {
 		eventBus = new SimpleEventBus();
@@ -222,6 +225,14 @@ public class ClientFactoryImpl implements ClientFactory {
 			progressIndicatorView = new ProgressIndicatorViewImpl();
 		}
 		return progressIndicatorView;
+	}
+
+	@Override
+	public FormsView getFormsView() {
+		if (formsView == null) {
+			formsView = new FormsViewGwtImpl();
+		}
+		return formsView;
 	}
 
 }

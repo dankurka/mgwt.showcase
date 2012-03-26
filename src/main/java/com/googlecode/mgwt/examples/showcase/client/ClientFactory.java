@@ -25,6 +25,7 @@ import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.Ani
 import com.googlecode.mgwt.examples.showcase.client.activities.button.ButtonView;
 import com.googlecode.mgwt.examples.showcase.client.activities.buttonbar.ButtonBarView;
 import com.googlecode.mgwt.examples.showcase.client.activities.elements.ElementsView;
+import com.googlecode.mgwt.examples.showcase.client.activities.forms.FormsView;
 import com.googlecode.mgwt.examples.showcase.client.activities.popup.PopupView;
 import com.googlecode.mgwt.examples.showcase.client.activities.progressbar.ProgressBarView;
 import com.googlecode.mgwt.examples.showcase.client.activities.progressindicator.ProgressIndicatorView;
@@ -80,5 +81,7 @@ public interface ClientFactory {
 	public PullToRefreshDisplay getPullToRefreshDisplay();
 
 	public ProgressIndicatorView getProgressIndicatorView();
+
+	public FormsView getFormsView();
 
 }

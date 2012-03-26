@@ -39,6 +39,8 @@ import com.googlecode.mgwt.examples.showcase.client.activities.buttonbar.ButtonB
 import com.googlecode.mgwt.examples.showcase.client.activities.buttonbar.ButtonBarPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.elements.ElementsActivity;
 import com.googlecode.mgwt.examples.showcase.client.activities.elements.ElementsPlace;
+import com.googlecode.mgwt.examples.showcase.client.activities.forms.FormsActivity;
+import com.googlecode.mgwt.examples.showcase.client.activities.forms.FormsPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.popup.PopupActivity;
 import com.googlecode.mgwt.examples.showcase.client.activities.popup.PopupPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.progressbar.ProgressBarActivity;
@@ -93,6 +95,10 @@ public class PhoneActivityMapper implements ActivityMapper {
 
 		if (place instanceof ElementsPlace) {
 			return new ElementsActivity(clientFactory);
+		}
+
+		if (place instanceof FormsPlace) {
+			return new FormsActivity(clientFactory);
 		}
 
 		if (place instanceof ButtonBarPlace) {
