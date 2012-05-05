@@ -21,6 +21,7 @@ import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
 import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.widget.MCheckBox;
+import com.googlecode.mgwt.ui.client.widget.MDateBox;
 import com.googlecode.mgwt.ui.client.widget.MEmailTextBox;
 import com.googlecode.mgwt.ui.client.widget.MListBox;
 import com.googlecode.mgwt.ui.client.widget.MNumberTextBox;
@@ -66,6 +67,10 @@ public class ElementsViewImpl extends DetailViewGwtImpl implements ElementsView 
 		MNumberTextBox numberBox = new MNumberTextBox();
 		numberBox.setPlaceHolder("number keyboard");
 		widgetList.add(numberBox);
+
+		MDateBox dateBox = new MDateBox();
+		dateBox.setPlaceHolder("mm/dd//yyyy");
+		widgetList.add(dateBox);
 
 		WidgetList widgetList1 = new WidgetList();
 		widgetList1.setRound(true);
