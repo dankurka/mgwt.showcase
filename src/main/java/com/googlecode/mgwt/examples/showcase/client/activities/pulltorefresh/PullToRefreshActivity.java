@@ -9,8 +9,9 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.googlecode.mgwt.examples.showcase.client.ClientFactory;
 import com.googlecode.mgwt.examples.showcase.client.DetailActivity;
 import com.googlecode.mgwt.examples.showcase.client.activities.home.Topic;
-import com.googlecode.mgwt.ui.client.widget.event.PullReleasedEvent;
-import com.googlecode.mgwt.ui.client.widget.event.PullReleasedHandler;
+import com.googlecode.mgwt.ui.client.widget.base.PullPanel.PullWidget;
+import com.googlecode.mgwt.ui.client.widget.base.PullPanel.PullWidget.PullState;
+import com.googlecode.mgwt.ui.client.widget.base.PullPanel.Pullhandler;
 
 public class PullToRefreshActivity extends DetailActivity {
 
@@ -24,7 +25,7 @@ public class PullToRefreshActivity extends DetailActivity {
 		this.clientFactory = clientFactory;
 
 		list = new LinkedList<Topic>();
-		while (counter < 5) {
+		while (counter < 20) {
 			list.add(new Topic("Topic " + (counter + 1), counter));
 			counter++;
 		}
@@ -32,6 +33,7 @@ public class PullToRefreshActivity extends DetailActivity {
 	}
 
 	private boolean failed = false;
+	private boolean callRunning = false;
 
 	@Override
 	public void start(AcceptsOneWidget panel, EventBus eventBus) {
@@ -45,24 +47,67 @@ public class PullToRefreshActivity extends DetailActivity {
 		display.getBackbuttonText().setText("UI");
 		display.getHeader().setText("PullToRefresh");
 
-		addHandlerRegistration(display.getReload().addPullReleasedHandler(new PullReleasedHandler() {
+		display.setPullHandler(new Pullhandler() {
 
 			@Override
-			public void onPullReleased(PullReleasedEvent event) {
+			public void onPullStateChanged(PullWidget pullWidget, PullState state) {
+				switch (state) {
+				case NORMAL:
+					pullWidget.setHTML("pull down");
+					break;
+				case PULLED:
+					pullWidget.setHTML("release to load");
+					break;
+
+				default:
+					break;
+				}
+
+			}
+
+			@Override
+			public void onPullAction(final PullWidget pullWidget) {
+				if (callRunning)
+					return;
+				callRunning = true;
+				pullWidget.setHTML("loading");
+
+				display.getPullArrowWidget().showLoadingIndicator();
 
 				new Timer() {
 
 					@Override
 					public void run() {
+						callRunning = false;
 						if (failed) {
-							display.onLoadingFailed();
+							display.getPullArrowWidget().showError();
+							pullWidget.setHTML("Error");
+							callRunning = true;
+
+							new Timer() {
+
+								@Override
+								public void run() {
+									callRunning = false;
+									display.refresh();
+
+									pullWidget.setHTML("pull down");
+									display.getPullArrowWidget().showArrow();
+
+								}
+							}.schedule(1000);
+
 						} else {
 							for (int i = 0; i < 5; i++) {
-								list.add(new Topic("Topic " + (counter + 1), counter));
+								list.add(0, new Topic("generated Topic " + (counter + 1), counter));
 								counter++;
 							}
 							display.render(list);
-							display.onLoadingSucceeded();
+							display.refresh();
+
+							pullWidget.setHTML("pull down");
+							display.getPullArrowWidget().showArrow();
+
 						}
 						failed = !failed;
 
@@ -70,7 +115,7 @@ public class PullToRefreshActivity extends DetailActivity {
 				}.schedule(1000);
 
 			}
-		}));
+		});
 
 		display.render(list);
 
