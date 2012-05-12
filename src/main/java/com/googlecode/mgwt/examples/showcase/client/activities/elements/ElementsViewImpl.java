@@ -17,6 +17,7 @@ package com.googlecode.mgwt.examples.showcase.client.activities.elements;
 
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
+import com.googlecode.mgwt.examples.showcase.client.ChromeWorkaround;
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
 import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
@@ -55,6 +56,8 @@ public class ElementsViewImpl extends DetailViewGwtImpl implements ElementsView 
 		// workaround for android formfields jumping around when using
 		// -webkit-transform
 		scrollPanel.setUsePos(MGWT.getOsDetection().isAndroid());
+
+		ChromeWorkaround.maybeUpdateScroller(scrollPanel);
 
 		MTextBox mTextBox = new MTextBox();
 		mTextBox.setPlaceHolder("textbox");

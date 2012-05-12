@@ -18,6 +18,7 @@ package com.googlecode.mgwt.examples.showcase.client.activities.progressindicato
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
+import com.googlecode.mgwt.examples.showcase.client.ChromeWorkaround;
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
 import com.googlecode.mgwt.ui.client.widget.ProgressIndicator;
 
@@ -42,6 +43,8 @@ public class ProgressIndicatorViewImpl extends DetailViewGwtImpl implements Prog
 		content.add(html);
 
 		scrollPanel.setWidget(content);
+
+		ChromeWorkaround.maybeUpdateScroller(scrollPanel);
 
 	}
 

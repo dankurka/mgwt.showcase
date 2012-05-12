@@ -3,6 +3,7 @@ package com.googlecode.mgwt.examples.showcase.client.activities.pulltorefresh;
 import java.util.List;
 
 import com.googlecode.mgwt.examples.showcase.client.BasicCell;
+import com.googlecode.mgwt.examples.showcase.client.ChromeWorkaround;
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
 import com.googlecode.mgwt.examples.showcase.client.activities.home.Topic;
 import com.googlecode.mgwt.ui.client.widget.CellList;
@@ -39,6 +40,7 @@ public class PullToRefreshDisplayGwtImpl extends DetailViewGwtImpl implements Pu
 
 		pullToRefresh.add(cellList);
 
+		ChromeWorkaround.maybeUpdateScroller(scrollPanel);
 	}
 
 	@Override
