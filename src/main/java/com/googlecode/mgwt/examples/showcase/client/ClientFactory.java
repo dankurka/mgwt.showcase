@@ -24,6 +24,7 @@ import com.googlecode.mgwt.examples.showcase.client.activities.animation.Animati
 import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.AnimationDoneView;
 import com.googlecode.mgwt.examples.showcase.client.activities.button.ButtonView;
 import com.googlecode.mgwt.examples.showcase.client.activities.buttonbar.ButtonBarView;
+import com.googlecode.mgwt.examples.showcase.client.activities.carousel.CarouselView;
 import com.googlecode.mgwt.examples.showcase.client.activities.elements.ElementsView;
 import com.googlecode.mgwt.examples.showcase.client.activities.forms.FormsView;
 import com.googlecode.mgwt.examples.showcase.client.activities.popup.PopupView;
@@ -77,6 +78,8 @@ public interface ClientFactory {
 	public ProgressBarView getProgressBarView();
 
 	public SliderView getSliderView();
+
+	public CarouselView getCarouselHorizontalView();
 
 	public PullToRefreshDisplay getPullToRefreshDisplay();
 

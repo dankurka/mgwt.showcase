@@ -20,6 +20,8 @@ import com.googlecode.mgwt.examples.showcase.client.activities.button.ButtonActi
 import com.googlecode.mgwt.examples.showcase.client.activities.button.ButtonPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.buttonbar.ButtonBarActivity;
 import com.googlecode.mgwt.examples.showcase.client.activities.buttonbar.ButtonBarPlace;
+import com.googlecode.mgwt.examples.showcase.client.activities.carousel.CarouselActivity;
+import com.googlecode.mgwt.examples.showcase.client.activities.carousel.CarouselPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.elements.ElementsActivity;
 import com.googlecode.mgwt.examples.showcase.client.activities.elements.ElementsPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.forms.FormsActivity;
@@ -134,6 +136,10 @@ public class TabletMainActivityMapper implements ActivityMapper {
 
 		if (newPlace instanceof PullToRefreshPlace) {
 			return new PullToRefreshActivity(clientFactory);
+		}
+
+		if (newPlace instanceof CarouselPlace) {
+			return new CarouselActivity(clientFactory);
 		}
 
 		if (newPlace instanceof AnimationSlidePlace || newPlace instanceof AnimationSlideUpPlace || newPlace instanceof AnimationDissolvePlace || newPlace instanceof AnimationFadePlace
