@@ -31,7 +31,6 @@ public class CarouselActivity extends DetailActivity {
 	public CarouselActivity(ClientFactory clientFactory) {
 		super(clientFactory.getCarouselHorizontalView(), "nav");
 		this.clientFactory = clientFactory;
-		System.out.println("hori");
 	}
 
 	@Override
