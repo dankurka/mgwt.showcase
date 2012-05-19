@@ -159,7 +159,7 @@ public class PullToRefreshActivity extends DetailActivity {
 					@Override
 					public void run() {
 						callRunningFooter = false;
-						if (failed) {
+						if (failedFooter) {
 							display.getPullFooter().showError();
 							pullWidget.setHTML("Error");
 							callRunningFooter = true;
