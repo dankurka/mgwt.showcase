@@ -35,6 +35,9 @@ public class PullToRefreshActivity extends DetailActivity {
 	private boolean failed = false;
 	private boolean callRunning = false;
 
+	private boolean failedFooter = false;
+	private boolean callRunningFooter = false;
+
 	@Override
 	public void start(AcceptsOneWidget panel, EventBus eventBus) {
 		super.start(panel, eventBus);
@@ -47,7 +50,11 @@ public class PullToRefreshActivity extends DetailActivity {
 		display.getBackbuttonText().setText("UI");
 		display.getHeader().setText("PullToRefresh");
 
-		display.setPullHandler(new Pullhandler() {
+		display.getPullHeader().setHTML("pull down");
+
+		display.getPullFooter().setHTML("pull up");
+
+		display.setHeaderPullHandler(new Pullhandler() {
 
 			@Override
 			public void onPullStateChanged(PullWidget pullWidget, PullState state) {
@@ -67,12 +74,15 @@ public class PullToRefreshActivity extends DetailActivity {
 
 			@Override
 			public void onPullAction(final PullWidget pullWidget) {
+
+				System.out.println("pull HEADER!!!!");
+
 				if (callRunning)
 					return;
 				callRunning = true;
 				pullWidget.setHTML("loading");
 
-				display.getPullArrowWidget().showLoadingIndicator();
+				display.getPullHeader().showLoadingIndicator();
 
 				new Timer() {
 
@@ -80,7 +90,7 @@ public class PullToRefreshActivity extends DetailActivity {
 					public void run() {
 						callRunning = false;
 						if (failed) {
-							display.getPullArrowWidget().showError();
+							display.getPullHeader().showError();
 							pullWidget.setHTML("Error");
 							callRunning = true;
 
@@ -92,7 +102,7 @@ public class PullToRefreshActivity extends DetailActivity {
 									display.refresh();
 
 									pullWidget.setHTML("pull down");
-									display.getPullArrowWidget().showArrow();
+									display.getPullHeader().showArrow();
 
 								}
 							}.schedule(1000);
@@ -106,10 +116,80 @@ public class PullToRefreshActivity extends DetailActivity {
 							display.refresh();
 
 							pullWidget.setHTML("pull down");
-							display.getPullArrowWidget().showArrow();
+							display.getPullHeader().showArrow();
 
 						}
 						failed = !failed;
+
+					}
+				}.schedule(1000);
+
+			}
+		});
+
+		display.setFooterPullHandler(new Pullhandler() {
+
+			@Override
+			public void onPullStateChanged(PullWidget pullWidget, PullState state) {
+				switch (state) {
+				case NORMAL:
+					pullWidget.setHTML("pull up");
+					break;
+				case PULLED:
+					pullWidget.setHTML("release to load");
+					break;
+
+				default:
+					break;
+				}
+
+			}
+
+			@Override
+			public void onPullAction(final PullWidget pullWidget) {
+				if (callRunningFooter)
+					return;
+				callRunningFooter = true;
+				pullWidget.setHTML("loading");
+
+				display.getPullFooter().showLoadingIndicator();
+
+				new Timer() {
+
+					@Override
+					public void run() {
+						callRunningFooter = false;
+						if (failed) {
+							display.getPullFooter().showError();
+							pullWidget.setHTML("Error");
+							callRunningFooter = true;
+
+							new Timer() {
+
+								@Override
+								public void run() {
+									callRunningFooter = false;
+									display.refresh();
+
+									pullWidget.setHTML("pull up");
+									display.getPullFooter().showArrow();
+
+								}
+							}.schedule(1000);
+
+						} else {
+							for (int i = 0; i < 5; i++) {
+								list.add(list.size(), new Topic("generated Topic " + (counter + 1), counter));
+								counter++;
+							}
+							display.render(list);
+							display.refresh();
+
+							pullWidget.setHTML("pull up");
+							display.getPullFooter().showArrow();
+
+						}
+						failedFooter = !failedFooter;
 
 					}
 				}.schedule(1000);

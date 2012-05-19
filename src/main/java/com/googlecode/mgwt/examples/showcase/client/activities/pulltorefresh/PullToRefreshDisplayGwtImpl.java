@@ -7,6 +7,7 @@ import com.googlecode.mgwt.examples.showcase.client.ChromeWorkaround;
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
 import com.googlecode.mgwt.examples.showcase.client.activities.home.Topic;
 import com.googlecode.mgwt.ui.client.widget.CellList;
+import com.googlecode.mgwt.ui.client.widget.base.PullArrowFooter;
 import com.googlecode.mgwt.ui.client.widget.base.PullArrowHeader;
 import com.googlecode.mgwt.ui.client.widget.base.PullArrowWidget;
 import com.googlecode.mgwt.ui.client.widget.base.PullPanel;
@@ -18,6 +19,7 @@ public class PullToRefreshDisplayGwtImpl extends DetailViewGwtImpl implements Pu
 	private CellList<Topic> cellList;
 
 	private PullArrowHeader pullArrowHeader;
+	private PullArrowFooter pullArrowFooter;
 
 	public PullToRefreshDisplayGwtImpl() {
 		main.remove(scrollPanel);
@@ -27,6 +29,9 @@ public class PullToRefreshDisplayGwtImpl extends DetailViewGwtImpl implements Pu
 		pullArrowHeader = new PullArrowHeader();
 
 		pullToRefresh.setHeader(pullArrowHeader);
+
+		pullArrowFooter = new PullArrowFooter();
+		pullToRefresh.setFooter(pullArrowFooter);
 
 		main.add(pullToRefresh);
 
@@ -50,13 +55,13 @@ public class PullToRefreshDisplayGwtImpl extends DetailViewGwtImpl implements Pu
 	}
 
 	@Override
-	public void setPullHandler(Pullhandler pullHandler) {
+	public void setHeaderPullHandler(Pullhandler pullHandler) {
 		pullToRefresh.setHeaderPullhandler(pullHandler);
 
 	}
 
 	@Override
-	public PullArrowWidget getPullArrowWidget() {
+	public PullArrowWidget getPullHeader() {
 		return pullArrowHeader;
 	}
 
@@ -64,6 +69,17 @@ public class PullToRefreshDisplayGwtImpl extends DetailViewGwtImpl implements Pu
 	public void refresh() {
 		pullToRefresh.refresh();
 
+	}
+
+	@Override
+	public void setFooterPullHandler(Pullhandler pullHandler) {
+		pullToRefresh.setFooterPullHandler(pullHandler);
+
+	}
+
+	@Override
+	public PullArrowWidget getPullFooter() {
+		return pullArrowFooter;
 	}
 
 }

@@ -11,9 +11,13 @@ public interface PullToRefreshDisplay extends DetailView {
 
 	public void render(List<Topic> topics);
 
-	public void setPullHandler(Pullhandler pullHandler);
+	public void setHeaderPullHandler(Pullhandler pullHandler);
 
-	public PullArrowWidget getPullArrowWidget();
+	public void setFooterPullHandler(Pullhandler pullHandler);
+
+	public PullArrowWidget getPullHeader();
+
+	public PullArrowWidget getPullFooter();
 
 	public void refresh();
 
