@@ -75,8 +75,6 @@ public class PullToRefreshActivity extends DetailActivity {
 			@Override
 			public void onPullAction(final PullWidget pullWidget) {
 
-				System.out.println("pull HEADER!!!!");
-
 				if (callRunning)
 					return;
 				callRunning = true;
