@@ -15,9 +15,6 @@
  */
 package com.googlecode.mgwt.examples.showcase.client.activities.searchbox;
 
-import com.google.gwt.user.client.ui.FormPanel;
-import com.google.gwt.user.client.ui.FormPanel.SubmitEvent;
-import com.google.gwt.user.client.ui.FormPanel.SubmitHandler;
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
 import com.googlecode.mgwt.ui.client.widget.MSearchBox;
 
@@ -29,18 +26,7 @@ public class SearchBoxViewGwtImpl extends DetailViewGwtImpl implements SearchBox
 
 	public SearchBoxViewGwtImpl() {
 
-		FormPanel formPanel = new FormPanel("");
-		formPanel.addSubmitHandler(new SubmitHandler() {
-
-			@Override
-			public void onSubmit(SubmitEvent event) {
-				event.cancel();
-
-			}
-		});
-		MSearchBox searchBox = new MSearchBox();
-		formPanel.setWidget(searchBox);
-		scrollPanel.setWidget(formPanel);
+		scrollPanel.setWidget(new MSearchBox());
 	}
 
 }
