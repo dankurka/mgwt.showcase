@@ -7,6 +7,7 @@ import com.googlecode.mgwt.examples.showcase.client.ChromeWorkaround;
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
 import com.googlecode.mgwt.examples.showcase.client.activities.home.Topic;
 import com.googlecode.mgwt.ui.client.widget.CellList;
+import com.googlecode.mgwt.ui.client.widget.base.HasRefresh;
 import com.googlecode.mgwt.ui.client.widget.base.PullArrowFooter;
 import com.googlecode.mgwt.ui.client.widget.base.PullArrowHeader;
 import com.googlecode.mgwt.ui.client.widget.base.PullArrowWidget;
@@ -80,6 +81,11 @@ public class PullToRefreshDisplayGwtImpl extends DetailViewGwtImpl implements Pu
 	@Override
 	public PullArrowWidget getPullFooter() {
 		return pullArrowFooter;
+	}
+
+	@Override
+	public HasRefresh getPullPanel() {
+		return pullToRefresh;
 	}
 
 }

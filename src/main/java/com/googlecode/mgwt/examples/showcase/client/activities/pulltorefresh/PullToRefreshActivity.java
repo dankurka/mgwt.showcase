@@ -5,13 +5,13 @@ import java.util.List;
 
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.Timer;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.googlecode.mgwt.examples.showcase.client.ClientFactory;
 import com.googlecode.mgwt.examples.showcase.client.DetailActivity;
 import com.googlecode.mgwt.examples.showcase.client.activities.home.Topic;
-import com.googlecode.mgwt.ui.client.widget.base.PullPanel.PullWidget;
-import com.googlecode.mgwt.ui.client.widget.base.PullPanel.PullWidget.PullState;
-import com.googlecode.mgwt.ui.client.widget.base.PullPanel.Pullhandler;
+import com.googlecode.mgwt.ui.client.widget.base.PullArrowStandardHandler;
+import com.googlecode.mgwt.ui.client.widget.base.PullArrowStandardHandler.PullActionHandler;
 
 public class PullToRefreshActivity extends DetailActivity {
 
@@ -32,11 +32,9 @@ public class PullToRefreshActivity extends DetailActivity {
 
 	}
 
-	private boolean failed = false;
-	private boolean callRunning = false;
+	private boolean failedHeader = false;
 
 	private boolean failedFooter = false;
-	private boolean callRunningFooter = false;
 
 	@Override
 	public void start(AcceptsOneWidget panel, EventBus eventBus) {
@@ -54,56 +52,23 @@ public class PullToRefreshActivity extends DetailActivity {
 
 		display.getPullFooter().setHTML("pull up");
 
-		display.setHeaderPullHandler(new Pullhandler() {
+		PullArrowStandardHandler headerHandler = new PullArrowStandardHandler(display.getPullHeader(), display.getPullPanel());
+
+		headerHandler.setErrorText("Error");
+		headerHandler.setLoadingText("Loading");
+		headerHandler.setNormalText("pull down");
+		headerHandler.setPulledText("release to load");
+		headerHandler.setPullActionHandler(new PullActionHandler() {
 
 			@Override
-			public void onPullStateChanged(PullWidget pullWidget, PullState state) {
-				switch (state) {
-				case NORMAL:
-					pullWidget.setHTML("pull down");
-					break;
-				case PULLED:
-					pullWidget.setHTML("release to load");
-					break;
-
-				default:
-					break;
-				}
-
-			}
-
-			@Override
-			public void onPullAction(final PullWidget pullWidget) {
-
-				if (callRunning)
-					return;
-				callRunning = true;
-				pullWidget.setHTML("loading");
-
-				display.getPullHeader().showLoadingIndicator();
-
+			public void onPullAction(final AsyncCallback<Void> callback) {
 				new Timer() {
 
 					@Override
 					public void run() {
-						callRunning = false;
-						if (failed) {
-							display.getPullHeader().showError();
-							pullWidget.setHTML("Error");
-							callRunning = true;
 
-							new Timer() {
-
-								@Override
-								public void run() {
-									callRunning = false;
-									display.refresh();
-
-									pullWidget.setHTML("pull down");
-									display.getPullHeader().showArrow();
-
-								}
-							}.schedule(1000);
+						if (failedHeader) {
+							callback.onFailure(null);
 
 						} else {
 							for (int i = 0; i < 5; i++) {
@@ -113,11 +78,10 @@ public class PullToRefreshActivity extends DetailActivity {
 							display.render(list);
 							display.refresh();
 
-							pullWidget.setHTML("pull down");
-							display.getPullHeader().showArrow();
+							callback.onSuccess(null);
 
 						}
-						failed = !failed;
+						failedHeader = !failedHeader;
 
 					}
 				}.schedule(1000);
@@ -125,55 +89,25 @@ public class PullToRefreshActivity extends DetailActivity {
 			}
 		});
 
-		display.setFooterPullHandler(new Pullhandler() {
+		display.setHeaderPullHandler(headerHandler);
+
+		PullArrowStandardHandler footerHandler = new PullArrowStandardHandler(display.getPullFooter(), display.getPullPanel());
+
+		footerHandler.setErrorText("Error");
+		footerHandler.setLoadingText("Loading");
+		footerHandler.setNormalText("pull up");
+		footerHandler.setPulledText("release to load");
+		footerHandler.setPullActionHandler(new PullActionHandler() {
 
 			@Override
-			public void onPullStateChanged(PullWidget pullWidget, PullState state) {
-				switch (state) {
-				case NORMAL:
-					pullWidget.setHTML("pull up");
-					break;
-				case PULLED:
-					pullWidget.setHTML("release to load");
-					break;
-
-				default:
-					break;
-				}
-
-			}
-
-			@Override
-			public void onPullAction(final PullWidget pullWidget) {
-				if (callRunningFooter)
-					return;
-				callRunningFooter = true;
-				pullWidget.setHTML("loading");
-
-				display.getPullFooter().showLoadingIndicator();
-
+			public void onPullAction(final AsyncCallback<Void> callback) {
 				new Timer() {
 
 					@Override
 					public void run() {
-						callRunningFooter = false;
+
 						if (failedFooter) {
-							display.getPullFooter().showError();
-							pullWidget.setHTML("Error");
-							callRunningFooter = true;
-
-							new Timer() {
-
-								@Override
-								public void run() {
-									callRunningFooter = false;
-									display.refresh();
-
-									pullWidget.setHTML("pull up");
-									display.getPullFooter().showArrow();
-
-								}
-							}.schedule(1000);
+							callback.onFailure(null);
 
 						} else {
 							for (int i = 0; i < 5; i++) {
@@ -183,8 +117,7 @@ public class PullToRefreshActivity extends DetailActivity {
 							display.render(list);
 							display.refresh();
 
-							pullWidget.setHTML("pull up");
-							display.getPullFooter().showArrow();
+							callback.onSuccess(null);
 
 						}
 						failedFooter = !failedFooter;
@@ -194,6 +127,8 @@ public class PullToRefreshActivity extends DetailActivity {
 
 			}
 		});
+
+		display.setFooterPullHandler(footerHandler);
 
 		display.render(list);
 
