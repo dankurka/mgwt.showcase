@@ -27,7 +27,7 @@ import com.googlecode.mgwt.examples.showcase.client.DetailActivity;
 import com.googlecode.mgwt.ui.client.dialog.ConfirmDialog.ConfirmCallback;
 import com.googlecode.mgwt.ui.client.dialog.Dialogs.ButtonType;
 import com.googlecode.mgwt.ui.client.dialog.Dialogs.OptionCallback;
-import com.googlecode.mgwt.ui.client.dialog.Dialogs.OptionsDialogOption;
+import com.googlecode.mgwt.ui.client.dialog.Dialogs.OptionsDialogEntry;
 
 /**
  * @author Daniel Kurka
@@ -76,10 +76,10 @@ public class PopupActivity extends DetailActivity {
 
 			@Override
 			public void onTap(TapEvent event) {
-				List<OptionsDialogOption> list = new ArrayList<OptionsDialogOption>();
-				list.add(new OptionsDialogOption("Confirm", ButtonType.CONFIRM));
-				list.add(new OptionsDialogOption("Cancel", ButtonType.NORMAL));
-				list.add(new OptionsDialogOption("Delete", ButtonType.IMPORTANT));
+				List<OptionsDialogEntry> list = new ArrayList<OptionsDialogEntry>();
+				list.add(new OptionsDialogEntry("Confirm", ButtonType.CONFIRM));
+				list.add(new OptionsDialogEntry("Cancel", ButtonType.NORMAL));
+				list.add(new OptionsDialogEntry("Delete", ButtonType.IMPORTANT));
 
 				view.showSomeOptions(list, new OptionCallback() {
 

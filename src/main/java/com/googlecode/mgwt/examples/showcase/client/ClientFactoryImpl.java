@@ -32,6 +32,8 @@ import com.googlecode.mgwt.examples.showcase.client.activities.button.ButtonView
 import com.googlecode.mgwt.examples.showcase.client.activities.button.ButtonViewGwtImpl;
 import com.googlecode.mgwt.examples.showcase.client.activities.buttonbar.ButtonBarView;
 import com.googlecode.mgwt.examples.showcase.client.activities.buttonbar.ButtonBarViewGwtImpl;
+import com.googlecode.mgwt.examples.showcase.client.activities.carousel.CarouselViewGwtImpl;
+import com.googlecode.mgwt.examples.showcase.client.activities.carousel.CarouselView;
 import com.googlecode.mgwt.examples.showcase.client.activities.elements.ElementsView;
 import com.googlecode.mgwt.examples.showcase.client.activities.elements.ElementsViewImpl;
 import com.googlecode.mgwt.examples.showcase.client.activities.forms.FormsView;
@@ -79,6 +81,7 @@ public class ClientFactoryImpl implements ClientFactory {
 	private PullToRefreshDisplayGwtImpl pullToRefreshView;
 	private ProgressIndicatorViewImpl progressIndicatorView;
 	private FormsViewGwtImpl formsView;
+	private CarouselView carouselView;
 
 	public ClientFactoryImpl() {
 		eventBus = new SimpleEventBus();
@@ -233,6 +236,14 @@ public class ClientFactoryImpl implements ClientFactory {
 			formsView = new FormsViewGwtImpl();
 		}
 		return formsView;
+	}
+
+	@Override
+	public CarouselView getCarouselHorizontalView() {
+		if (carouselView == null) {
+			carouselView = new CarouselViewGwtImpl();
+		}
+		return carouselView;
 	}
 
 }

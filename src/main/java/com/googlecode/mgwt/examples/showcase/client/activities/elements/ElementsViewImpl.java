@@ -24,6 +24,7 @@ import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
+import com.googlecode.mgwt.examples.showcase.client.ChromeWorkaround;
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
 import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
@@ -63,6 +64,8 @@ public class ElementsViewImpl extends DetailViewGwtImpl implements ElementsView 
 		// -webkit-transform
 		scrollPanel.setUsePos(MGWT.getOsDetection().isAndroid());
 
+		ChromeWorkaround.maybeUpdateScroller(scrollPanel);
+
 		MTextBox mTextBox = new MTextBox();
 		mTextBox.setPlaceHolder("textbox");
 		widgetList.add(mTextBox);
@@ -74,6 +77,10 @@ public class ElementsViewImpl extends DetailViewGwtImpl implements ElementsView 
 		MNumberTextBox numberBox = new MNumberTextBox();
 		numberBox.setPlaceHolder("number keyboard");
 		widgetList.add(numberBox);
+
+		MDateBox dateBox = new MDateBox();
+		dateBox.setPlaceHolder("mm/dd//yyyy");
+		widgetList.add(dateBox);
 
 		WidgetList widgetList1 = new WidgetList();
 		widgetList1.setRound(true);

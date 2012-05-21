@@ -20,7 +20,7 @@ import java.util.List;
 import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
 import com.googlecode.mgwt.examples.showcase.client.DetailView;
 import com.googlecode.mgwt.ui.client.dialog.ConfirmDialog.ConfirmCallback;
-import com.googlecode.mgwt.ui.client.dialog.Dialogs.OptionsDialogOption;
+import com.googlecode.mgwt.ui.client.dialog.Dialogs.OptionsDialogEntry;
 
 /**
  * @author Daniel Kurka
@@ -38,5 +38,5 @@ public interface PopupView extends DetailView {
 
 	public void confirmSomeStuff(String title, String text, ConfirmCallback callback);
 
-	public void showSomeOptions(List<OptionsDialogOption> optionText, com.googlecode.mgwt.ui.client.dialog.Dialogs.OptionCallback callback);
+	public void showSomeOptions(List<OptionsDialogEntry> optionText, com.googlecode.mgwt.ui.client.dialog.Dialogs.OptionCallback callback);
 }

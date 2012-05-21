@@ -24,7 +24,7 @@ import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
 import com.googlecode.mgwt.ui.client.dialog.ConfirmDialog.ConfirmCallback;
 import com.googlecode.mgwt.ui.client.dialog.Dialogs;
 import com.googlecode.mgwt.ui.client.dialog.Dialogs.OptionCallback;
-import com.googlecode.mgwt.ui.client.dialog.Dialogs.OptionsDialogOption;
+import com.googlecode.mgwt.ui.client.dialog.Dialogs.OptionsDialogEntry;
 import com.googlecode.mgwt.ui.client.widget.Button;
 
 /**
@@ -83,7 +83,7 @@ public class PopupViewGwtImpl extends DetailViewGwtImpl implements PopupView {
 	}
 
 	@Override
-	public void showSomeOptions(List<OptionsDialogOption> optionText, OptionCallback callback) {
+	public void showSomeOptions(List<OptionsDialogEntry> optionText, OptionCallback callback) {
 		Dialogs.options(optionText, callback, main);
 
 	}

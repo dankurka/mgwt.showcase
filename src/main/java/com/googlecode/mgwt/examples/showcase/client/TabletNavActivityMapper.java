@@ -19,6 +19,7 @@ import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.Ani
 import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.AnimationSwapPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.button.ButtonPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.buttonbar.ButtonBarPlace;
+import com.googlecode.mgwt.examples.showcase.client.activities.carousel.CarouselPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.elements.ElementsPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.forms.FormsPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.popup.PopupPlace;
@@ -70,9 +71,9 @@ public class TabletNavActivityMapper implements ActivityMapper {
 			return getShowCaseListActivity();
 		}
 
-		if (place instanceof PullToRefreshPlace || place instanceof UIPlace || place instanceof ScrollWidgetPlace || place instanceof ElementsPlace || place instanceof FormsPlace
-				|| place instanceof ButtonBarPlace || place instanceof SearchBoxPlace || place instanceof TabBarPlace || place instanceof ButtonPlace || place instanceof PopupPlace
-				|| place instanceof ProgressBarPlace || place instanceof SliderPlace || place instanceof ProgressIndicatorPlace) {
+		if (place instanceof PullToRefreshPlace || place instanceof CarouselPlace || place instanceof UIPlace || place instanceof ScrollWidgetPlace || place instanceof ElementsPlace
+				|| place instanceof FormsPlace || place instanceof ButtonBarPlace || place instanceof SearchBoxPlace || place instanceof TabBarPlace || place instanceof ButtonPlace
+				|| place instanceof PopupPlace || place instanceof ProgressBarPlace || place instanceof SliderPlace || place instanceof ProgressIndicatorPlace) {
 			return getUIActivity();
 		}
 

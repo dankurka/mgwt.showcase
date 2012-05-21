@@ -30,10 +30,12 @@ import com.googlecode.mgwt.mvp.client.AnimatableDisplay;
 import com.googlecode.mgwt.mvp.client.AnimatingActivityManager;
 import com.googlecode.mgwt.mvp.client.AnimationMapper;
 import com.googlecode.mgwt.mvp.client.history.MGWTPlaceHistoryHandler;
+import com.googlecode.mgwt.theme.client.CustomTheme;
 import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.MGWTSettings;
 import com.googlecode.mgwt.ui.client.MGWTSettings.ViewPort;
 import com.googlecode.mgwt.ui.client.MGWTSettings.ViewPort.DENSITY;
+import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.dialog.TabletPortraitOverlay;
 import com.googlecode.mgwt.ui.client.layout.MasterRegionHandler;
 import com.googlecode.mgwt.ui.client.layout.OrientationRegionHandler;
@@ -55,7 +57,7 @@ public class ShowCaseEntryPoint implements EntryPoint {
 		// GWT.create(MGWTStandardBundle.class));
 		// MGWTStyle.getDefaultClientBundle().getMainCss().ensureInjected();
 
-		// MGWTStyle.setTheme(new CustomTheme());
+		MGWTStyle.setTheme(new CustomTheme());
 
 		ViewPort viewPort = new MGWTSettings.ViewPort();
 		viewPort.setTargetDensity(DENSITY.MEDIUM);

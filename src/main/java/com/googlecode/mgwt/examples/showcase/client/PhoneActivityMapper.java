@@ -37,6 +37,8 @@ import com.googlecode.mgwt.examples.showcase.client.activities.button.ButtonActi
 import com.googlecode.mgwt.examples.showcase.client.activities.button.ButtonPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.buttonbar.ButtonBarActivity;
 import com.googlecode.mgwt.examples.showcase.client.activities.buttonbar.ButtonBarPlace;
+import com.googlecode.mgwt.examples.showcase.client.activities.carousel.CarouselActivity;
+import com.googlecode.mgwt.examples.showcase.client.activities.carousel.CarouselPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.elements.ElementsActivity;
 import com.googlecode.mgwt.examples.showcase.client.activities.elements.ElementsPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.forms.FormsActivity;
@@ -134,6 +136,10 @@ public class PhoneActivityMapper implements ActivityMapper {
 		}
 		if (place instanceof PullToRefreshPlace) {
 			return new PullToRefreshActivity(clientFactory);
+		}
+
+		if (place instanceof CarouselPlace) {
+			return new CarouselActivity(clientFactory);
 		}
 
 		if (place instanceof AnimationSlidePlace || place instanceof AnimationSlideUpPlace || place instanceof AnimationDissolvePlace || place instanceof AnimationFadePlace

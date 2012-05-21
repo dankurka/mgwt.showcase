@@ -13,20 +13,17 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.mgwt.examples.showcase.client.activities.searchbox;
+package com.googlecode.mgwt.examples.showcase.client.activities.carousel;
 
-import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
-import com.googlecode.mgwt.ui.client.widget.MSearchBox;
+import com.google.gwt.event.logical.shared.HasSelectionHandlers;
+import com.googlecode.mgwt.examples.showcase.client.DetailView;
 
 /**
  * @author Daniel Kurka
  * 
  */
-public class SearchBoxViewGwtImpl extends DetailViewGwtImpl implements SearchBoxView {
+public interface CarouselView extends DetailView {
 
-	public SearchBoxViewGwtImpl() {
-
-		scrollPanel.setWidget(new MSearchBox());
-	}
+	public HasSelectionHandlers<Integer> getSwipePanel();
 
 }

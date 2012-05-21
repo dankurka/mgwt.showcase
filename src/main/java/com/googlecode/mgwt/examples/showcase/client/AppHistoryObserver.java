@@ -22,6 +22,7 @@ import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.Ani
 import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.AnimationSwapPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.button.ButtonPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.buttonbar.ButtonBarPlace;
+import com.googlecode.mgwt.examples.showcase.client.activities.carousel.CarouselPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.elements.ElementsPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.forms.FormsPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.popup.PopupPlace;
@@ -169,6 +170,9 @@ public class AppHistoryObserver implements HistoryObserver {
 				case TABBAR:
 					place = new TabBarPlace();
 					break;
+				case CAROUSEL:
+					place = new CarouselPlace();
+					break;
 
 				default:
 					break;
@@ -239,9 +243,10 @@ public class AppHistoryObserver implements HistoryObserver {
 							historyHandler.replaceCurrentPlace(new HomePlace());
 						} else {
 
-							if (place instanceof ButtonBarPlace || place instanceof ButtonPlace || place instanceof ElementsPlace || place instanceof FormsPlace || place instanceof PopupPlace
-									|| place instanceof ProgressBarPlace || place instanceof ProgressIndicatorPlace || place instanceof PullToRefreshPlace || place instanceof ScrollWidgetPlace
-									|| place instanceof SearchBoxPlace || place instanceof SliderPlace || place instanceof TabBarPlace) {
+							if (place instanceof ButtonBarPlace || place instanceof CarouselPlace || place instanceof ButtonPlace || place instanceof ElementsPlace
+									|| place instanceof FormsPlace || place instanceof PopupPlace || place instanceof ProgressBarPlace || place instanceof ProgressIndicatorPlace
+									|| place instanceof PullToRefreshPlace || place instanceof ScrollWidgetPlace || place instanceof SearchBoxPlace || place instanceof SliderPlace
+									|| place instanceof TabBarPlace) {
 								historyHandler.replaceCurrentPlace(new HomePlace());
 
 								historyHandler.pushPlace(new UIPlace());
@@ -274,9 +279,10 @@ public class AppHistoryObserver implements HistoryObserver {
 							historyHandler.replaceCurrentPlace(new HomePlace());
 						} else {
 
-							if (place instanceof ButtonBarPlace || place instanceof ButtonPlace || place instanceof ElementsPlace || place instanceof FormsPlace || place instanceof PopupPlace
-									|| place instanceof ProgressBarPlace || place instanceof ProgressIndicatorPlace || place instanceof PullToRefreshPlace || place instanceof ScrollWidgetPlace
-									|| place instanceof SearchBoxPlace || place instanceof SliderPlace || place instanceof TabBarPlace) {
+							if (place instanceof ButtonBarPlace || place instanceof CarouselPlace || place instanceof ButtonPlace || place instanceof ElementsPlace
+									|| place instanceof FormsPlace || place instanceof PopupPlace || place instanceof ProgressBarPlace || place instanceof ProgressIndicatorPlace
+									|| place instanceof PullToRefreshPlace || place instanceof ScrollWidgetPlace || place instanceof SearchBoxPlace || place instanceof SliderPlace
+									|| place instanceof TabBarPlace) {
 								historyHandler.replaceCurrentPlace(new HomePlace());
 
 							}

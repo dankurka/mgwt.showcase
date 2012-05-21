@@ -13,20 +13,28 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.mgwt.examples.showcase.client.activities.searchbox;
+package com.googlecode.mgwt.examples.showcase.client.activities.carousel;
 
-import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
-import com.googlecode.mgwt.ui.client.widget.MSearchBox;
+import com.google.gwt.place.shared.Place;
+import com.google.gwt.place.shared.PlaceTokenizer;
 
 /**
  * @author Daniel Kurka
  * 
  */
-public class SearchBoxViewGwtImpl extends DetailViewGwtImpl implements SearchBoxView {
+public class CarouselPlace extends Place {
+	public static class Tokenizer implements PlaceTokenizer<CarouselPlace> {
 
-	public SearchBoxViewGwtImpl() {
+		@Override
+		public CarouselPlace getPlace(String token) {
+			return new CarouselPlace();
+		}
 
-		scrollPanel.setWidget(new MSearchBox());
+		@Override
+		public String getToken(CarouselPlace place) {
+
+			return "";
+		}
+
 	}
-
 }
