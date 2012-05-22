@@ -15,13 +15,6 @@
  */
 package com.googlecode.mgwt.examples.showcase.client.activities.elements;
 
-import java.util.Date;
-
-import com.google.gwt.event.dom.client.BlurEvent;
-import com.google.gwt.event.dom.client.BlurHandler;
-import com.google.gwt.event.logical.shared.ValueChangeEvent;
-import com.google.gwt.event.logical.shared.ValueChangeHandler;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.googlecode.mgwt.examples.showcase.client.ChromeWorkaround;
@@ -99,27 +92,6 @@ public class ElementsViewImpl extends DetailViewGwtImpl implements ElementsView 
 		MEmailTextBox emailBox = new MEmailTextBox();
 		emailBox.setPlaceHolder("email keyboard");
 		widgetList1.add(emailBox);
-
-		MDateBox dateBox = new MDateBox();
-		widgetList1.add(dateBox);
-
-		dateBox.addBlurHandler(new BlurHandler() {
-
-			@Override
-			public void onBlur(BlurEvent event) {
-				Window.alert("blur");
-
-			}
-		});
-
-		dateBox.addValueChangeHandler(new ValueChangeHandler<Date>() {
-
-			@Override
-			public void onValueChange(ValueChangeEvent<Date> event) {
-				Window.alert("value: " + event.getValue());
-
-			}
-		});
 
 		MTextArea mTextArea = new MTextArea();
 		mTextArea.setPlaceHolder("text area");
