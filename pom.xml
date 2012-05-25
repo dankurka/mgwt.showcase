@@ -20,6 +20,13 @@
 		<connection>scm:git:https://code.google.com/p/mgwt.showcase/</connection>
 		<developerConnection>scm:git:https://code.google.com/p/mgwt.showcase/</developerConnection>
 	</scm>
+   
+  <repositories>
+	   <repository>
+	      <id>sonatype snapshots</id>
+	      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+	   </repository>
+	</repositories>
 
 	<build>
 		<extensions>
