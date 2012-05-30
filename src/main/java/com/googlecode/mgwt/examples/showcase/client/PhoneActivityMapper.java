@@ -43,6 +43,8 @@ import com.googlecode.mgwt.examples.showcase.client.activities.elements.Elements
 import com.googlecode.mgwt.examples.showcase.client.activities.elements.ElementsPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.forms.FormsActivity;
 import com.googlecode.mgwt.examples.showcase.client.activities.forms.FormsPlace;
+import com.googlecode.mgwt.examples.showcase.client.activities.gcell.GroupedCellListActivity;
+import com.googlecode.mgwt.examples.showcase.client.activities.gcell.GroupedCellListPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.popup.PopupActivity;
 import com.googlecode.mgwt.examples.showcase.client.activities.popup.PopupPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.progressbar.ProgressBarActivity;
@@ -140,6 +142,10 @@ public class PhoneActivityMapper implements ActivityMapper {
 
 		if (place instanceof CarouselPlace) {
 			return new CarouselActivity(clientFactory);
+		}
+
+		if (place instanceof GroupedCellListPlace) {
+			return new GroupedCellListActivity(clientFactory);
 		}
 
 		if (place instanceof AnimationSlidePlace || place instanceof AnimationSlideUpPlace || place instanceof AnimationDissolvePlace || place instanceof AnimationFadePlace

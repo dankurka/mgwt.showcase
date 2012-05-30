@@ -27,6 +27,7 @@ import com.googlecode.mgwt.examples.showcase.client.activities.buttonbar.ButtonB
 import com.googlecode.mgwt.examples.showcase.client.activities.carousel.CarouselView;
 import com.googlecode.mgwt.examples.showcase.client.activities.elements.ElementsView;
 import com.googlecode.mgwt.examples.showcase.client.activities.forms.FormsView;
+import com.googlecode.mgwt.examples.showcase.client.activities.gcell.GroupedCellListView;
 import com.googlecode.mgwt.examples.showcase.client.activities.popup.PopupView;
 import com.googlecode.mgwt.examples.showcase.client.activities.progressbar.ProgressBarView;
 import com.googlecode.mgwt.examples.showcase.client.activities.progressindicator.ProgressIndicatorView;
@@ -86,5 +87,7 @@ public interface ClientFactory {
 	public ProgressIndicatorView getProgressIndicatorView();
 
 	public FormsView getFormsView();
+
+	public GroupedCellListView getGroupedCellListView();
 
 }

@@ -32,12 +32,14 @@ import com.googlecode.mgwt.examples.showcase.client.activities.button.ButtonView
 import com.googlecode.mgwt.examples.showcase.client.activities.button.ButtonViewGwtImpl;
 import com.googlecode.mgwt.examples.showcase.client.activities.buttonbar.ButtonBarView;
 import com.googlecode.mgwt.examples.showcase.client.activities.buttonbar.ButtonBarViewGwtImpl;
-import com.googlecode.mgwt.examples.showcase.client.activities.carousel.CarouselViewGwtImpl;
 import com.googlecode.mgwt.examples.showcase.client.activities.carousel.CarouselView;
+import com.googlecode.mgwt.examples.showcase.client.activities.carousel.CarouselViewGwtImpl;
 import com.googlecode.mgwt.examples.showcase.client.activities.elements.ElementsView;
 import com.googlecode.mgwt.examples.showcase.client.activities.elements.ElementsViewImpl;
 import com.googlecode.mgwt.examples.showcase.client.activities.forms.FormsView;
 import com.googlecode.mgwt.examples.showcase.client.activities.forms.FormsViewGwtImpl;
+import com.googlecode.mgwt.examples.showcase.client.activities.gcell.GroupedCellListGwtImpl;
+import com.googlecode.mgwt.examples.showcase.client.activities.gcell.GroupedCellListView;
 import com.googlecode.mgwt.examples.showcase.client.activities.popup.PopupView;
 import com.googlecode.mgwt.examples.showcase.client.activities.popup.PopupViewGwtImpl;
 import com.googlecode.mgwt.examples.showcase.client.activities.progressbar.ProgressBarView;
@@ -82,6 +84,7 @@ public class ClientFactoryImpl implements ClientFactory {
 	private ProgressIndicatorViewImpl progressIndicatorView;
 	private FormsViewGwtImpl formsView;
 	private CarouselView carouselView;
+	private GroupedCellListGwtImpl groupedCellListView;
 
 	public ClientFactoryImpl() {
 		eventBus = new SimpleEventBus();
@@ -244,6 +247,14 @@ public class ClientFactoryImpl implements ClientFactory {
 			carouselView = new CarouselViewGwtImpl();
 		}
 		return carouselView;
+	}
+
+	@Override
+	public GroupedCellListView getGroupedCellListView() {
+		if (groupedCellListView == null) {
+			groupedCellListView = new GroupedCellListGwtImpl();
+		}
+		return groupedCellListView;
 	}
 
 }

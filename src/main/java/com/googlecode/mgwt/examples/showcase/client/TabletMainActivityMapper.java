@@ -26,6 +26,8 @@ import com.googlecode.mgwt.examples.showcase.client.activities.elements.Elements
 import com.googlecode.mgwt.examples.showcase.client.activities.elements.ElementsPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.forms.FormsActivity;
 import com.googlecode.mgwt.examples.showcase.client.activities.forms.FormsPlace;
+import com.googlecode.mgwt.examples.showcase.client.activities.gcell.GroupedCellListActivity;
+import com.googlecode.mgwt.examples.showcase.client.activities.gcell.GroupedCellListPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.popup.PopupActivity;
 import com.googlecode.mgwt.examples.showcase.client.activities.popup.PopupPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.progressbar.ProgressBarActivity;
@@ -140,6 +142,10 @@ public class TabletMainActivityMapper implements ActivityMapper {
 
 		if (newPlace instanceof CarouselPlace) {
 			return new CarouselActivity(clientFactory);
+		}
+
+		if (newPlace instanceof GroupedCellListPlace) {
+			return new GroupedCellListActivity(clientFactory);
 		}
 
 		if (newPlace instanceof AnimationSlidePlace || newPlace instanceof AnimationSlideUpPlace || newPlace instanceof AnimationDissolvePlace || newPlace instanceof AnimationFadePlace
