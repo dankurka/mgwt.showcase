@@ -15,7 +15,14 @@
  */
 package com.googlecode.mgwt.examples.showcase.client.activities.gcell;
 
+import java.util.List;
+
+import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
+import com.googlecode.mgwt.ui.client.MGWTStyle;
+import com.googlecode.mgwt.ui.client.widget.celllist.Cell;
+import com.googlecode.mgwt.ui.client.widget.experimental.GroupingCellList;
+import com.googlecode.mgwt.ui.client.widget.experimental.GroupingCellList.CellGroup;
 import com.googlecode.mgwt.ui.client.widget.experimental.GroupingCellListComposite;
 
 /**
@@ -24,15 +31,53 @@ import com.googlecode.mgwt.ui.client.widget.experimental.GroupingCellListComposi
  */
 public class GroupedCellListGwtImpl extends DetailViewGwtImpl implements GroupedCellListView {
 
+	private GroupingCellListComposite<Header, Content> groupingCellListComposite;
+
 	/**
 	 * 
 	 */
 	public GroupedCellListGwtImpl() {
 		scrollPanel.removeFromParent();
 
-		GroupingCellListComposite groupingCellListComposite = new GroupingCellListComposite();
+		groupingCellListComposite = new GroupingCellListComposite<Header, Content>(new GroupingCellList<Header, Content>(new ContentCell(), new HeaderCell(), MGWTStyle.getTheme()
+				.getMGWTClientBundle().getListCss()), MGWTStyle.getTheme().getMGWTClientBundle().getGroupingList());
 
 		main.add(groupingCellListComposite);
+
+	}
+
+	private static class ContentCell implements Cell<Content> {
+
+		@Override
+		public void render(SafeHtmlBuilder safeHtmlBuilder, Content model) {
+			safeHtmlBuilder.appendEscaped(model.getName());
+
+		}
+
+		@Override
+		public boolean canBeSelected(Content model) {
+			return false;
+		}
+
+	}
+
+	private static class HeaderCell implements Cell<Header> {
+
+		@Override
+		public void render(SafeHtmlBuilder safeHtmlBuilder, Header model) {
+			safeHtmlBuilder.appendEscaped(model.getName());
+		}
+
+		@Override
+		public boolean canBeSelected(Header model) {
+			return false;
+		}
+
+	}
+
+	@Override
+	public void render(List<CellGroup<Header, Content>> models) {
+		groupingCellListComposite.render(models);
 
 	}
 

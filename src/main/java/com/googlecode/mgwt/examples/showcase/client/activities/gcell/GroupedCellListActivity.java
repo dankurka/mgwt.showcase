@@ -15,16 +15,23 @@
  */
 package com.googlecode.mgwt.examples.showcase.client.activities.gcell;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.googlecode.mgwt.examples.showcase.client.ClientFactory;
 import com.googlecode.mgwt.examples.showcase.client.DetailActivity;
+import com.googlecode.mgwt.examples.showcase.client.activities.gcell.GroupedCellListView.Content;
+import com.googlecode.mgwt.examples.showcase.client.activities.gcell.GroupedCellListView.Header;
+import com.googlecode.mgwt.ui.client.widget.experimental.GroupingCellList.CellGroup;
 
 /**
  * @author Daniel Kurka
  * 
  */
 public class GroupedCellListActivity extends DetailActivity {
+	protected static String[] labels = new String[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#" };
 
 	private final ClientFactory clientFactory;
 
@@ -43,6 +50,46 @@ public class GroupedCellListActivity extends DetailActivity {
 		view.getHeader().setText("Header List");
 		view.getMainButtonText().setText("Nav");
 
+		view.render(buildList());
+
 		panel.setWidget(view);
+	}
+
+	private List<CellGroup<Header, Content>> buildList() {
+		ArrayList<CellGroup<Header, Content>> list = new ArrayList<CellGroup<Header, Content>>();
+
+		for (int i = 0; i < labels.length; i++) {
+			final Header header = new Header(labels[i]);
+			final ArrayList<Content> arrayList = new ArrayList<Content>();
+
+			int max = (int) (Math.random() * 5);
+
+			for (int j = 0; j < max; j++) {
+				arrayList.add(new Content("" + j));
+			}
+
+			CellGroup<Header, Content> cellGroup = new CellGroup<Header, Content>() {
+
+				@Override
+				public Header getGroup() {
+					return header;
+				}
+
+				@Override
+				public List<Content> getMember() {
+					return arrayList;
+				}
+
+				@Override
+				public String getKey() {
+					return header.getName();
+				}
+			};
+
+			list.add(cellGroup);
+
+		}
+
+		return list;
 	}
 }

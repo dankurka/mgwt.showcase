@@ -15,12 +15,45 @@
  */
 package com.googlecode.mgwt.examples.showcase.client.activities.gcell;
 
+import java.util.List;
+
 import com.googlecode.mgwt.examples.showcase.client.DetailView;
+import com.googlecode.mgwt.ui.client.widget.experimental.GroupingCellList.CellGroup;
 
 /**
  * @author Daniel Kurka
  * 
  */
 public interface GroupedCellListView extends DetailView {
+
+	public void render(List<CellGroup<Header, Content>> models);
+
+	public class Header {
+		private final String name;
+
+		public Header(String name) {
+			this.name = name;
+
+		}
+
+		public String getName() {
+			return name;
+		}
+
+	}
+
+	public class Content {
+
+		private final String name;
+
+		public Content(String name) {
+			this.name = name;
+		}
+
+		public String getName() {
+			return name;
+		}
+
+	}
 
 }
