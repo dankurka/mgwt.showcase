@@ -19,7 +19,6 @@ import java.util.List;
 
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
-import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.widget.celllist.Cell;
 import com.googlecode.mgwt.ui.client.widget.experimental.GroupingCellList;
 import com.googlecode.mgwt.ui.client.widget.experimental.GroupingCellList.CellGroup;
@@ -39,8 +38,8 @@ public class GroupedCellListGwtImpl extends DetailViewGwtImpl implements Grouped
 	public GroupedCellListGwtImpl() {
 		scrollPanel.removeFromParent();
 
-		groupingCellListComposite = new GroupingCellListComposite<Header, Content>(new GroupingCellList<Header, Content>(new ContentCell(), new HeaderCell(), MGWTStyle.getTheme()
-				.getMGWTClientBundle().getListCss()), MGWTStyle.getTheme().getMGWTClientBundle().getGroupingList());
+		GroupingCellList<Header, Content> groupingCellList = new GroupingCellList<Header, Content>(new ContentCell(), new HeaderCell());
+		groupingCellListComposite = new GroupingCellListComposite<Header, Content>(groupingCellList);
 
 		main.add(groupingCellListComposite);
 
