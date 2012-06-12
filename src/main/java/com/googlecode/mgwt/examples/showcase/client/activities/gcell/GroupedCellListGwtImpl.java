@@ -55,7 +55,7 @@ public class GroupedCellListGwtImpl extends DetailViewGwtImpl implements Grouped
 
 		@Override
 		public boolean canBeSelected(Content model) {
-			return false;
+			return true;
 		}
 
 	}

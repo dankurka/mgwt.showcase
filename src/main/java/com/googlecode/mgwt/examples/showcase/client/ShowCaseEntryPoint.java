@@ -55,7 +55,7 @@ public class ShowCaseEntryPoint implements EntryPoint {
 		// GWT.create(MGWTStandardBundle.class));
 		// MGWTStyle.getDefaultClientBundle().getMainCss().ensureInjected();
 
-		//MGWTStyle.setTheme(new CustomTheme());
+		//		MGWTStyle.setTheme(new CustomTheme());
 
 		ViewPort viewPort = new MGWTSettings.ViewPort();
 		viewPort.setTargetDensity(DENSITY.MEDIUM);
