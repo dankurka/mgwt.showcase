@@ -1,16 +1,14 @@
 /*
  * Copyright 2010 Daniel Kurka
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
  * 
  * http://www.apache.org/licenses/LICENSE-2.0
  * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
 package com.googlecode.mgwt.examples.showcase.client.activities.button;
@@ -27,61 +25,62 @@ import com.googlecode.mgwt.ui.client.widget.Button;
  */
 public class ButtonViewGwtImpl extends DetailViewGwtImpl implements ButtonView {
 
-	public ButtonViewGwtImpl() {
+  public ButtonViewGwtImpl() {
 
-		FlowPanel content = new FlowPanel();
-		content.getElement().getStyle().setMargin(20, Unit.PX);
+    FlowPanel content = new FlowPanel();
+    content.getElement().getStyle().setMargin(20, Unit.PX);
 
-		scrollPanel.setScrollingEnabledX(false);
+    scrollPanel.setScrollingEnabledX(false);
 
-		Button normalButton = new Button("Normal");
-		content.add(normalButton);
+    Button normalButton = new Button("Normal");
+    content.add(normalButton);
 
-		Button roundButton = new Button("Round");
-		roundButton.setRound(true);
-		content.add(roundButton);
+    Button roundButton = new Button("Round");
+    roundButton.setRound(true);
+    content.add(roundButton);
 
-		Button smallButton = new Button("Small");
-		smallButton.setSmall(true);
-		content.add(smallButton);
+    Button smallButton = new Button("Small");
+    smallButton.setSmall(true);
+    content.add(smallButton);
 
-		HTML spacer = new HTML();
-		spacer.setHeight("100px");
-		content.add(spacer);
+    HTML spacer = new HTML();
+    spacer.setHeight("100px");
+    content.add(spacer);
 
-		Button importantButton = new Button("Important");
-		importantButton.setImportant(true);
-		content.add(importantButton);
+    Button importantButton = new Button("Important");
+    importantButton.setImportant(true);
+    content.add(importantButton);
 
-		Button importantRoundButton = new Button("Round");
-		importantRoundButton.setImportant(true);
-		importantRoundButton.setRound(true);
-		content.add(importantRoundButton);
+    Button importantRoundButton = new Button("Round");
+    importantRoundButton.setImportant(true);
+    importantRoundButton.setRound(true);
+    content.add(importantRoundButton);
 
-		Button importantSmallButton = new Button("Small");
-		importantSmallButton.setImportant(true);
-		importantSmallButton.setSmall(true);
-		content.add(importantSmallButton);
+    Button importantSmallButton = new Button("Small");
+    importantSmallButton.setImportant(true);
+    importantSmallButton.setSmall(true);
+    content.add(importantSmallButton);
 
-		spacer = new HTML();
-		spacer.setHeight("100px");
-		content.add(spacer);
+    spacer = new HTML();
+    spacer.setHeight("100px");
+    content.add(spacer);
 
-		Button conmfirmButton = new Button("Confirm");
-		conmfirmButton.setConfirm(true);
-		content.add(conmfirmButton);
+    Button conmfirmButton = new Button("Confirm");
+    conmfirmButton.setConfirm(true);
+    content.add(conmfirmButton);
 
-		Button confirmRoundButton = new Button("Round");
-		confirmRoundButton.setConfirm(true);
-		confirmRoundButton.setRound(true);
-		content.add(confirmRoundButton);
+    Button confirmRoundButton = new Button("Round");
+    confirmRoundButton.setConfirm(true);
+    confirmRoundButton.setRound(true);
+    content.add(confirmRoundButton);
 
-		Button confirmSmallButton = new Button("Small");
-		confirmSmallButton.setConfirm(true);
-		confirmSmallButton.setSmall(true);
+    Button confirmSmallButton = new Button("Small");
+    confirmSmallButton.setConfirm(true);
+    confirmSmallButton.setSmall(true);
+    content.add(confirmSmallButton);
 
-		scrollPanel.setWidget(content);
+    scrollPanel.setWidget(content);
 
-	}
+  }
 
 }
