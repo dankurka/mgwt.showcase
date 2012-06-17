@@ -19,10 +19,10 @@ import java.util.List;
 
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
+import com.googlecode.mgwt.ui.client.widget.GroupingCellList;
+import com.googlecode.mgwt.ui.client.widget.HeaderList;
+import com.googlecode.mgwt.ui.client.widget.GroupingCellList.CellGroup;
 import com.googlecode.mgwt.ui.client.widget.celllist.Cell;
-import com.googlecode.mgwt.ui.client.widget.experimental.GroupingCellList;
-import com.googlecode.mgwt.ui.client.widget.experimental.GroupingCellList.CellGroup;
-import com.googlecode.mgwt.ui.client.widget.experimental.GroupingCellListComposite;
 
 /**
  * @author Daniel Kurka
@@ -30,7 +30,7 @@ import com.googlecode.mgwt.ui.client.widget.experimental.GroupingCellListComposi
  */
 public class GroupedCellListGwtImpl extends DetailViewGwtImpl implements GroupedCellListView {
 
-	private GroupingCellListComposite<Header, Content> groupingCellListComposite;
+	private HeaderList<Header, Content> headerList;
 
 	/**
 	 * 
@@ -39,9 +39,9 @@ public class GroupedCellListGwtImpl extends DetailViewGwtImpl implements Grouped
 		scrollPanel.removeFromParent();
 
 		GroupingCellList<Header, Content> groupingCellList = new GroupingCellList<Header, Content>(new ContentCell(), new HeaderCell());
-		groupingCellListComposite = new GroupingCellListComposite<Header, Content>(groupingCellList);
+		headerList = new HeaderList<Header, Content>(groupingCellList);
 
-		main.add(groupingCellListComposite);
+		main.add(headerList);
 
 	}
 
@@ -76,7 +76,7 @@ public class GroupedCellListGwtImpl extends DetailViewGwtImpl implements Grouped
 
 	@Override
 	public void render(List<CellGroup<Header, Content>> models) {
-		groupingCellListComposite.render(models);
+		headerList.render(models);
 
 	}
 

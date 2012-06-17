@@ -24,7 +24,8 @@ import com.googlecode.mgwt.examples.showcase.client.ClientFactory;
 import com.googlecode.mgwt.examples.showcase.client.DetailActivity;
 import com.googlecode.mgwt.examples.showcase.client.activities.gcell.GroupedCellListView.Content;
 import com.googlecode.mgwt.examples.showcase.client.activities.gcell.GroupedCellListView.Header;
-import com.googlecode.mgwt.ui.client.widget.experimental.GroupingCellList.CellGroup;
+import com.googlecode.mgwt.ui.client.widget.GroupingCellList.CellGroup;
+import com.googlecode.mgwt.ui.client.widget.GroupingCellList.StandardCellGroup;
 
 /**
  * @author Daniel Kurka
@@ -62,29 +63,15 @@ public class GroupedCellListActivity extends DetailActivity {
 			final Header header = new Header(labels[i]);
 			final ArrayList<Content> arrayList = new ArrayList<Content>();
 
-			int max = (int) (Math.random() * 5);
+			//int max = (int) (Math.random() * 5);
+
+			int max = 2;
 
 			for (int j = 0; j < max; j++) {
 				arrayList.add(new Content("" + j));
 			}
 
-			CellGroup<Header, Content> cellGroup = new CellGroup<Header, Content>() {
-
-				@Override
-				public Header getGroup() {
-					return header;
-				}
-
-				@Override
-				public List<Content> getMember() {
-					return arrayList;
-				}
-
-				@Override
-				public String getKey() {
-					return header.getName();
-				}
-			};
+			CellGroup<Header, Content> cellGroup = new StandardCellGroup<Header, Content>(header.getName(), header, arrayList);
 
 			list.add(cellGroup);
 
