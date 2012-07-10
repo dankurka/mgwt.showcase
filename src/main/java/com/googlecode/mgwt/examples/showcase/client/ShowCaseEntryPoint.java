@@ -1,16 +1,14 @@
 /*
  * x * Copyright 2010 Daniel Kurka
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
  * 
  * http://www.apache.org/licenses/LICENSE-2.0
  * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
 package com.googlecode.mgwt.examples.showcase.client;
@@ -37,6 +35,7 @@ import com.googlecode.mgwt.ui.client.MGWTSettings.ViewPort.DENSITY;
 import com.googlecode.mgwt.ui.client.dialog.TabletPortraitOverlay;
 import com.googlecode.mgwt.ui.client.layout.MasterRegionHandler;
 import com.googlecode.mgwt.ui.client.layout.OrientationRegionHandler;
+import com.googlecode.mgwt.ui.client.util.SuperDevModeUtil;
 
 /**
  * @author Daniel Kurka
@@ -44,171 +43,182 @@ import com.googlecode.mgwt.ui.client.layout.OrientationRegionHandler;
  */
 public class ShowCaseEntryPoint implements EntryPoint {
 
-	private void start() {
+  private void start() {
 
-		// MGWTColorScheme.setBaseColor("#56a60D");
-		// MGWTColorScheme.setFontColor("#eee");
-		//
-		// MGWTStyle.setTheme(new MGWTColorTheme());
-		//
-		// MGWTStyle.setDefaultBundle((MGWTClientBundle)
-		// GWT.create(MGWTStandardBundle.class));
-		// MGWTStyle.getDefaultClientBundle().getMainCss().ensureInjected();
+    // MGWTColorScheme.setBaseColor("#56a60D");
+    // MGWTColorScheme.setFontColor("#eee");
+    //
+    // MGWTStyle.setTheme(new MGWTColorTheme());
+    //
+    // MGWTStyle.setDefaultBundle((MGWTClientBundle)
+    // GWT.create(MGWTStandardBundle.class));
+    // MGWTStyle.getDefaultClientBundle().getMainCss().ensureInjected();
 
-		//		MGWTStyle.setTheme(new CustomTheme());
+    // MGWTStyle.setTheme(new CustomTheme());
 
-		ViewPort viewPort = new MGWTSettings.ViewPort();
-		viewPort.setTargetDensity(DENSITY.MEDIUM);
-		viewPort.setUserScaleAble(false).setMinimumScale(1.0).setMinimumScale(1.0).setMaximumScale(1.0);
+    SuperDevModeUtil.showDevMode();
 
-		MGWTSettings settings = new MGWTSettings();
-		settings.setViewPort(viewPort);
-		settings.setIconUrl("logo.png");
-		settings.setAddGlosToIcon(true);
-		settings.setFullscreen(true);
-		settings.setPreventScrolling(true);
+    ViewPort viewPort = new MGWTSettings.ViewPort();
+    viewPort.setTargetDensity(DENSITY.MEDIUM);
+    viewPort.setUserScaleAble(false).setMinimumScale(1.0).setMinimumScale(1.0).setMaximumScale(1.0);
 
-		MGWT.applySettings(settings);
+    MGWTSettings settings = new MGWTSettings();
+    settings.setViewPort(viewPort);
+    settings.setIconUrl("logo.png");
+    settings.setAddGlosToIcon(true);
+    settings.setFullscreen(true);
+    settings.setPreventScrolling(true);
 
-		final ClientFactory clientFactory = new ClientFactoryImpl();
+    MGWT.applySettings(settings);
 
-		// Start PlaceHistoryHandler with our PlaceHistoryMapper
-		AppPlaceHistoryMapper historyMapper = GWT.create(AppPlaceHistoryMapper.class);
+    final ClientFactory clientFactory = new ClientFactoryImpl();
 
-		if (MGWT.getOsDetection().isTablet()) {
+    // Start PlaceHistoryHandler with our PlaceHistoryMapper
+    AppPlaceHistoryMapper historyMapper = GWT.create(AppPlaceHistoryMapper.class);
 
-			// very nasty workaround because GWT does not corretly support
-			// @media
-			StyleInjector.inject(AppBundle.INSTANCE.css().getText());
+    if (MGWT.getOsDetection().isTablet()) {
 
-			createTabletDisplay(clientFactory);
-		} else {
+      // very nasty workaround because GWT does not corretly support
+      // @media
+      StyleInjector.inject(AppBundle.INSTANCE.css().getText());
 
-			createPhoneDisplay(clientFactory);
+      createTabletDisplay(clientFactory);
+    } else {
 
-		}
+      createPhoneDisplay(clientFactory);
 
-		AppHistoryObserver historyObserver = new AppHistoryObserver();
+    }
 
-		MGWTPlaceHistoryHandler historyHandler = new MGWTPlaceHistoryHandler(historyMapper, historyObserver);
+    AppHistoryObserver historyObserver = new AppHistoryObserver();
 
-		historyHandler.register(clientFactory.getPlaceController(), clientFactory.getEventBus(), new HomePlace());
-		historyHandler.handleCurrentHistory();
+    MGWTPlaceHistoryHandler historyHandler =
+        new MGWTPlaceHistoryHandler(historyMapper, historyObserver);
 
-	}
+    historyHandler.register(clientFactory.getPlaceController(), clientFactory.getEventBus(),
+        new HomePlace());
+    historyHandler.handleCurrentHistory();
 
-	private void createPhoneDisplay(ClientFactory clientFactory) {
-		AnimatableDisplay display = GWT.create(AnimatableDisplay.class);
+  }
 
-		PhoneActivityMapper appActivityMapper = new PhoneActivityMapper(clientFactory);
+  private void createPhoneDisplay(ClientFactory clientFactory) {
+    AnimatableDisplay display = GWT.create(AnimatableDisplay.class);
 
-		PhoneAnimationMapper appAnimationMapper = new PhoneAnimationMapper();
+    PhoneActivityMapper appActivityMapper = new PhoneActivityMapper(clientFactory);
 
-		AnimatingActivityManager activityManager = new AnimatingActivityManager(appActivityMapper, appAnimationMapper, clientFactory.getEventBus());
+    PhoneAnimationMapper appAnimationMapper = new PhoneAnimationMapper();
 
-		activityManager.setDisplay(display);
+    AnimatingActivityManager activityManager =
+        new AnimatingActivityManager(appActivityMapper, appAnimationMapper, clientFactory
+            .getEventBus());
 
-		RootPanel.get().add(display);
+    activityManager.setDisplay(display);
 
-	}
+    RootPanel.get().add(display);
 
-	private void createTabletDisplay(ClientFactory clientFactory) {
-		SimplePanel navContainer = new SimplePanel();
-		navContainer.getElement().setId("nav");
-		navContainer.getElement().addClassName("landscapeonly");
-		AnimatableDisplay navDisplay = GWT.create(AnimatableDisplay.class);
+  }
 
-		final TabletPortraitOverlay tabletPortraitOverlay = new TabletPortraitOverlay();
+  private void createTabletDisplay(ClientFactory clientFactory) {
+    SimplePanel navContainer = new SimplePanel();
+    navContainer.getElement().setId("nav");
+    navContainer.getElement().addClassName("landscapeonly");
+    AnimatableDisplay navDisplay = GWT.create(AnimatableDisplay.class);
 
-		new OrientationRegionHandler(navContainer, tabletPortraitOverlay, navDisplay);
-		new MasterRegionHandler(clientFactory.getEventBus(), "nav", tabletPortraitOverlay);
+    final TabletPortraitOverlay tabletPortraitOverlay = new TabletPortraitOverlay();
 
-		ActivityMapper navActivityMapper = new TabletNavActivityMapper(clientFactory);
+    new OrientationRegionHandler(navContainer, tabletPortraitOverlay, navDisplay);
+    new MasterRegionHandler(clientFactory.getEventBus(), "nav", tabletPortraitOverlay);
 
-		AnimationMapper navAnimationMapper = new TabletNavAnimationMapper();
+    ActivityMapper navActivityMapper = new TabletNavActivityMapper(clientFactory);
 
-		AnimatingActivityManager navActivityManager = new AnimatingActivityManager(navActivityMapper, navAnimationMapper, clientFactory.getEventBus());
+    AnimationMapper navAnimationMapper = new TabletNavAnimationMapper();
 
-		navActivityManager.setDisplay(navDisplay);
+    AnimatingActivityManager navActivityManager =
+        new AnimatingActivityManager(navActivityMapper, navAnimationMapper, clientFactory
+            .getEventBus());
 
-		RootPanel.get().add(navContainer);
+    navActivityManager.setDisplay(navDisplay);
 
-		SimplePanel mainContainer = new SimplePanel();
-		mainContainer.getElement().setId("main");
-		AnimatableDisplay mainDisplay = GWT.create(AnimatableDisplay.class);
+    RootPanel.get().add(navContainer);
 
-		TabletMainActivityMapper tabletMainActivityMapper = new TabletMainActivityMapper(clientFactory);
+    SimplePanel mainContainer = new SimplePanel();
+    mainContainer.getElement().setId("main");
+    AnimatableDisplay mainDisplay = GWT.create(AnimatableDisplay.class);
 
-		AnimationMapper tabletMainAnimationMapper = new TabletMainAnimationMapper();
+    TabletMainActivityMapper tabletMainActivityMapper = new TabletMainActivityMapper(clientFactory);
 
-		AnimatingActivityManager mainActivityManager = new AnimatingActivityManager(tabletMainActivityMapper, tabletMainAnimationMapper, clientFactory.getEventBus());
+    AnimationMapper tabletMainAnimationMapper = new TabletMainAnimationMapper();
 
-		mainActivityManager.setDisplay(mainDisplay);
-		mainContainer.setWidget(mainDisplay);
+    AnimatingActivityManager mainActivityManager =
+        new AnimatingActivityManager(tabletMainActivityMapper, tabletMainAnimationMapper,
+            clientFactory.getEventBus());
 
-		RootPanel.get().add(mainContainer);
+    mainActivityManager.setDisplay(mainDisplay);
+    mainContainer.setWidget(mainDisplay);
 
-	}
+    RootPanel.get().add(mainContainer);
 
-	@Override
-	public void onModuleLoad() {
+  }
 
-		GWT.setUncaughtExceptionHandler(new UncaughtExceptionHandler() {
+  @Override
+  public void onModuleLoad() {
 
-			@Override
-			public void onUncaughtException(Throwable e) {
-				Window.alert("uncaught: " + e.getMessage());
-				String s = buildStackTrace(e, "RuntimeExceotion:\n");
-				Window.alert(s);
-				e.printStackTrace();
+    GWT.setUncaughtExceptionHandler(new UncaughtExceptionHandler() {
 
-			}
-		});
+      @Override
+      public void onUncaughtException(Throwable e) {
+        Window.alert("uncaught: " + e.getMessage());
+        String s = buildStackTrace(e, "RuntimeExceotion:\n");
+        Window.alert(s);
+        e.printStackTrace();
 
-		new Timer() {
-			@Override
-			public void run() {
-				start();
+      }
+    });
 
-			}
-		}.schedule(1);
+    new Timer() {
+      @Override
+      public void run() {
+        start();
 
-		alertSomeStuff();
+      }
+    }.schedule(1);
 
-	}
+    alertSomeStuff();
 
-	private native void alertSomeStuff()/*-{
+  }
+
+  private native void alertSomeStuff()/*-{
 
 //		$doc.addEventListener("scroll", (function() {
 //			alert('scroll');
 //		}), true);
 	}-*/;
 
-	private String buildStackTrace(Throwable t, String log) {
+  private String buildStackTrace(Throwable t, String log) {
 
-		if (t != null) {
-			log += t.getClass().toString();
-			log += t.getMessage();
-			//
-			StackTraceElement[] stackTrace = t.getStackTrace();
-			if (stackTrace != null) {
-				StringBuffer trace = new StringBuffer();
+    if (t != null) {
+      log += t.getClass().toString();
+      log += t.getMessage();
+      //
+      StackTraceElement[] stackTrace = t.getStackTrace();
+      if (stackTrace != null) {
+        StringBuffer trace = new StringBuffer();
 
-				for (int i = 0; i < stackTrace.length; i++) {
-					trace.append(stackTrace[i].getClassName() + "." + stackTrace[i].getMethodName() + "(" + stackTrace[i].getFileName() + ":" + stackTrace[i].getLineNumber());
-				}
+        for (int i = 0; i < stackTrace.length; i++) {
+          trace.append(stackTrace[i].getClassName() + "." + stackTrace[i].getMethodName() + "("
+              + stackTrace[i].getFileName() + ":" + stackTrace[i].getLineNumber());
+        }
 
-				log += trace.toString();
-			}
-			//
-			Throwable cause = t.getCause();
-			if (cause != null && cause != t) {
+        log += trace.toString();
+      }
+      //
+      Throwable cause = t.getCause();
+      if (cause != null && cause != t) {
 
-				log += buildStackTrace(cause, "CausedBy:\n");
+        log += buildStackTrace(cause, "CausedBy:\n");
 
-			}
-		}
-		return log;
-	}
+      }
+    }
+    return log;
+  }
 
 }
