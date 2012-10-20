@@ -37,6 +37,14 @@
 	<extend-configuration-property name="html5manifestlinker_files" value="./" />
 	<extend-configuration-property name="html5manifestlinker_files" value="index.html" />
 	<extend-configuration-property name="html5manifestlinker_files" value="logo.png" />
-
+	
+	<set-configuration-property name="CssResource.obfuscationPrefix" value="emtpy"/>
+	<set-property name="compiler.stackMode" value="strip"/>
+	<set-configuration-property name="compiler.enum.obfuscate.names" value="true"/>
+	
+	<add-linker name="xsiframe"/>
+<!-- 	<set-configuration-property name="devModeRedirectEnabled" value="true"/> -->
+<!-- 	<set-configuration-property name="mgwt.superdevmode" value="on" /> -->
+	
 	<source path="client" />
 </module>

@@ -91,11 +91,9 @@ public class ShowCaseEntryPoint implements EntryPoint {
 
     AppHistoryObserver historyObserver = new AppHistoryObserver();
 
-    MGWTPlaceHistoryHandler historyHandler =
-        new MGWTPlaceHistoryHandler(historyMapper, historyObserver);
+    MGWTPlaceHistoryHandler historyHandler = new MGWTPlaceHistoryHandler(historyMapper, historyObserver);
 
-    historyHandler.register(clientFactory.getPlaceController(), clientFactory.getEventBus(),
-        new HomePlace());
+    historyHandler.register(clientFactory.getPlaceController(), clientFactory.getEventBus(), new HomePlace());
     historyHandler.handleCurrentHistory();
 
   }
@@ -107,9 +105,7 @@ public class ShowCaseEntryPoint implements EntryPoint {
 
     PhoneAnimationMapper appAnimationMapper = new PhoneAnimationMapper();
 
-    AnimatingActivityManager activityManager =
-        new AnimatingActivityManager(appActivityMapper, appAnimationMapper, clientFactory
-            .getEventBus());
+    AnimatingActivityManager activityManager = new AnimatingActivityManager(appActivityMapper, appAnimationMapper, clientFactory.getEventBus());
 
     activityManager.setDisplay(display);
 
@@ -132,9 +128,7 @@ public class ShowCaseEntryPoint implements EntryPoint {
 
     AnimationMapper navAnimationMapper = new TabletNavAnimationMapper();
 
-    AnimatingActivityManager navActivityManager =
-        new AnimatingActivityManager(navActivityMapper, navAnimationMapper, clientFactory
-            .getEventBus());
+    AnimatingActivityManager navActivityManager = new AnimatingActivityManager(navActivityMapper, navAnimationMapper, clientFactory.getEventBus());
 
     navActivityManager.setDisplay(navDisplay);
 
@@ -148,9 +142,7 @@ public class ShowCaseEntryPoint implements EntryPoint {
 
     AnimationMapper tabletMainAnimationMapper = new TabletMainAnimationMapper();
 
-    AnimatingActivityManager mainActivityManager =
-        new AnimatingActivityManager(tabletMainActivityMapper, tabletMainAnimationMapper,
-            clientFactory.getEventBus());
+    AnimatingActivityManager mainActivityManager = new AnimatingActivityManager(tabletMainActivityMapper, tabletMainAnimationMapper, clientFactory.getEventBus());
 
     mainActivityManager.setDisplay(mainDisplay);
     mainContainer.setWidget(mainDisplay);
@@ -175,6 +167,7 @@ public class ShowCaseEntryPoint implements EntryPoint {
     });
 
     new Timer() {
+
       @Override
       public void run() {
         start();
@@ -182,43 +175,34 @@ public class ShowCaseEntryPoint implements EntryPoint {
       }
     }.schedule(1);
 
-    alertSomeStuff();
-
   }
 
-  private native void alertSomeStuff()/*-{
-
-//		$doc.addEventListener("scroll", (function() {
-//			alert('scroll');
-//		}), true);
-	}-*/;
-
   private String buildStackTrace(Throwable t, String log) {
-
-    if (t != null) {
-      log += t.getClass().toString();
-      log += t.getMessage();
-      //
-      StackTraceElement[] stackTrace = t.getStackTrace();
-      if (stackTrace != null) {
-        StringBuffer trace = new StringBuffer();
-
-        for (int i = 0; i < stackTrace.length; i++) {
-          trace.append(stackTrace[i].getClassName() + "." + stackTrace[i].getMethodName() + "("
-              + stackTrace[i].getFileName() + ":" + stackTrace[i].getLineNumber());
-        }
-
-        log += trace.toString();
-      }
-      //
-      Throwable cause = t.getCause();
-      if (cause != null && cause != t) {
-
-        log += buildStackTrace(cause, "CausedBy:\n");
-
-      }
-    }
-    return log;
+    return "disabled";
+    // if (t != null) {
+    // log += t.getClass().toString();
+    // log += t.getMessage();
+    // //
+    // StackTraceElement[] stackTrace = t.getStackTrace();
+    // if (stackTrace != null) {
+    // StringBuffer trace = new StringBuffer();
+    //
+    // for (int i = 0; i < stackTrace.length; i++) {
+    // trace.append(stackTrace[i].getClassName() + "." + stackTrace[i].getMethodName() + "("
+    // + stackTrace[i].getFileName() + ":" + stackTrace[i].getLineNumber());
+    // }
+    //
+    // log += trace.toString();
+    // }
+    // //
+    // Throwable cause = t.getCause();
+    // if (cause != null && cause != t) {
+    //
+    // log += buildStackTrace(cause, "CausedBy:\n");
+    //
+    // }
+    // }
+    // return log;
   }
 
 }
