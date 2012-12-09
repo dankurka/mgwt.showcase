@@ -42,6 +42,10 @@ public class ButtonViewGwtImpl extends DetailViewGwtImpl implements ButtonView {
     Button smallButton = new Button("Small");
     smallButton.setSmall(true);
     content.add(smallButton);
+    
+    Button disabledButton = new Button("Disabled");
+    disabledButton.setDisabled(true);
+    content.add(disabledButton);
 
     HTML spacer = new HTML();
     spacer.setHeight("100px");
@@ -60,6 +64,11 @@ public class ButtonViewGwtImpl extends DetailViewGwtImpl implements ButtonView {
     importantSmallButton.setImportant(true);
     importantSmallButton.setSmall(true);
     content.add(importantSmallButton);
+    
+    Button importantDisabledButton = new Button("Disabled");
+    importantDisabledButton.setImportant(true);
+    importantDisabledButton.setDisabled(true);    
+    content.add(importantDisabledButton);
 
     spacer = new HTML();
     spacer.setHeight("100px");
@@ -74,10 +83,10 @@ public class ButtonViewGwtImpl extends DetailViewGwtImpl implements ButtonView {
     confirmRoundButton.setRound(true);
     content.add(confirmRoundButton);
 
-    Button confirmSmallButton = new Button("Small");
-    confirmSmallButton.setConfirm(true);
-    confirmSmallButton.setSmall(true);
-    content.add(confirmSmallButton);
+    Button confirmDisabledButton = new Button("Disabled");
+    confirmDisabledButton.setConfirm(true);
+    confirmDisabledButton.setDisabled(true);
+    content.add(confirmDisabledButton);
 
     scrollPanel.setWidget(content);
 
