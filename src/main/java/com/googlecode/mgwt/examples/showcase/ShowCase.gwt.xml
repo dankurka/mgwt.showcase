@@ -6,7 +6,7 @@
 
 	<inherits name="com.google.gwt.user.User" />
 	<inherits name="com.googlecode.mgwt.MGWT" />
-	<inherits name="com.googlecode.mgwt.linker.Linker" />
+	<inherits name="org.realityforge.gwt.appcache.linker.Linker" />
 <!-- 	<inherits name="com.googlecode.mgwt.theme.ExampleTheme"/> -->
 
 

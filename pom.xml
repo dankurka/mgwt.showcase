@@ -12,6 +12,7 @@
 
 	<properties>
 		<gwtversion>2.5.0</gwtversion>
+        <gwt.appcache.version>0.9</gwt.appcache.version>
 		<runTarget>index.html</runTarget>
 	</properties>
 	
@@ -142,7 +143,23 @@
 			<version>1.2.0-SNAPSHOT</version>
 
 		</dependency>
-
+        <dependency>
+            <groupId>org.realityforge.gwt.appcache</groupId>
+            <artifactId>gwt-appcache-client</artifactId>
+            <version>${gwt.appcache.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.realityforge.gwt.appcache</groupId>
+            <artifactId>gwt-appcache-linker</artifactId>
+            <version>${gwt.appcache.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.realityforge.gwt.appcache</groupId>
+            <artifactId>gwt-appcache-server</artifactId>
+            <version>${gwt.appcache.version}</version>
+        </dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
