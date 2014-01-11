@@ -12,7 +12,7 @@
 
 	<properties>
 		<gwtversion>2.5.0</gwtversion>
-        <gwt.appcache.version>0.9</gwt.appcache.version>
+		<gwt.appcache.version>1.0</gwt.appcache.version>
 		<runTarget>index.html</runTarget>
 	</properties>
 	
