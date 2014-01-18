@@ -20,8 +20,9 @@ import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasHTML;
 import com.google.gwt.user.client.ui.HasValue;
+
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
-import com.googlecode.mgwt.ui.client.widget.MSlider;
+import com.googlecode.mgwt.ui.client.widget.slider.Slider;
 
 /**
  * @author Daniel Kurka
@@ -29,14 +30,14 @@ import com.googlecode.mgwt.ui.client.widget.MSlider;
  */
 public class SliderViewGwtImpl extends DetailViewGwtImpl implements SliderView {
 
-	private MSlider mSlider;
+  private Slider mSlider;
 	private HTML valueField;
 
 	public SliderViewGwtImpl() {
 
 		FlowPanel content = new FlowPanel();
 
-		mSlider = new MSlider();
+    mSlider = new Slider();
 		content.add(mSlider);
 		mSlider.setMax(10);
 
