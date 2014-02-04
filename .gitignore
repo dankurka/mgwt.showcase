@@ -5,3 +5,5 @@ target/
 extras/
 .gwt/
 mgwt-showcase.iml
+mgwt-showcase.ipr
+mgwt-showcase.iws

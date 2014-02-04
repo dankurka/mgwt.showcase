@@ -6,7 +6,7 @@
 
 	<inherits name="com.google.gwt.user.User" />
 	<inherits name="com.googlecode.mgwt.MGWT" />
-	<inherits name="com.googlecode.mgwt.linker.Linker" />
+	<inherits name="org.realityforge.gwt.appcache.linker.Linker" />
 <!-- 	<inherits name="com.googlecode.mgwt.theme.ExampleTheme"/> -->
 
 
@@ -32,11 +32,11 @@
 
 	<entry-point class="com.googlecode.mgwt.examples.showcase.client.ShowCaseEntryPoint" />
 	
-	<add-linker name="permutationmaplinker" />
+	<add-linker name="appcache" />
 	
-	<extend-configuration-property name="html5manifestlinker_files" value="./" />
-	<extend-configuration-property name="html5manifestlinker_files" value="index.html" />
-	<extend-configuration-property name="html5manifestlinker_files" value="logo.png" />
+	<extend-configuration-property name="appcache_static_files" value="./" />
+	<extend-configuration-property name="appcache_static_files" value="index.html" />
+	<extend-configuration-property name="appcache_static_files" value="logo.png" />
 	
 	<set-configuration-property name="CssResource.obfuscationPrefix" value="emtpy"/>
 	<set-property name="compiler.stackMode" value="strip"/>
