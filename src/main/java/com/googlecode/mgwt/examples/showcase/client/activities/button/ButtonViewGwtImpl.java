@@ -16,71 +16,85 @@ package com.googlecode.mgwt.examples.showcase.client.activities.button;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
+import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
+import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
 import com.googlecode.mgwt.ui.client.widget.Button;
+import com.googlecode.mgwt.ui.client.widget.MPhoneNumberTextBox;
 
 /**
  * @author Daniel Kurka
- * 
+ *
  */
 public class ButtonViewGwtImpl extends DetailViewGwtImpl implements ButtonView {
 
-  public ButtonViewGwtImpl() {
+    final MPhoneNumberTextBox textbox = new MPhoneNumberTextBox();
 
-    FlowPanel content = new FlowPanel();
-    content.getElement().getStyle().setMargin(20, Unit.PX);
+    public ButtonViewGwtImpl() {
 
-    scrollPanel.setScrollingEnabledX(false);
+        FlowPanel content = new FlowPanel();
+        content.getElement().getStyle().setMargin(20, Unit.PX);
 
-    Button normalButton = new Button("Normal");
-    content.add(normalButton);
+        scrollPanel.setScrollingEnabledX(false);
 
-    Button roundButton = new Button("Round");
-    roundButton.setRound(true);
-    content.add(roundButton);
+        content.add(textbox);
 
-    Button smallButton = new Button("Small");
-    smallButton.setSmall(true);
-    content.add(smallButton);
+        textbox.getElement().setAttribute("style", "height: 32px; width:100%; font-size:x-large;letter-spacing:2px;");
 
-    HTML spacer = new HTML();
-    spacer.setHeight("100px");
-    content.add(spacer);
+        Button normalButton = new Button("Normal");
+        content.add(normalButton);
+        normalButton.addTapHandler(new TapHandler() {
 
-    Button importantButton = new Button("Important");
-    importantButton.setImportant(true);
-    content.add(importantButton);
+            @Override
+            public void onTap(TapEvent event) {
+                textbox.setValue(textbox.getValue() + '1');
+            }
+        });
+        Button roundButton = new Button("Round");
+        roundButton.setRound(true);
+        content.add(roundButton);
 
-    Button importantRoundButton = new Button("Round");
-    importantRoundButton.setImportant(true);
-    importantRoundButton.setRound(true);
-    content.add(importantRoundButton);
+        Button smallButton = new Button("Small");
+        smallButton.setSmall(true);
+        content.add(smallButton);
 
-    Button importantSmallButton = new Button("Small");
-    importantSmallButton.setImportant(true);
-    importantSmallButton.setSmall(true);
-    content.add(importantSmallButton);
+        HTML spacer = new HTML();
+        spacer.setHeight("100px");
+        content.add(spacer);
 
-    spacer = new HTML();
-    spacer.setHeight("100px");
-    content.add(spacer);
+        Button importantButton = new Button("Important");
+        importantButton.setImportant(true);
+        content.add(importantButton);
 
-    Button conmfirmButton = new Button("Confirm");
-    conmfirmButton.setConfirm(true);
-    content.add(conmfirmButton);
+        Button importantRoundButton = new Button("Round");
+        importantRoundButton.setImportant(true);
+        importantRoundButton.setRound(true);
+        content.add(importantRoundButton);
 
-    Button confirmRoundButton = new Button("Round");
-    confirmRoundButton.setConfirm(true);
-    confirmRoundButton.setRound(true);
-    content.add(confirmRoundButton);
+        Button importantSmallButton = new Button("Small");
+        importantSmallButton.setImportant(true);
+        importantSmallButton.setSmall(true);
+        content.add(importantSmallButton);
 
-    Button confirmSmallButton = new Button("Small");
-    confirmSmallButton.setConfirm(true);
-    confirmSmallButton.setSmall(true);
-    content.add(confirmSmallButton);
+        spacer = new HTML();
+        spacer.setHeight("100px");
+        content.add(spacer);
 
-    scrollPanel.setWidget(content);
+        Button conmfirmButton = new Button("Confirm");
+        conmfirmButton.setConfirm(true);
+        content.add(conmfirmButton);
 
-  }
+        Button confirmRoundButton = new Button("Round");
+        confirmRoundButton.setConfirm(true);
+        confirmRoundButton.setRound(true);
+        content.add(confirmRoundButton);
 
+        Button confirmSmallButton = new Button("Small");
+        confirmSmallButton.setConfirm(true);
+        confirmSmallButton.setSmall(true);
+        content.add(confirmSmallButton);
+
+        scrollPanel.setWidget(content);
+
+    }
 }
