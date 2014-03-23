@@ -16,7 +16,7 @@
 package com.googlecode.mgwt.examples.showcase.client;
 
 import com.googlecode.mgwt.ui.client.MGWT;
-import com.googlecode.mgwt.ui.client.widget.ScrollPanel;
+import com.googlecode.mgwt.ui.client.widget.panel.scroll.ScrollPanel;
 
 public class ChromeWorkaround {
 

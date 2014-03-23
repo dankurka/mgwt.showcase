@@ -17,9 +17,10 @@ package com.googlecode.mgwt.examples.showcase.client.activities.animationdone;
 
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
+
 import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
-import com.googlecode.mgwt.ui.client.widget.Button;
-import com.googlecode.mgwt.ui.client.widget.RoundPanel;
+import com.googlecode.mgwt.ui.client.widget.button.Button;
+import com.googlecode.mgwt.ui.client.widget.panel.Panel;
 
 /**
  * @author Daniel Kurka
@@ -27,14 +28,14 @@ import com.googlecode.mgwt.ui.client.widget.RoundPanel;
  */
 public class AnimationDoneViewGwtImpl implements AnimationDoneView {
 
-	private RoundPanel panel;
+	private Panel panel;
 	private Button button;
 
 	/**
 	 * 
 	 */
 	public AnimationDoneViewGwtImpl() {
-		panel = new RoundPanel();
+		panel = new Panel();
 		panel.getElement().setAttribute("style", "text-align:center");
 		panel.setHeight("200px");
 

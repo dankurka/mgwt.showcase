@@ -15,20 +15,23 @@
  */
 package com.googlecode.mgwt.examples.showcase.client.activities;
 
-import java.util.List;
-
+import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
+
 import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
 import com.googlecode.mgwt.examples.showcase.client.BasicCell;
 import com.googlecode.mgwt.examples.showcase.client.activities.home.Topic;
 import com.googlecode.mgwt.ui.client.MGWT;
-import com.googlecode.mgwt.ui.client.widget.HeaderButton;
-import com.googlecode.mgwt.ui.client.widget.HeaderPanel;
-import com.googlecode.mgwt.ui.client.widget.LayoutPanel;
-import com.googlecode.mgwt.ui.client.widget.ScrollPanel;
-import com.googlecode.mgwt.ui.client.widget.celllist.CellListWithHeader;
-import com.googlecode.mgwt.ui.client.widget.celllist.HasCellSelectedHandler;
+import com.googlecode.mgwt.ui.client.widget.header.HeaderButton;
+import com.googlecode.mgwt.ui.client.widget.header.HeaderPanel;
+import com.googlecode.mgwt.ui.client.widget.layout.RootLayoutPanel;
+import com.googlecode.mgwt.ui.client.widget.list.celllist.CellList;
+import com.googlecode.mgwt.ui.client.widget.list.celllist.HasCellSelectedHandler;
+import com.googlecode.mgwt.ui.client.widget.panel.scroll.ScrollPanel;
+
+import java.util.List;
 
 /**
  * @author Daniel Kurka
@@ -36,13 +39,14 @@ import com.googlecode.mgwt.ui.client.widget.celllist.HasCellSelectedHandler;
  */
 public class ShowCaseListViewGwtImpl implements ShowCaseListView {
 
-	private LayoutPanel main;
+	private RootLayoutPanel main;
 	private HeaderButton forwardButton;
 	private HeaderPanel headerPanel;
-	private CellListWithHeader<Topic> cellList;
+	private CellList<Topic> cellList;
+  private HTML header;
 
 	public ShowCaseListViewGwtImpl() {
-		main = new LayoutPanel();
+		main = new RootLayoutPanel();
 
 		headerPanel = new HeaderPanel();
 
@@ -53,7 +57,7 @@ public class ShowCaseListViewGwtImpl implements ShowCaseListView {
 		}
 		main.add(headerPanel);
 
-		cellList = new CellListWithHeader<Topic>(new BasicCell<Topic>() {
+		cellList = new CellList<Topic>(new BasicCell<Topic>() {
 
 			@Override
 			public String getDisplayString(Topic model) {
@@ -66,10 +70,20 @@ public class ShowCaseListViewGwtImpl implements ShowCaseListView {
 			}
 		});
 
-		cellList.getCellList().setRound(true);
+		cellList.setRound(true);
+		
+    FlowPanel container = new FlowPanel();
+    
+    header = new HTML("Contact Data");
+    // TODO remove styling borrowed from celllist
+//    header.addStyleName(CellList.DEFAULT_APPEARANCE.css().listHeader());
+
+    container.add(header);
+    container.add(cellList);
+
 
 		ScrollPanel scrollPanel = new ScrollPanel();
-		scrollPanel.setWidget(cellList);
+		scrollPanel.setWidget(container);
 		scrollPanel.setScrollingEnabledX(false);
 		main.add(scrollPanel);
 
@@ -89,7 +103,6 @@ public class ShowCaseListViewGwtImpl implements ShowCaseListView {
 	@Override
 	public void setRightButtonText(String text) {
 		forwardButton.setText(text);
-
 	}
 
 	@Override
@@ -99,18 +112,17 @@ public class ShowCaseListViewGwtImpl implements ShowCaseListView {
 
 	@Override
 	public HasCellSelectedHandler getCellSelectedHandler() {
-		return cellList.getCellList();
+		return cellList;
 	}
 
 	@Override
 	public void setTopics(List<Topic> createTopicsList) {
-		cellList.getCellList().render(createTopicsList);
+		cellList.render(createTopicsList);
 
 	}
 
 	@Override
 	public HasText getFirstHeader() {
-		return cellList.getHeader();
+		return header;
 	}
-
 }

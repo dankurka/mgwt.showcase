@@ -14,11 +14,12 @@
 package com.googlecode.mgwt.examples.showcase.client.activities;
 
 import com.google.gwt.user.client.ui.HTML;
+
 import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
 import com.googlecode.mgwt.ui.client.MGWT;
-import com.googlecode.mgwt.ui.client.widget.Button;
-import com.googlecode.mgwt.ui.client.widget.RoundPanel;
+import com.googlecode.mgwt.ui.client.widget.button.Button;
+import com.googlecode.mgwt.ui.client.widget.panel.Panel;
 
 /**
  * @author Daniel Kurka
@@ -26,12 +27,13 @@ import com.googlecode.mgwt.ui.client.widget.RoundPanel;
  */
 public class AboutViewGwtImpl extends DetailViewGwtImpl implements AboutView {
 
-  private RoundPanel round;
+  private Panel round;
   private Button button;
 
   public AboutViewGwtImpl() {
 
-    round = new RoundPanel();
+    round = new Panel();
+    round.setRound(true);
 
     round.add(new HTML("mgwt"));
     round.add(new HTML("Version 1.2.0-SNAPSHOT"));

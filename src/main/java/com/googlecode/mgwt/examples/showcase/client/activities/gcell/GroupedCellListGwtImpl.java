@@ -15,14 +15,15 @@
  */
 package com.googlecode.mgwt.examples.showcase.client.activities.gcell;
 
-import java.util.List;
-
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
+
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
-import com.googlecode.mgwt.ui.client.widget.GroupingCellList;
-import com.googlecode.mgwt.ui.client.widget.HeaderList;
-import com.googlecode.mgwt.ui.client.widget.GroupingCellList.CellGroup;
-import com.googlecode.mgwt.ui.client.widget.celllist.Cell;
+import com.googlecode.mgwt.ui.client.widget.list.celllist.Cell;
+import com.googlecode.mgwt.ui.client.widget.list.celllist.GroupingCellList;
+import com.googlecode.mgwt.ui.client.widget.list.celllist.GroupingCellList.CellGroup;
+import com.googlecode.mgwt.ui.client.widget.list.celllist.HeaderList;
+
+import java.util.List;
 
 /**
  * @author Daniel Kurka

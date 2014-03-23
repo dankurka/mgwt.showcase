@@ -17,30 +17,26 @@ package com.googlecode.mgwt.examples.showcase.client.activities.forms;
 
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.Label;
+
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
 import com.googlecode.mgwt.ui.client.MGWT;
-import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.widget.FormListEntry;
-import com.googlecode.mgwt.ui.client.widget.MTextBox;
-import com.googlecode.mgwt.ui.client.widget.WidgetList;
+import com.googlecode.mgwt.ui.client.widget.form.Form;
+import com.googlecode.mgwt.ui.client.widget.form.FormEntry;
+import com.googlecode.mgwt.ui.client.widget.input.MTextBox;
 
 public class FormsViewGwtImpl extends DetailViewGwtImpl implements FormsView {
 	public FormsViewGwtImpl() {
 
 		FlowPanel container = new FlowPanel();
 
-		HTML header = new HTML("Contact Data");
-		header.addStyleName(MGWTStyle.getTheme().getMGWTClientBundle().getListCss().listHeader());
-
-		container.add(header);
-
-		WidgetList widgetList = new WidgetList();
-		widgetList.setRound(true);
+		Form widgetList = new Form();
+		widgetList.setHeader(new Label("Contact Data"));
 
 		// lets put in some widgets
-		widgetList.add(new FormListEntry("Firstname", new MTextBox()));
-		widgetList.add(new FormListEntry("Lastname", new MTextBox()));
-		widgetList.add(new FormListEntry("Job Title", new MTextBox()));
+		widgetList.add(new FormEntry("Firstname", new MTextBox()));
+		widgetList.add(new FormEntry("Lastname", new MTextBox()));
+		widgetList.add(new FormEntry("Job Title", new MTextBox()));
 
 		container.add(widgetList);
 

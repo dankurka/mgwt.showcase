@@ -17,7 +17,7 @@ import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
-import com.googlecode.mgwt.ui.client.widget.Button;
+import com.googlecode.mgwt.ui.client.widget.button.Button;
 
 /**
  * @author Daniel Kurka
@@ -42,6 +42,10 @@ public class ButtonViewGwtImpl extends DetailViewGwtImpl implements ButtonView {
     Button smallButton = new Button("Small");
     smallButton.setSmall(true);
     content.add(smallButton);
+    
+    Button disabledButton = new Button("Disabled");
+    disabledButton.setDisabled(true);
+    content.add(disabledButton);
 
     HTML spacer = new HTML();
     spacer.setHeight("100px");
@@ -60,6 +64,11 @@ public class ButtonViewGwtImpl extends DetailViewGwtImpl implements ButtonView {
     importantSmallButton.setImportant(true);
     importantSmallButton.setSmall(true);
     content.add(importantSmallButton);
+    
+    Button importantDisabledButton = new Button("Disabled");
+    importantDisabledButton.setDisabled(true);
+    importantDisabledButton.setImportant(true);
+    content.add(importantDisabledButton);
 
     spacer = new HTML();
     spacer.setHeight("100px");
@@ -78,6 +87,11 @@ public class ButtonViewGwtImpl extends DetailViewGwtImpl implements ButtonView {
     confirmSmallButton.setConfirm(true);
     confirmSmallButton.setSmall(true);
     content.add(confirmSmallButton);
+    
+    Button confirmImportantButton = new Button("Disabled");
+    confirmImportantButton.setConfirm(true);
+    confirmImportantButton.setDisabled(true);
+    content.add(confirmImportantButton);
 
     scrollPanel.setWidget(content);
 

@@ -15,17 +15,18 @@
  */
 package com.googlecode.mgwt.examples.showcase.client.activities.gcell;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
+
 import com.googlecode.mgwt.examples.showcase.client.ClientFactory;
 import com.googlecode.mgwt.examples.showcase.client.DetailActivity;
 import com.googlecode.mgwt.examples.showcase.client.activities.gcell.GroupedCellListView.Content;
 import com.googlecode.mgwt.examples.showcase.client.activities.gcell.GroupedCellListView.Header;
-import com.googlecode.mgwt.ui.client.widget.GroupingCellList.CellGroup;
-import com.googlecode.mgwt.ui.client.widget.GroupingCellList.StandardCellGroup;
+import com.googlecode.mgwt.ui.client.widget.list.celllist.GroupingCellList.CellGroup;
+import com.googlecode.mgwt.ui.client.widget.list.celllist.GroupingCellList.StandardCellGroup;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Daniel Kurka

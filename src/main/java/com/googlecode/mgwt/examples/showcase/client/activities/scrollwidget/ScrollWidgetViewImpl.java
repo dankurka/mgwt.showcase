@@ -16,8 +16,9 @@
 package com.googlecode.mgwt.examples.showcase.client.activities.scrollwidget;
 
 import com.google.gwt.user.client.ui.HTML;
+
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
-import com.googlecode.mgwt.ui.client.widget.RoundPanel;
+import com.googlecode.mgwt.ui.client.widget.panel.Panel;
 
 /**
  * @author Daniel Kurka
@@ -27,7 +28,8 @@ public class ScrollWidgetViewImpl extends DetailViewGwtImpl implements ScrollWid
 
 	public ScrollWidgetViewImpl() {
 
-		RoundPanel roundPanel = new RoundPanel();
+		Panel roundPanel = new Panel();
+		roundPanel.setRound(true);
 		roundPanel.setWidth("1000px");
 
 		StringBuffer buffer = new StringBuffer();

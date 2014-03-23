@@ -15,19 +15,22 @@
  */
 package com.googlecode.mgwt.examples.showcase.client.activities.animation;
 
-import java.util.List;
-
+import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
+
 import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
 import com.googlecode.mgwt.examples.showcase.client.BasicCell;
 import com.googlecode.mgwt.ui.client.MGWT;
-import com.googlecode.mgwt.ui.client.widget.HeaderButton;
-import com.googlecode.mgwt.ui.client.widget.HeaderPanel;
-import com.googlecode.mgwt.ui.client.widget.LayoutPanel;
-import com.googlecode.mgwt.ui.client.widget.ScrollPanel;
-import com.googlecode.mgwt.ui.client.widget.celllist.CellListWithHeader;
-import com.googlecode.mgwt.ui.client.widget.celllist.HasCellSelectedHandler;
+import com.googlecode.mgwt.ui.client.widget.header.HeaderButton;
+import com.googlecode.mgwt.ui.client.widget.header.HeaderPanel;
+import com.googlecode.mgwt.ui.client.widget.layout.RootLayoutPanel;
+import com.googlecode.mgwt.ui.client.widget.list.celllist.CellList;
+import com.googlecode.mgwt.ui.client.widget.list.celllist.HasCellSelectedHandler;
+import com.googlecode.mgwt.ui.client.widget.panel.scroll.ScrollPanel;
+
+import java.util.List;
 
 /**
  * @author Daniel Kurka
@@ -35,16 +38,17 @@ import com.googlecode.mgwt.ui.client.widget.celllist.HasCellSelectedHandler;
  */
 public class AnimationViewGwtImpl implements AnimationView {
 
-	private CellListWithHeader<Animation> list;
-	private LayoutPanel main;
+	private CellList<Animation> list;
+	private RootLayoutPanel main;
 	private HeaderPanel headerPanel;
 	private HeaderButton headerBackButton;
+  private HTML header;
 
 	/**
 	 * 
 	 */
 	public AnimationViewGwtImpl() {
-		main = new LayoutPanel();
+		main = new RootLayoutPanel();
 
 		headerPanel = new HeaderPanel();
 
@@ -58,7 +62,7 @@ public class AnimationViewGwtImpl implements AnimationView {
 
 		ScrollPanel scrollPanel = new ScrollPanel();
 
-		list = new CellListWithHeader<Animation>(new BasicCell<Animation>() {
+		list = new CellList<Animation>(new BasicCell<Animation>() {
 
 			@Override
 			public String getDisplayString(Animation model) {
@@ -71,9 +75,18 @@ public class AnimationViewGwtImpl implements AnimationView {
 			}
 		});
 
-		list.getCellList().setRound(true);
+		list.setRound(true);
+		
+		FlowPanel container = new FlowPanel();
+		
+		header = new HTML("Contact Data");
+    // TODO remove styling borrowed from celllist
+//    header.addStyleName(CellList.DEFAULT_APPEARANCE.css().listHeader());
 
-		scrollPanel.setWidget(list);
+    container.add(header);
+    container.add(list);
+
+		scrollPanel.setWidget(container);
 		scrollPanel.setScrollingEnabledX(false);
 
 		main.add(scrollPanel);
@@ -98,24 +111,21 @@ public class AnimationViewGwtImpl implements AnimationView {
 
 	@Override
 	public HasCellSelectedHandler getCellSelectedHandler() {
-		return list.getCellList();
+		return list;
 	}
 
 	@Override
 	public void setLeftButtonText(String text) {
 		headerBackButton.setText(text);
-
 	}
 
 	@Override
 	public void setAnimations(List<Animation> animations) {
-		list.getCellList().render(animations);
-
+		list.render(animations);
 	}
 
 	@Override
 	public HasText getFirstHeader() {
-		return list.getHeader();
+		return header;
 	}
-
 }

@@ -15,18 +15,19 @@
  */
 package com.googlecode.mgwt.examples.showcase.client.activities;
 
-import java.util.List;
-
 import com.google.gwt.user.client.ui.Widget;
+
 import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
 import com.googlecode.mgwt.examples.showcase.client.BasicCell;
 import com.googlecode.mgwt.ui.client.MGWT;
-import com.googlecode.mgwt.ui.client.widget.CellList;
-import com.googlecode.mgwt.ui.client.widget.HeaderButton;
-import com.googlecode.mgwt.ui.client.widget.HeaderPanel;
-import com.googlecode.mgwt.ui.client.widget.LayoutPanel;
-import com.googlecode.mgwt.ui.client.widget.ScrollPanel;
-import com.googlecode.mgwt.ui.client.widget.celllist.HasCellSelectedHandler;
+import com.googlecode.mgwt.ui.client.widget.header.HeaderButton;
+import com.googlecode.mgwt.ui.client.widget.header.HeaderPanel;
+import com.googlecode.mgwt.ui.client.widget.layout.RootLayoutPanel;
+import com.googlecode.mgwt.ui.client.widget.list.celllist.CellList;
+import com.googlecode.mgwt.ui.client.widget.list.celllist.HasCellSelectedHandler;
+import com.googlecode.mgwt.ui.client.widget.panel.scroll.ScrollPanel;
+
+import java.util.List;
 
 /**
  * @author Daniel Kurka
@@ -34,13 +35,13 @@ import com.googlecode.mgwt.ui.client.widget.celllist.HasCellSelectedHandler;
  */
 public class UIViewImpl implements UIView {
 
-	private LayoutPanel main;
+	private RootLayoutPanel main;
 	private HeaderPanel headerPanel;
 	private HeaderButton headerBackButton;
 	private CellList<Item> cellListWithHeader;
 
 	public UIViewImpl() {
-		main = new LayoutPanel();
+		main = new RootLayoutPanel();
 
 		main.getElement().setId("testdiv");
 

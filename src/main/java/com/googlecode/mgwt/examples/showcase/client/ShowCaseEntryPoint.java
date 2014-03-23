@@ -22,9 +22,9 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
+
 import com.googlecode.mgwt.examples.showcase.client.css.AppBundle;
 import com.googlecode.mgwt.examples.showcase.client.places.HomePlace;
-import com.googlecode.mgwt.mvp.client.AnimatableDisplay;
 import com.googlecode.mgwt.mvp.client.AnimatingActivityManager;
 import com.googlecode.mgwt.mvp.client.AnimationMapper;
 import com.googlecode.mgwt.mvp.client.history.MGWTPlaceHistoryHandler;
@@ -36,6 +36,7 @@ import com.googlecode.mgwt.ui.client.dialog.TabletPortraitOverlay;
 import com.googlecode.mgwt.ui.client.layout.MasterRegionHandler;
 import com.googlecode.mgwt.ui.client.layout.OrientationRegionHandler;
 import com.googlecode.mgwt.ui.client.util.SuperDevModeUtil;
+import com.googlecode.mgwt.ui.client.widget.animation.AnimationWidget;
 
 /**
  * @author Daniel Kurka
@@ -76,7 +77,7 @@ public class ShowCaseEntryPoint implements EntryPoint {
     // Start PlaceHistoryHandler with our PlaceHistoryMapper
     AppPlaceHistoryMapper historyMapper = GWT.create(AppPlaceHistoryMapper.class);
 
-    if (MGWT.getOsDetection().isTablet()) {
+    if (MGWT.getOsDetection().isTablet() && false) {
 
       // very nasty workaround because GWT does not corretly support
       // @media
@@ -99,7 +100,7 @@ public class ShowCaseEntryPoint implements EntryPoint {
   }
 
   private void createPhoneDisplay(ClientFactory clientFactory) {
-    AnimatableDisplay display = GWT.create(AnimatableDisplay.class);
+    AnimationWidget display = new AnimationWidget();
 
     PhoneActivityMapper appActivityMapper = new PhoneActivityMapper(clientFactory);
 
@@ -117,7 +118,7 @@ public class ShowCaseEntryPoint implements EntryPoint {
     SimplePanel navContainer = new SimplePanel();
     navContainer.getElement().setId("nav");
     navContainer.getElement().addClassName("landscapeonly");
-    AnimatableDisplay navDisplay = GWT.create(AnimatableDisplay.class);
+    AnimationWidget navDisplay = new AnimationWidget();
 
     final TabletPortraitOverlay tabletPortraitOverlay = new TabletPortraitOverlay();
 
@@ -131,12 +132,13 @@ public class ShowCaseEntryPoint implements EntryPoint {
     AnimatingActivityManager navActivityManager = new AnimatingActivityManager(navActivityMapper, navAnimationMapper, clientFactory.getEventBus());
 
     navActivityManager.setDisplay(navDisplay);
+    //navContainer.setWidget(navDisplay);
 
     RootPanel.get().add(navContainer);
 
     SimplePanel mainContainer = new SimplePanel();
     mainContainer.getElement().setId("main");
-    AnimatableDisplay mainDisplay = GWT.create(AnimatableDisplay.class);
+    AnimationWidget mainDisplay = new AnimationWidget();
 
     TabletMainActivityMapper tabletMainActivityMapper = new TabletMainActivityMapper(clientFactory);
 
@@ -178,31 +180,31 @@ public class ShowCaseEntryPoint implements EntryPoint {
   }
 
   private String buildStackTrace(Throwable t, String log) {
-    return "disabled";
-    // if (t != null) {
-    // log += t.getClass().toString();
-    // log += t.getMessage();
-    // //
-    // StackTraceElement[] stackTrace = t.getStackTrace();
-    // if (stackTrace != null) {
-    // StringBuffer trace = new StringBuffer();
-    //
-    // for (int i = 0; i < stackTrace.length; i++) {
-    // trace.append(stackTrace[i].getClassName() + "." + stackTrace[i].getMethodName() + "("
-    // + stackTrace[i].getFileName() + ":" + stackTrace[i].getLineNumber());
-    // }
-    //
-    // log += trace.toString();
-    // }
-    // //
-    // Throwable cause = t.getCause();
-    // if (cause != null && cause != t) {
-    //
-    // log += buildStackTrace(cause, "CausedBy:\n");
-    //
-    // }
-    // }
-    // return log;
+//    return "disabled";
+     if (t != null) {
+     log += t.getClass().toString();
+     log += t.getMessage();
+     //
+     StackTraceElement[] stackTrace = t.getStackTrace();
+     if (stackTrace != null) {
+     StringBuffer trace = new StringBuffer();
+    
+     for (int i = 0; i < stackTrace.length; i++) {
+     trace.append(stackTrace[i].getClassName() + "." + stackTrace[i].getMethodName() + "("
+     + stackTrace[i].getFileName() + ":" + stackTrace[i].getLineNumber());
+     }
+    
+     log += trace.toString();
+     }
+     //
+     Throwable cause = t.getCause();
+     if (cause != null && cause != t) {
+    
+     log += buildStackTrace(cause, "CausedBy:\n");
+    
+     }
+     }
+     return log;
   }
 
 }

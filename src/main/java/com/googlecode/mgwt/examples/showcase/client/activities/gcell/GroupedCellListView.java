@@ -15,10 +15,10 @@
  */
 package com.googlecode.mgwt.examples.showcase.client.activities.gcell;
 
-import java.util.List;
-
 import com.googlecode.mgwt.examples.showcase.client.DetailView;
-import com.googlecode.mgwt.ui.client.widget.GroupingCellList.CellGroup;
+import com.googlecode.mgwt.ui.client.widget.list.celllist.GroupingCellList.CellGroup;
+
+import java.util.List;
 
 /**
  * @author Daniel Kurka

@@ -20,7 +20,8 @@ import com.google.gwt.safehtml.client.SafeHtmlTemplates;
 import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
-import com.googlecode.mgwt.ui.client.widget.celllist.Cell;
+
+import com.googlecode.mgwt.ui.client.widget.list.celllist.Cell;
 
 
 /**

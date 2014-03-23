@@ -14,23 +14,23 @@
 package com.googlecode.mgwt.examples.showcase.client.activities.elements;
 
 import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.Label;
+
 import com.googlecode.mgwt.examples.showcase.client.ChromeWorkaround;
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
 import com.googlecode.mgwt.ui.client.MGWT;
-import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.widget.MCheckBox;
-import com.googlecode.mgwt.ui.client.widget.MDateBox;
-import com.googlecode.mgwt.ui.client.widget.MEmailTextBox;
-import com.googlecode.mgwt.ui.client.widget.MListBox;
-import com.googlecode.mgwt.ui.client.widget.MNumberTextBox;
-import com.googlecode.mgwt.ui.client.widget.MPasswordTextBox;
-import com.googlecode.mgwt.ui.client.widget.MPhoneNumberTextBox;
-import com.googlecode.mgwt.ui.client.widget.MRadioButton;
-import com.googlecode.mgwt.ui.client.widget.MTextArea;
-import com.googlecode.mgwt.ui.client.widget.MTextBox;
-import com.googlecode.mgwt.ui.client.widget.MUrlTextBox;
-import com.googlecode.mgwt.ui.client.widget.WidgetList;
+import com.googlecode.mgwt.ui.client.widget.input.MDateBox;
+import com.googlecode.mgwt.ui.client.widget.input.MEmailTextBox;
+import com.googlecode.mgwt.ui.client.widget.input.MNumberTextBox;
+import com.googlecode.mgwt.ui.client.widget.input.MPasswordTextBox;
+import com.googlecode.mgwt.ui.client.widget.input.MPhoneNumberTextBox;
+import com.googlecode.mgwt.ui.client.widget.input.MTextArea;
+import com.googlecode.mgwt.ui.client.widget.input.MTextBox;
+import com.googlecode.mgwt.ui.client.widget.input.MUrlTextBox;
+import com.googlecode.mgwt.ui.client.widget.input.checkbox.MCheckBox;
+import com.googlecode.mgwt.ui.client.widget.input.listbox.MListBox;
+import com.googlecode.mgwt.ui.client.widget.input.radio.MRadioButton;
+import com.googlecode.mgwt.ui.client.widget.list.widgetlist.WidgetList;
 
 /**
  * @author Daniel Kurka
@@ -45,9 +45,8 @@ public class ElementsViewImpl extends DetailViewGwtImpl implements ElementsView 
 
     WidgetList widgetList = new WidgetList();
     widgetList.setRound(true);
-    HTML header = new HTML("Simple input");
-    header.addStyleName(MGWTStyle.getTheme().getMGWTClientBundle().getListCss().listHeader());
-    container.add(header);
+    
+    widgetList.setHeader(new Label("Simple input"));
     container.add(widgetList);
 
     scrollPanel.setWidget(container);
@@ -75,9 +74,7 @@ public class ElementsViewImpl extends DetailViewGwtImpl implements ElementsView 
 
     WidgetList widgetList1 = new WidgetList();
     widgetList1.setRound(true);
-    HTML header1 = new HTML("More input");
-    header1.addStyleName(MGWTStyle.getTheme().getMGWTClientBundle().getListCss().listHeader());
-    container.add(header1);
+    widgetList1.setHeader(new Label("More input"));
 
     MPhoneNumberTextBox phoneBox = new MPhoneNumberTextBox();
     phoneBox.setPlaceHolder("phonebox");
@@ -99,10 +96,7 @@ public class ElementsViewImpl extends DetailViewGwtImpl implements ElementsView 
 
     WidgetList widgetList2 = new WidgetList();
     widgetList2.setRound(true);
-
-    HTML header2 = new HTML("Select inputs");
-    header2.addStyleName(MGWTStyle.getTheme().getMGWTClientBundle().getListCss().listHeader());
-    container.add(header2);
+    widgetList2.setHeader(new Label("Select inputs"));
 
     MListBox mListBox = new MListBox();
     mListBox.addItem("iPhone");

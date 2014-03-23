@@ -18,10 +18,11 @@ package com.googlecode.mgwt.examples.showcase.client.activities.carousel;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.logical.shared.HasSelectionHandlers;
 import com.google.gwt.user.client.ui.HTML;
+
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
-import com.googlecode.mgwt.ui.client.widget.Carousel;
-import com.googlecode.mgwt.ui.client.widget.RoundPanel;
-import com.googlecode.mgwt.ui.client.widget.ScrollPanel;
+import com.googlecode.mgwt.ui.client.widget.carousel.Carousel;
+import com.googlecode.mgwt.ui.client.widget.panel.Panel;
+import com.googlecode.mgwt.ui.client.widget.panel.scroll.ScrollPanel;
 
 /**
  * @author Daniel Kurka
@@ -45,7 +46,8 @@ public class CarouselViewGwtImpl extends DetailViewGwtImpl implements CarouselVi
 			scrollPanel2.setScrollingEnabledX(false);
 			// scrollPanel2.setWidth("100%");
 
-			RoundPanel flowPanel3 = new RoundPanel();
+			Panel flowPanel3 = new Panel();
+			flowPanel3.setRound(true);
 			for (int j = 0; j < 10; j++) {
 				HTML html = new HTML("Slide: " + (i + 1));
 				html.getElement().getStyle().setMarginBottom(300, Unit.PX);

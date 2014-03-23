@@ -16,7 +16,7 @@
 package com.googlecode.mgwt.examples.showcase.client.activities.searchbox;
 
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
-import com.googlecode.mgwt.ui.client.widget.MSearchBox;
+import com.googlecode.mgwt.ui.client.widget.input.search.MSearchBox;
 
 /**
  * @author Daniel Kurka

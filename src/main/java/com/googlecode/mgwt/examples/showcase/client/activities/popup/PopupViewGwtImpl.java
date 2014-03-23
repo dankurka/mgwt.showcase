@@ -25,7 +25,7 @@ import com.googlecode.mgwt.ui.client.dialog.ConfirmDialog.ConfirmCallback;
 import com.googlecode.mgwt.ui.client.dialog.Dialogs;
 import com.googlecode.mgwt.ui.client.dialog.Dialogs.OptionCallback;
 import com.googlecode.mgwt.ui.client.dialog.Dialogs.OptionsDialogEntry;
-import com.googlecode.mgwt.ui.client.widget.Button;
+import com.googlecode.mgwt.ui.client.widget.button.Button;
 
 /**
  * @author Daniel Kurka

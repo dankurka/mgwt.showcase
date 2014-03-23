@@ -22,7 +22,7 @@ import com.google.gwt.user.client.ui.HasHTML;
 import com.google.gwt.user.client.ui.HasValue;
 
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
-import com.googlecode.mgwt.ui.client.widget.slider.Slider;
+import com.googlecode.mgwt.ui.client.widget.input.slider.Slider;
 
 /**
  * @author Daniel Kurka
