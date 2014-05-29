@@ -24,10 +24,10 @@ import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
 import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
 import com.googlecode.mgwt.examples.showcase.client.ClientFactory;
 import com.googlecode.mgwt.examples.showcase.client.DetailActivity;
-import com.googlecode.mgwt.ui.client.dialog.ConfirmDialog.ConfirmCallback;
-import com.googlecode.mgwt.ui.client.dialog.Dialogs.ButtonType;
-import com.googlecode.mgwt.ui.client.dialog.Dialogs.OptionCallback;
-import com.googlecode.mgwt.ui.client.dialog.Dialogs.OptionsDialogEntry;
+import com.googlecode.mgwt.ui.client.widget.dialog.ConfirmDialog.ConfirmCallback;
+import com.googlecode.mgwt.ui.client.widget.dialog.Dialogs.ButtonType;
+import com.googlecode.mgwt.ui.client.widget.dialog.Dialogs.OptionCallback;
+import com.googlecode.mgwt.ui.client.widget.dialog.Dialogs.OptionsDialogEntry;
 
 /**
  * @author Daniel Kurka

@@ -1,12 +1,12 @@
 /*
  * Copyright 2010 Daniel Kurka
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
  * the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -22,26 +22,29 @@ import com.googlecode.mgwt.examples.showcase.client.BasicCell;
 import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.widget.header.HeaderButton;
 import com.googlecode.mgwt.ui.client.widget.header.HeaderPanel;
-import com.googlecode.mgwt.ui.client.widget.layout.RootLayoutPanel;
+import com.googlecode.mgwt.ui.client.widget.header.HeaderTitle;
 import com.googlecode.mgwt.ui.client.widget.list.celllist.CellList;
 import com.googlecode.mgwt.ui.client.widget.list.celllist.HasCellSelectedHandler;
+import com.googlecode.mgwt.ui.client.widget.panel.flex.FlexSpacer;
+import com.googlecode.mgwt.ui.client.widget.panel.flex.RootFlexPanel;
 import com.googlecode.mgwt.ui.client.widget.panel.scroll.ScrollPanel;
 
 import java.util.List;
 
 /**
  * @author Daniel Kurka
- * 
+ *
  */
 public class UIViewImpl implements UIView {
 
-	private RootLayoutPanel main;
+	private RootFlexPanel main;
 	private HeaderPanel headerPanel;
 	private HeaderButton headerBackButton;
 	private CellList<Item> cellListWithHeader;
+	private HeaderTitle headerTitle = new HeaderTitle();
 
 	public UIViewImpl() {
-		main = new RootLayoutPanel();
+		main = new RootFlexPanel();
 
 		main.getElement().setId("testdiv");
 
@@ -50,8 +53,14 @@ public class UIViewImpl implements UIView {
 
 		headerBackButton = new HeaderButton();
 		headerBackButton.setBackButton(true);
-		headerPanel.setLeftWidget(headerBackButton);
+		headerPanel.add(headerBackButton);
+
 		headerBackButton.setVisible(!MGWT.getOsDetection().isAndroid());
+
+		headerPanel.add(headerBackButton);
+		headerPanel.add(new FlexSpacer());
+		headerPanel.add(headerTitle);
+		headerPanel.add(new FlexSpacer());
 
 		ScrollPanel scrollPanel = new ScrollPanel();
 
@@ -93,8 +102,7 @@ public class UIViewImpl implements UIView {
 
 	@Override
 	public void setTitle(String title) {
-		headerPanel.setCenter(title);
-
+	  headerTitle.setText(title);
 	}
 
 	@Override

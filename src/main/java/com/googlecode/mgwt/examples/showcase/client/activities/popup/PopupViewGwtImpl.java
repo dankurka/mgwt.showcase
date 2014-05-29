@@ -21,11 +21,11 @@ import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
-import com.googlecode.mgwt.ui.client.dialog.ConfirmDialog.ConfirmCallback;
-import com.googlecode.mgwt.ui.client.dialog.Dialogs;
-import com.googlecode.mgwt.ui.client.dialog.Dialogs.OptionCallback;
-import com.googlecode.mgwt.ui.client.dialog.Dialogs.OptionsDialogEntry;
 import com.googlecode.mgwt.ui.client.widget.button.Button;
+import com.googlecode.mgwt.ui.client.widget.dialog.Dialogs;
+import com.googlecode.mgwt.ui.client.widget.dialog.ConfirmDialog.ConfirmCallback;
+import com.googlecode.mgwt.ui.client.widget.dialog.Dialogs.OptionCallback;
+import com.googlecode.mgwt.ui.client.widget.dialog.Dialogs.OptionsDialogEntry;
 
 /**
  * @author Daniel Kurka

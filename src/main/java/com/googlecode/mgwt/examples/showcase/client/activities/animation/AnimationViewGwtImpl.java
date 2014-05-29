@@ -1,12 +1,12 @@
 /*
  * Copyright 2010 Daniel Kurka
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
  * the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -25,38 +25,45 @@ import com.googlecode.mgwt.examples.showcase.client.BasicCell;
 import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.widget.header.HeaderButton;
 import com.googlecode.mgwt.ui.client.widget.header.HeaderPanel;
-import com.googlecode.mgwt.ui.client.widget.layout.RootLayoutPanel;
+import com.googlecode.mgwt.ui.client.widget.header.HeaderTitle;
 import com.googlecode.mgwt.ui.client.widget.list.celllist.CellList;
 import com.googlecode.mgwt.ui.client.widget.list.celllist.HasCellSelectedHandler;
+import com.googlecode.mgwt.ui.client.widget.panel.flex.FlexSpacer;
+import com.googlecode.mgwt.ui.client.widget.panel.flex.RootFlexPanel;
 import com.googlecode.mgwt.ui.client.widget.panel.scroll.ScrollPanel;
 
 import java.util.List;
 
 /**
  * @author Daniel Kurka
- * 
+ *
  */
 public class AnimationViewGwtImpl implements AnimationView {
 
 	private CellList<Animation> list;
-	private RootLayoutPanel main;
+	private RootFlexPanel main;
 	private HeaderPanel headerPanel;
 	private HeaderButton headerBackButton;
   private HTML header;
+  private HeaderTitle headerTitle = new HeaderTitle();
 
 	/**
-	 * 
+	 *
 	 */
 	public AnimationViewGwtImpl() {
-		main = new RootLayoutPanel();
+		main = new RootFlexPanel();
 
 		headerPanel = new HeaderPanel();
 
 		headerBackButton = new HeaderButton();
 
-		headerPanel.setLeftWidget(headerBackButton);
+  	headerPanel.add(headerBackButton);
 		headerBackButton.setBackButton(true);
 		headerBackButton.setVisible(!MGWT.getOsDetection().isAndroid());
+
+		headerPanel.add(new FlexSpacer());
+		headerPanel.add(headerTitle);
+		headerPanel.add(new FlexSpacer());
 
 		main.add(headerPanel);
 
@@ -76,9 +83,9 @@ public class AnimationViewGwtImpl implements AnimationView {
 		});
 
 		list.setRound(true);
-		
+
 		FlowPanel container = new FlowPanel();
-		
+
 		header = new HTML("Contact Data");
     // TODO remove styling borrowed from celllist
 //    header.addStyleName(CellList.DEFAULT_APPEARANCE.css().listHeader());
@@ -100,8 +107,7 @@ public class AnimationViewGwtImpl implements AnimationView {
 
 	@Override
 	public void setTitle(String text) {
-		headerPanel.setCenter(text);
-
+		headerTitle.setText(text);
 	}
 
 	@Override

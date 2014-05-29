@@ -2,17 +2,6 @@ package com.googlecode.mgwt.examples.showcase.client.places;
 
 import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.canvas.dom.client.Context2d;
-import com.google.gwt.user.client.rpc.AsyncCallback;
-
-import com.googlecode.mgwt.dom.client.event.touch.TouchCancelEvent;
-import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
-import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
-import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
-import com.googlecode.mgwt.dom.client.event.touch.TouchMoveHandler;
-import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
-import com.googlecode.mgwt.ui.client.util.ImageLoader;
-import com.googlecode.mgwt.ui.client.util.IsImage;
-import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
 
 public class Test {
   public void bla() {

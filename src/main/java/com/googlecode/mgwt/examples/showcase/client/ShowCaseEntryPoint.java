@@ -1,11 +1,11 @@
 /*
  * x * Copyright 2010 Daniel Kurka
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -16,7 +16,6 @@ package com.googlecode.mgwt.examples.showcase.client;
 import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.core.client.GWT.UncaughtExceptionHandler;
 import com.google.gwt.dom.client.StyleInjector;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
@@ -31,16 +30,15 @@ import com.googlecode.mgwt.mvp.client.history.MGWTPlaceHistoryHandler;
 import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.MGWTSettings;
 import com.googlecode.mgwt.ui.client.MGWTSettings.ViewPort;
-import com.googlecode.mgwt.ui.client.MGWTSettings.ViewPort.DENSITY;
-import com.googlecode.mgwt.ui.client.dialog.TabletPortraitOverlay;
 import com.googlecode.mgwt.ui.client.layout.MasterRegionHandler;
 import com.googlecode.mgwt.ui.client.layout.OrientationRegionHandler;
 import com.googlecode.mgwt.ui.client.util.SuperDevModeUtil;
 import com.googlecode.mgwt.ui.client.widget.animation.AnimationWidget;
+import com.googlecode.mgwt.ui.client.widget.dialog.TabletPortraitOverlay;
 
 /**
  * @author Daniel Kurka
- * 
+ *
  */
 public class ShowCaseEntryPoint implements EntryPoint {
 
@@ -57,16 +55,18 @@ public class ShowCaseEntryPoint implements EntryPoint {
 
     // MGWTStyle.setTheme(new CustomTheme());
 
+    if(MGWT.getDeviceDensity().isHighDPI()  && MGWT.getFormFactor() == null) {
+      Window.alert("asdf");
+    }
+
     SuperDevModeUtil.showDevMode();
 
     ViewPort viewPort = new MGWTSettings.ViewPort();
-    viewPort.setTargetDensity(DENSITY.MEDIUM);
     viewPort.setUserScaleAble(false).setMinimumScale(1.0).setMinimumScale(1.0).setMaximumScale(1.0);
 
     MGWTSettings settings = new MGWTSettings();
     settings.setViewPort(viewPort);
     settings.setIconUrl("logo.png");
-    settings.setAddGlosToIcon(true);
     settings.setFullscreen(true);
     settings.setPreventScrolling(true);
 
@@ -77,7 +77,7 @@ public class ShowCaseEntryPoint implements EntryPoint {
     // Start PlaceHistoryHandler with our PlaceHistoryMapper
     AppPlaceHistoryMapper historyMapper = GWT.create(AppPlaceHistoryMapper.class);
 
-    if (MGWT.getOsDetection().isTablet() && false) {
+    if (MGWT.getFormFactor().isTablet()) {
 
       // very nasty workaround because GWT does not corretly support
       // @media
@@ -156,17 +156,16 @@ public class ShowCaseEntryPoint implements EntryPoint {
   @Override
   public void onModuleLoad() {
 
-    GWT.setUncaughtExceptionHandler(new UncaughtExceptionHandler() {
-
-      @Override
-      public void onUncaughtException(Throwable e) {
-        Window.alert("uncaught: " + e.getMessage());
-        String s = buildStackTrace(e, "RuntimeExceotion:\n");
-        Window.alert(s);
-        e.printStackTrace();
-
-      }
-    });
+//    GWT.setUncaughtExceptionHandler(new UncaughtExceptionHandler() {
+//
+//      @Override
+//      public void onUncaughtException(Throwable e) {
+//        Window.alert("uncaught: " + e.getMessage());
+//        String s = buildStackTrace(e, "RuntimeExceotion:\n");
+//        Window.alert(s);
+//        e.printStackTrace();
+//      }
+//    });
 
     new Timer() {
 
@@ -188,20 +187,20 @@ public class ShowCaseEntryPoint implements EntryPoint {
      StackTraceElement[] stackTrace = t.getStackTrace();
      if (stackTrace != null) {
      StringBuffer trace = new StringBuffer();
-    
+
      for (int i = 0; i < stackTrace.length; i++) {
      trace.append(stackTrace[i].getClassName() + "." + stackTrace[i].getMethodName() + "("
      + stackTrace[i].getFileName() + ":" + stackTrace[i].getLineNumber());
      }
-    
+
      log += trace.toString();
      }
      //
      Throwable cause = t.getCause();
      if (cause != null && cause != t) {
-    
+
      log += buildStackTrace(cause, "CausedBy:\n");
-    
+
      }
      }
      return log;
