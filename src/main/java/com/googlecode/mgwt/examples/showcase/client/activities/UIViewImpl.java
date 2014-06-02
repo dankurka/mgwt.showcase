@@ -20,11 +20,12 @@ import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
 import com.googlecode.mgwt.examples.showcase.client.BasicCell;
 import com.googlecode.mgwt.ui.client.MGWT;
-import com.googlecode.mgwt.ui.client.widget.header.HeaderButton;
+import com.googlecode.mgwt.ui.client.widget.button.image.PreviousitemImageButton;
 import com.googlecode.mgwt.ui.client.widget.header.HeaderPanel;
 import com.googlecode.mgwt.ui.client.widget.header.HeaderTitle;
 import com.googlecode.mgwt.ui.client.widget.list.celllist.CellList;
 import com.googlecode.mgwt.ui.client.widget.list.celllist.HasCellSelectedHandler;
+import com.googlecode.mgwt.ui.client.widget.panel.flex.FixedSpacer;
 import com.googlecode.mgwt.ui.client.widget.panel.flex.FlexSpacer;
 import com.googlecode.mgwt.ui.client.widget.panel.flex.RootFlexPanel;
 import com.googlecode.mgwt.ui.client.widget.panel.scroll.ScrollPanel;
@@ -39,21 +40,17 @@ public class UIViewImpl implements UIView {
 
 	private RootFlexPanel main;
 	private HeaderPanel headerPanel;
-	private HeaderButton headerBackButton;
+	private PreviousitemImageButton headerBackButton;
 	private CellList<Item> cellListWithHeader;
 	private HeaderTitle headerTitle = new HeaderTitle();
 
 	public UIViewImpl() {
 		main = new RootFlexPanel();
 
-		main.getElement().setId("testdiv");
-
 		headerPanel = new HeaderPanel();
 		main.add(headerPanel);
 
-		headerBackButton = new HeaderButton();
-		headerBackButton.setBackButton(true);
-		headerPanel.add(headerBackButton);
+		headerBackButton = new PreviousitemImageButton();
 
 		headerBackButton.setVisible(!MGWT.getOsDetection().isAndroid());
 
@@ -61,6 +58,9 @@ public class UIViewImpl implements UIView {
 		headerPanel.add(new FlexSpacer());
 		headerPanel.add(headerTitle);
 		headerPanel.add(new FlexSpacer());
+		FixedSpacer fixedSpacer = new FixedSpacer();
+    fixedSpacer.setVisible(!MGWT.getOsDetection().isAndroid());
+    headerPanel.add(fixedSpacer);
 
 		ScrollPanel scrollPanel = new ScrollPanel();
 
@@ -90,12 +90,6 @@ public class UIViewImpl implements UIView {
 	}
 
 	@Override
-	public void setBackButtonText(String text) {
-		headerBackButton.setText(text);
-
-	}
-
-	@Override
 	public HasTapHandlers getBackButton() {
 		return headerBackButton;
 	}
@@ -121,5 +115,4 @@ public class UIViewImpl implements UIView {
 		cellListWithHeader.setSelectedIndex(index, selected);
 
 	}
-
 }

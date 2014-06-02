@@ -16,18 +16,18 @@
 package com.googlecode.mgwt.examples.showcase.client.activities.animation;
 
 import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
 
 import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
 import com.googlecode.mgwt.examples.showcase.client.BasicCell;
 import com.googlecode.mgwt.ui.client.MGWT;
-import com.googlecode.mgwt.ui.client.widget.header.HeaderButton;
+import com.googlecode.mgwt.ui.client.widget.button.ImageButton;
+import com.googlecode.mgwt.ui.client.widget.button.image.PreviousitemImageButton;
 import com.googlecode.mgwt.ui.client.widget.header.HeaderPanel;
 import com.googlecode.mgwt.ui.client.widget.header.HeaderTitle;
 import com.googlecode.mgwt.ui.client.widget.list.celllist.CellList;
 import com.googlecode.mgwt.ui.client.widget.list.celllist.HasCellSelectedHandler;
+import com.googlecode.mgwt.ui.client.widget.panel.flex.FixedSpacer;
 import com.googlecode.mgwt.ui.client.widget.panel.flex.FlexSpacer;
 import com.googlecode.mgwt.ui.client.widget.panel.flex.RootFlexPanel;
 import com.googlecode.mgwt.ui.client.widget.panel.scroll.ScrollPanel;
@@ -43,8 +43,7 @@ public class AnimationViewGwtImpl implements AnimationView {
 	private CellList<Animation> list;
 	private RootFlexPanel main;
 	private HeaderPanel headerPanel;
-	private HeaderButton headerBackButton;
-  private HTML header;
+	private ImageButton headerBackButton;
   private HeaderTitle headerTitle = new HeaderTitle();
 
 	/**
@@ -55,15 +54,17 @@ public class AnimationViewGwtImpl implements AnimationView {
 
 		headerPanel = new HeaderPanel();
 
-		headerBackButton = new HeaderButton();
+		headerBackButton = new PreviousitemImageButton();
 
   	headerPanel.add(headerBackButton);
-		headerBackButton.setBackButton(true);
 		headerBackButton.setVisible(!MGWT.getOsDetection().isAndroid());
 
 		headerPanel.add(new FlexSpacer());
 		headerPanel.add(headerTitle);
 		headerPanel.add(new FlexSpacer());
+		FixedSpacer fixedSpacer = new FixedSpacer();
+		fixedSpacer.setVisible(!MGWT.getOsDetection().isAndroid());
+		headerPanel.add(fixedSpacer);
 
 		main.add(headerPanel);
 
@@ -85,12 +86,6 @@ public class AnimationViewGwtImpl implements AnimationView {
 		list.setRound(true);
 
 		FlowPanel container = new FlowPanel();
-
-		header = new HTML("Contact Data");
-    // TODO remove styling borrowed from celllist
-//    header.addStyleName(CellList.DEFAULT_APPEARANCE.css().listHeader());
-
-    container.add(header);
     container.add(list);
 
 		scrollPanel.setWidget(container);
@@ -121,17 +116,7 @@ public class AnimationViewGwtImpl implements AnimationView {
 	}
 
 	@Override
-	public void setLeftButtonText(String text) {
-		headerBackButton.setText(text);
-	}
-
-	@Override
 	public void setAnimations(List<Animation> animations) {
 		list.render(animations);
-	}
-
-	@Override
-	public HasText getFirstHeader() {
-		return header;
 	}
 }

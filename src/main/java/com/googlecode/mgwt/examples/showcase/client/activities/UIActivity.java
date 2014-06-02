@@ -1,11 +1,11 @@
 /*
  * Copyright 2010 Daniel Kurka
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -31,7 +31,7 @@ import java.util.List;
 
 /**
  * @author Daniel Kurka
- * 
+ *
  */
 public class UIActivity extends MGWTAbstractActivity {
 
@@ -50,7 +50,6 @@ public class UIActivity extends MGWTAbstractActivity {
   public void start(AcceptsOneWidget panel, final EventBus eventBus) {
     final UIView view = clientFactory.getUIView();
 
-    view.setBackButtonText("Home");
     view.setTitle("UI");
 
     addHandlerRegistration(view.getBackButton().addTapHandler(new TapHandler() {
@@ -101,7 +100,8 @@ public class UIActivity extends MGWTAbstractActivity {
     list.add(new Item("Scroll Widget", UIEntry.SCROLL_WIDGET));
     list.add(new Item("Searchbox", UIEntry.SEARCH_BOX));
     list.add(new Item("Slider", UIEntry.SLIDER));
-    list.add(new Item("TabBar", UIEntry.TABBAR));
+    // TODO readd once tabbar is fixed
+//    list.add(new Item("TabBar", UIEntry.TABBAR));
     return list;
   }
 

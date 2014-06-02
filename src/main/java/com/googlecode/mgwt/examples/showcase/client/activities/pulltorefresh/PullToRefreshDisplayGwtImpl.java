@@ -1,7 +1,6 @@
 package com.googlecode.mgwt.examples.showcase.client.activities.pulltorefresh;
 
 import com.googlecode.mgwt.examples.showcase.client.BasicCell;
-import com.googlecode.mgwt.examples.showcase.client.ChromeWorkaround;
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
 import com.googlecode.mgwt.examples.showcase.client.activities.home.Topic;
 import com.googlecode.mgwt.ui.client.widget.base.HasRefresh;
@@ -46,7 +45,6 @@ public class PullToRefreshDisplayGwtImpl extends DetailViewGwtImpl implements Pu
 
 		pullToRefresh.add(cellList);
 
-		ChromeWorkaround.maybeUpdateScroller(scrollPanel);
 	}
 
 	@Override
@@ -57,7 +55,7 @@ public class PullToRefreshDisplayGwtImpl extends DetailViewGwtImpl implements Pu
 
 	@Override
 	public void setHeaderPullHandler(Pullhandler pullHandler) {
-		pullToRefresh.setHeaderPullhandler(pullHandler);
+		pullToRefresh.setHeaderPullHandler(pullHandler);
 
 	}
 

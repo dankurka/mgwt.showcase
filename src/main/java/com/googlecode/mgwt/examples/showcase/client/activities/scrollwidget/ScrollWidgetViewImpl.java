@@ -42,7 +42,7 @@ public class ScrollWidgetViewImpl extends DetailViewGwtImpl implements ScrollWid
 		HTML html = new HTML(buffer.toString());
 		roundPanel.add(html);
 		scrollPanel.setWidget(roundPanel);
-
+		scrollPanel.setScrollLock(false);
 	}
 
 }

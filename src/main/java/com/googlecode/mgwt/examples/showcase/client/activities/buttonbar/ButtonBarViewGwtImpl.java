@@ -16,56 +16,26 @@
 package com.googlecode.mgwt.examples.showcase.client.activities.buttonbar;
 
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
+import com.googlecode.mgwt.ui.client.widget.button.image.CameraImageButton;
+import com.googlecode.mgwt.ui.client.widget.button.image.NewImageButton;
 import com.googlecode.mgwt.ui.client.widget.buttonbar.ButtonBar;
 import com.googlecode.mgwt.ui.client.widget.buttonbar.ButtonBarText;
 import com.googlecode.mgwt.ui.client.widget.panel.flex.FlexSpacer;
 
 /**
  * @author Daniel Kurka
- *
  */
 public class ButtonBarViewGwtImpl extends DetailViewGwtImpl implements ButtonBarView {
 
 	private ButtonBar footerPanel;
 
-	/**
-	 *
-	 */
 	public ButtonBarViewGwtImpl() {
-
 		footerPanel = new ButtonBar();
-
-//		footerPanel.add(new ActionButton());
+		footerPanel.add(new NewImageButton());
 		footerPanel.add(new FlexSpacer());
-		footerPanel.add(new ButtonBarText("there are much more buttons"));
+		footerPanel.add(new ButtonBarText("there are about 140 buttons"));
 		footerPanel.add(new FlexSpacer());
-		//		footerPanel.add(new ActionButton());
-		//		footerPanel.add(new ArrowDownButton());
-		//		footerPanel.add(new ArrowUpButton());
-		//		footerPanel.add(new ArrowLeftButton());
-		//		footerPanel.add(new ArrowRightButton());
-		//		footerPanel.add(new BookmarkButton());
-		//		footerPanel.add(new CameraButton());
-		//		footerPanel.add(new ComposeButton());
-		//
-		//		footerPanel.add(new FastForwardButton());
-		//
-		//		footerPanel.add(new InfoButton());
-		//		footerPanel.add(new LocateButton());
-		//		footerPanel.add(new NewIconButton());
-		//		footerPanel.add(new NextSlideButton());
-		//		footerPanel.add(new OrganizeButton());
-		//		footerPanel.add(new PauseButton());
-		//		footerPanel.add(new PlayButton());
-		//		footerPanel.add(new PlusButton());
-		//		footerPanel.add(new PreviousSlideButton());
-		//		footerPanel.add(new ReplyButton());
-		//		footerPanel.add(new RewindButton());
-		//		footerPanel.add(new SearchButton());
-		//		footerPanel.add(new StopButton());
-//		footerPanel.add(new TrashButton());
-
+		footerPanel.add(new CameraImageButton());
 		main.add(footerPanel);
 	}
-
 }

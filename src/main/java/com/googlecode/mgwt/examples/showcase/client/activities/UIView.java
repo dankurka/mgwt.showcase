@@ -1,12 +1,12 @@
 /*
  * Copyright 2010 Daniel Kurka
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
  * the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -28,15 +28,14 @@ import java.util.List;
  *
  */
 public interface UIView extends IsWidget {
-	public void setBackButtonText(String text);
 
-	public HasTapHandlers getBackButton();
+	HasTapHandlers getBackButton();
 
-	public void setTitle(String title);
+	void setTitle(String title);
 
-	public HasCellSelectedHandler getList();
+	HasCellSelectedHandler getList();
 
-	public void renderItems(List<Item> items);
+	void renderItems(List<Item> items);
 
-	public void setSelectedIndex(int index, boolean selected);
+	void setSelectedIndex(int index, boolean selected);
 }

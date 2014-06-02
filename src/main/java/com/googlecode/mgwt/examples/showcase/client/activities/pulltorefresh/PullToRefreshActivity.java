@@ -44,8 +44,6 @@ public class PullToRefreshActivity extends DetailActivity {
 
 		display.getHeader().setText("Pulldown to Refresh");
 
-		display.getMainButtonText().setText("Nav");
-		display.getBackbuttonText().setText("UI");
 		display.getHeader().setText("PullToRefresh");
 
 		display.getPullHeader().setHTML("pull down");

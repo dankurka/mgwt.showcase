@@ -16,7 +16,6 @@ package com.googlecode.mgwt.examples.showcase.client.activities.elements;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Label;
 
-import com.googlecode.mgwt.examples.showcase.client.ChromeWorkaround;
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
 import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.widget.input.MDateBox;
@@ -44,18 +43,12 @@ public class ElementsViewImpl extends DetailViewGwtImpl implements ElementsView 
     FlowPanel container = new FlowPanel();
 
     WidgetList widgetList = new WidgetList();
-    widgetList.setRound(true);
-
     widgetList.setHeader(new Label("Simple input"));
     container.add(widgetList);
 
     scrollPanel.setWidget(container);
-    // workaround for android formfields jumping around when using
-    // -webkit-transform
-    // TODO
-    //scrollPanel.setUsePos(MGWT.getOsDetection().isAndroid());
 
-    ChromeWorkaround.maybeUpdateScroller(scrollPanel);
+    scrollPanel.setUsePos(MGWT.getOsDetection().isAndroid2x());
 
     MTextBox mTextBox = new MTextBox();
     mTextBox.setPlaceHolder("textbox");
@@ -72,9 +65,9 @@ public class ElementsViewImpl extends DetailViewGwtImpl implements ElementsView 
     MDateBox dateBox = new MDateBox();
     dateBox.setPlaceHolder("mm/dd//yyyy");
     widgetList.add(dateBox);
+//    dateBox.setValue(new Date());
 
     WidgetList widgetList1 = new WidgetList();
-    widgetList1.setRound(true);
     widgetList1.setHeader(new Label("More input"));
 
     MPhoneNumberTextBox phoneBox = new MPhoneNumberTextBox();
@@ -96,7 +89,6 @@ public class ElementsViewImpl extends DetailViewGwtImpl implements ElementsView 
     container.add(widgetList1);
 
     WidgetList widgetList2 = new WidgetList();
-    widgetList2.setRound(true);
     widgetList2.setHeader(new Label("Select inputs"));
 
     MListBox mListBox = new MListBox();

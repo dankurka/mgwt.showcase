@@ -115,7 +115,7 @@ public class AppHistoryObserver implements HistoryObserver {
 					break;
 				}
 
-				if (MGWT.getOsDetection().isTablet()) {
+				if (MGWT.getFormFactor().isTablet() || MGWT.getFormFactor().isDesktop()) {
 
 					historyHandler.replaceCurrentPlace(place);
 					historyHandler.goTo(place, true);
@@ -181,7 +181,7 @@ public class AppHistoryObserver implements HistoryObserver {
 					break;
 				}
 
-				if (MGWT.getOsDetection().isTablet()) {
+				if (MGWT.getFormFactor().isTablet() || MGWT.getFormFactor().isDesktop()) {
 
 					historyHandler.replaceCurrentPlace(place);
 					historyHandler.goTo(place, true);
@@ -206,7 +206,7 @@ public class AppHistoryObserver implements HistoryObserver {
 
 			@Override
 			public void onAction(ActionEvent event) {
-				if (MGWT.getOsDetection().isPhone()) {
+				if (MGWT.getFormFactor().isPhone()) {
 					History.back();
 				} else {
 					historyHandler.goTo(new AnimationPlace(), true);

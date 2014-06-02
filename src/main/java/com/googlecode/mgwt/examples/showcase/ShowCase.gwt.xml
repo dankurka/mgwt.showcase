@@ -35,11 +35,16 @@
 	<set-property name="compiler.stackMode" value="strip"/>
 	<set-configuration-property name="compiler.enum.obfuscate.names" value="true"/>
 	
+<!-- 	<set-property name="mgwt.user.agent" value="mobile" /> -->
+<!-- 	<set-property name="mgwt.formfactor" value="phone" /> -->
+<!-- 	<set-property name="mgwt.density" value="xhigh" /> -->
+<!-- 	<set-property name="user.agent" value="safari" /> -->
+	
 	<add-linker name="xsiframe"/>
-	<set-configuration-property name="devModeRedirectEnabled" value="true"/>
-	<set-configuration-property name="mgwt.superdevmode" value="on" />
-	<set-configuration-property name="mgwt.superdevmode_host" value="http://192.168.0.117:9876" />
-	<set-configuration-property name="devModeUrlWhitelistRegexp" value="http://127\.0\.0\.1(:\d+)?/(.|\.|/)*" />
+<!-- 	<set-configuration-property name="devModeRedirectEnabled" value="true"/> -->
+<!-- 	<set-configuration-property name="mgwt.superdevmode" value="on" /> -->
+<!-- 	<set-configuration-property name="mgwt.superdevmode_host" value="http://192.168.0.117:9876" /> -->
+<!-- 	<set-configuration-property name="devModeUrlWhitelistRegexp" value="http://127\.0\.0\.1(:\d+)?/(.|\.|/)*" /> -->
 <!-- 	<set-configuration-property name="devModeUrlWhitelistRegexp" value="http://192\.168\.0\.117(:\d+)?/(.|\.|/)*" /> -->
 <!-- 	<set-configuration-property name="devModeUrlWhitelistRegexp" value="(:|\d.|\.|/)*" /> -->
 	
