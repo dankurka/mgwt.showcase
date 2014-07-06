@@ -83,8 +83,6 @@ public class AnimationViewGwtImpl implements AnimationView {
 			}
 		});
 
-		list.setRound(true);
-
 		FlowPanel container = new FlowPanel();
     container.add(list);
 

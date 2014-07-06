@@ -80,8 +80,6 @@ public class ShowCaseListViewGwtImpl implements ShowCaseListView {
 			}
 		});
 
-		cellList.setRound(true);
-
 
     FlowPanel container = new FlowPanel();
     container.add(cellList);

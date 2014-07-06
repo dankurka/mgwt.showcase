@@ -76,7 +76,6 @@ public class UIViewImpl implements UIView {
 				return true;
 			}
 		});
-		cellListWithHeader.setRound(true);
 		scrollPanel.setWidget(cellListWithHeader);
 		scrollPanel.setScrollingEnabledX(false);
 
